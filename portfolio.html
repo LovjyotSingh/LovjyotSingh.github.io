@@ -1,0 +1,2326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lovjyot Singh // Full-Stack & AI Systems Architect</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portfolio of Lovjyot Singh. Full-Stack Developer & AI Systems Architect. Specialized in Node.js, React, and Voice AI automation.">
+  <meta name="keywords" content="Lovjyot Singh, software engineer, full stack developer, portfolio, AI automation, Node.js, React, USICT">
+  <meta name="author" content="Lovjyot Singh">
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@100;300;400;700&family=Inter:wght@300;400;600;800&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  
+  <!-- GSAP & ScrollTrigger from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <style>
+    /* ==========================================
+       1. CORE DESIGN SYSTEM & TOKENS
+       ========================================== */
+    :root {
+      --bg-color: #05060a;
+      --card-bg: rgba(8, 10, 16, 0.75);
+      --card-bg-hover: rgba(12, 15, 24, 0.9);
+      --border-color: rgba(255, 255, 255, 0.07);
+      --border-color-hover: rgba(255, 255, 255, 0.14);
+      
+      --text-primary: #f0f4ff;
+      --text-secondary: rgba(220, 230, 255, 0.6);
+      --text-tertiary: rgba(180, 200, 255, 0.28);
+      
+      --accent-green: #5DFFA0;
+      --accent-cyan: #6DFFEE;
+      --accent-purple: #C77DFF;
+      --accent-yellow: #FFE066;
+      --accent-red: #FF5C7A;
+      --accent-blue: #4EA8DE;
+      
+      --font-display: 'Syne', 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-body: 'Inter', sans-serif;
+      
+      --glow-green: 0 0 8px rgba(93, 255, 160, 0.5), 0 0 24px rgba(93, 255, 160, 0.15), 0 0 48px rgba(93, 255, 160, 0.05);
+      --glow-cyan: 0 0 8px rgba(109, 255, 238, 0.5), 0 0 24px rgba(109, 255, 238, 0.15), 0 0 48px rgba(109, 255, 238, 0.05);
+      --glow-purple: 0 0 8px rgba(199, 125, 255, 0.5), 0 0 24px rgba(199, 125, 255, 0.15);
+      --glow-yellow: 0 0 8px rgba(255, 224, 102, 0.5), 0 0 24px rgba(255, 224, 102, 0.15);
+      --glow-red: 0 0 12px rgba(255, 92, 122, 0.5);
+      --glow-blue: 0 0 8px rgba(78, 168, 222, 0.4);
+      
+      --border-thin: 1px solid var(--border-color);
+      --border-glow: 1px solid rgba(109, 255, 238, 0.2);
+      --border-glow-purple: 1px solid rgba(199, 125, 255, 0.2);
+      --border-glow-green: 1px solid rgba(93, 255, 160, 0.2);
+      
+      --transition-cyber: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    /* ==========================================
+       2. BASE STYLE & RESETS
+       ========================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    body {
+      background-color: var(--bg-color);
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    /* Global Background Grid */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+      background-size: 64px 64px;
+      background-position: center center;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Radial vignette ambient gradient */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: 
+        radial-gradient(ellipse 80% 60% at 15% 40%, rgba(109, 255, 238, 0.025) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 80% at 85% 60%, rgba(199, 125, 255, 0.025) 0%, transparent 55%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* ==========================================
+       SCROLL REVEAL ANIMATIONS
+       ========================================== */
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-up.delay-1 { transition-delay: 0.1s; }
+    .reveal-up.delay-2 { transition-delay: 0.2s; }
+    .reveal-up.delay-3 { transition-delay: 0.3s; }
+    .reveal-up.delay-4 { transition-delay: 0.4s; }
+    .reveal-up.delay-5 { transition-delay: 0.5s; }
+    .reveal-up.delay-6 { transition-delay: 0.6s; }
+
+    /* ==========================================
+       SECTION DECORATIVE DIVIDERS
+       ========================================== */
+    .sec-header {
+      margin-bottom: 4rem;
+      position: relative;
+    }
+    .sec-header::after {
+      content: '';
+      display: block;
+      width: 3rem;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-cyan), transparent);
+      margin-top: 1.2rem;
+      border-radius: 2px;
+    }
+    
+
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #020305;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(136, 255, 212, 0.2);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-cyan);
+      box-shadow: var(--glow-cyan);
+    }
+    
+    /* Utilities */
+    .wordmark {
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+    }
+    
+    .label-mono {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-secondary);
+    }
+    
+    .glow-green { color: var(--accent-green); text-shadow: var(--glow-green); }
+    .glow-cyan { color: var(--accent-cyan); text-shadow: var(--glow-cyan); }
+    .glow-purple { color: var(--accent-purple); text-shadow: var(--glow-purple); }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 4rem;
+      position: relative;
+      z-index: 10;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+    }
+    
+
+    
+    /* ==========================================
+       4. GLOBAL HUD / HEADER
+       ========================================== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 80px;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(109, 255, 238, 0.08);
+      background: rgba(5, 6, 10, 0.85);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4rem;
+      box-shadow: 0 1px 0 rgba(109, 255, 238, 0.06), 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 0 1.5rem;
+        height: 70px;
+      }
+    }
+    
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    
+    .logo-text {
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .logo-desc {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      border-left: var(--border-thin);
+      padding-left: 0.8rem;
+      color: var(--text-secondary);
+      height: 1.6rem;
+      display: flex;
+      align-items: center;
+      line-height: 1.3;
+    }
+    
+    .hud-status {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--accent-green);
+      background: rgba(93, 255, 160, 0.06);
+      border: 1px solid rgba(93, 255, 160, 0.25);
+      padding: 0.4rem 0.9rem;
+      border-radius: 3px;
+      box-shadow: 0 0 12px rgba(93, 255, 160, 0.08), inset 0 0 8px rgba(93, 255, 160, 0.04);
+    }
+
+    /* Nav links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--text-secondary);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color var(--transition-fast);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent-cyan);
+      transition: width var(--transition-cyber);
+      box-shadow: var(--glow-cyan);
+    }
+    .nav-links a:hover {
+      color: var(--accent-cyan);
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+    
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      box-shadow: var(--glow-green);
+      animation: pulse-dot 1.8s infinite ease-in-out;
+    }
+    
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+    
+    .hud-clock {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+    }
+    
+    @media (max-width: 576px) {
+      .hud-clock { display: none; }
+    }
+    
+    /* ==========================================
+       5. 3D PARTICLE BG CANVAS
+       ========================================== */
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 5;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      background: transparent;
+    }
+    
+    #bg-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    
+    /* ==========================================
+       6. SCROLLABLE LAYOUT
+       ========================================== */
+    section {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      border-bottom: var(--border-thin);
+      padding: 6rem 0;
+    }
+    
+    /* HERO SECTION */
+    #hero {
+      padding-top: 100px;
+    }
+    
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      width: 100%;
+      align-items: center;
+      gap: 4rem;
+    }
+    
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      z-index: 10;
+    }
+    
+    .hero-title {
+      font-size: clamp(3.5rem, 8vw, 7.5rem);
+      line-height: 0.88;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(160deg, #FFFFFF 50%, rgba(109, 255, 238, 0.6) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.04em;
+    }
+    
+    .hero-subtitle {
+      max-width: 600px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+    }
+    
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      border-top: var(--border-thin);
+      padding-top: 2rem;
+      max-width: 600px;
+    }
+    
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    
+    .stat-val {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    /* Hero Console Output Box */
+    .hero-console-frame {
+      border: var(--border-thin);
+      background: rgba(10, 12, 18, 0.85);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+      z-index: 10;
+    }
+    
+    .console-header {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.6rem 1rem;
+      border-bottom: var(--border-thin);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .console-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent-purple);
+    }
+    
+    .console-indicator::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-purple);
+      box-shadow: var(--glow-purple);
+    }
+    
+    .console-dots {
+      display: flex;
+      gap: 0.3rem;
+    }
+    
+    .console-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .hero-console-stream {
+      padding: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent-green);
+      line-height: 1.6;
+      height: 220px;
+      overflow-y: hidden;
+    }
+    
+    @media (max-width: 992px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+    
+    /* BENTO STACK GRID */
+    #stack {
+      background: rgba(3, 4, 6, 0.3);
+    }
+    
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-rows: 150px;
+      gap: 1.5rem;
+      width: 100%;
+    }
+    
+    .bento-card {
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(8, 10, 16, 0.72);
+      border-radius: 8px;
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(16px) saturate(1.2);
+      -webkit-backdrop-filter: blur(16px) saturate(1.2);
+      transition: border-color 0.35s ease, background 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .bento-card:hover {
+      border-color: rgba(109, 255, 238, 0.22);
+      background: rgba(12, 16, 26, 0.9);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(109, 255, 238, 0.08), inset 0 0 32px rgba(109, 255, 238, 0.03);
+    }
+    
+    /* Top shimmer border */
+    .bento-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent 0%, var(--accent-cyan) 50%, transparent 100%);
+      transform: scaleX(0);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--glow-cyan);
+    }
+    
+    .bento-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    /* Bottom shimmer border for variety */
+    .bento-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 30%;
+      height: 1px;
+      background: linear-gradient(270deg, transparent, rgba(199, 125, 255, 0.3));
+      transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .bento-card:hover::after {
+      width: 60%;
+    }
+    
+    /* Specific Grid Placements */
+    .b-languages { grid-column: span 3; grid-row: span 2; }
+    .b-frameworks { grid-column: span 3; grid-row: span 2; }
+    .b-terminal { grid-column: span 4; grid-row: span 3; }
+    .b-ai { grid-column: span 2; grid-row: span 2; }
+    .b-cloud { grid-column: span 2; grid-row: span 1; }
+    
+    .bento-card-title {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-cyan);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .pill-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: auto;
+    }
+    
+    .tech-pill {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: rgba(220, 230, 255, 0.75);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 0.4rem 0.85rem;
+      border-radius: 4px;
+      transition: all var(--transition-fast);
+      cursor: default;
+    }
+    
+    .tech-pill:hover {
+      background: rgba(109, 255, 238, 0.08);
+      border-color: rgba(109, 255, 238, 0.35);
+      color: var(--accent-cyan);
+      text-shadow: var(--glow-cyan);
+      transform: translateY(-1px);
+    }
+    .tech-pill.purple:hover {
+      background: rgba(199, 125, 255, 0.08);
+      border-color: rgba(199, 125, 255, 0.35);
+      color: var(--accent-purple);
+      text-shadow: var(--glow-purple);
+    }
+    .tech-pill.green:hover {
+      background: rgba(93, 255, 160, 0.08);
+      border-color: rgba(93, 255, 160, 0.35);
+      color: var(--accent-green);
+      text-shadow: var(--glow-green);
+    }
+    
+    /* Bento Shell Terminal */
+    .bento-terminal-window {
+      background: rgba(3, 4, 6, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-primary);
+      overflow-y: auto;
+      padding: 1rem;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+      max-height: 280px;
+    }
+    
+    .term-output {
+      line-height: 1.6;
+    }
+    
+    .term-input-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    
+    .term-prompt {
+      color: var(--accent-purple);
+    }
+    
+    .term-shell-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--accent-green);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      flex-grow: 1;
+    }
+    
+    .ai-metric-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      margin-bottom: 1rem;
+    }
+    .ai-metric-label {
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+      color: var(--text-secondary);
+    }
+    .ai-metric-val {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent-purple);
+      text-shadow: var(--glow-purple);
+    }
+    
+    @media (max-width: 992px) {
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: minmax(140px, auto);
+      }
+      .b-languages { grid-column: span 2; }
+      .b-frameworks { grid-column: span 2; }
+      .b-terminal { grid-column: span 2; }
+      .b-ai { grid-column: span 1; }
+      .b-cloud { grid-column: span 1; }
+    }
+    @media (max-width: 576px) {
+      .bento-grid {
+        grid-template-columns: 1fr;
+      }
+      .b-languages { grid-column: span 1; }
+      .b-frameworks { grid-column: span 1; }
+      .b-terminal { grid-column: span 1; }
+      .b-ai { grid-column: span 1; }
+      .b-cloud { grid-column: span 1; }
+    }
+    
+    /* PROFESSIONAL TIMELINE (IBM EXPERIENCE) */
+    .timeline-wrapper {
+      width: 100%;
+      border: var(--border-thin);
+      background: var(--card-bg);
+      border-radius: 6px;
+      padding: 3rem;
+      position: relative;
+    }
+    
+    .exp-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 4rem;
+    }
+    
+    .exp-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .exp-company {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      background: linear-gradient(90deg, #FFFFFF, var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .exp-role {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-cyan);
+    }
+    
+    .exp-duration {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+    }
+    
+    .exp-details {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      list-style: none;
+    }
+    
+    .exp-list-item {
+      position: relative;
+      padding-left: 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    
+    .exp-list-item::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      color: var(--accent-green);
+      font-family: var(--font-mono);
+    }
+    
+    /* Neon Circular Gauges */
+    .exp-gauges {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    
+    .gauge-card {
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.015);
+      padding: 1.5rem;
+      border-radius: 4px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .gauge-svg {
+      width: 80px;
+      height: 80px;
+      transform: rotate(-90deg);
+    }
+    
+    .gauge-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.05);
+      stroke-width: 4;
+    }
+    
+    .gauge-progress {
+      fill: none;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-dasharray: 220; /* 2 * PI * r (r=35) */
+      stroke-dashoffset: 220;
+      transition: stroke-dashoffset 2s ease;
+    }
+    
+    .gauge-progress.cyan { stroke: var(--accent-cyan); filter: drop-shadow(0 0 3px rgba(136, 255, 212, 0.3)); }
+    .gauge-progress.green { stroke: var(--accent-green); filter: drop-shadow(0 0 3px rgba(124, 255, 107, 0.3)); }
+    .gauge-progress.purple { stroke: var(--accent-purple); filter: drop-shadow(0 0 3px rgba(191, 107, 255, 0.3)); }
+    
+    .gauge-val {
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    
+    .gauge-label {
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+      color: var(--text-secondary);
+    }
+    
+    @media (max-width: 992px) {
+      .exp-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .timeline-wrapper {
+        padding: 1.8rem;
+      }
+    }
+    @media (max-width: 576px) {
+      .exp-gauges {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+    
+    /* PROJECTS TELEMETRY SECTION */
+    
+    .projects-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      width: 100%;
+    }
+    
+    .project-card {
+      border: var(--border-thin);
+      background: var(--card-bg);
+      border-radius: 6px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      min-height: 480px;
+    }
+    
+    /* Left details / description */
+    .proj-details {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: var(--border-thin);
+    }
+    
+    .proj-badge {
+      display: inline-block;
+      align-self: flex-start;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      background: rgba(136, 255, 212, 0.05);
+      border: 1px solid rgba(136, 255, 212, 0.2);
+      color: var(--accent-cyan);
+      margin-bottom: 1.5rem;
+    }
+    
+    .proj-badge.live {
+      background: rgba(124, 255, 107, 0.05);
+      border-color: rgba(124, 255, 107, 0.2);
+      color: var(--accent-green);
+    }
+    
+    .proj-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    
+    .proj-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+    
+    .proj-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .proj-tech span {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.3rem 0.6rem;
+      border-radius: 2px;
+      color: var(--text-secondary);
+    }
+    
+    /* Right visuals / Telemetry screen */
+    .proj-telemetry {
+      background: #020304;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    
+    .telemetry-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 10;
+    }
+    
+    .telemetry-corners {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border: 1.5px solid var(--accent-cyan);
+    }
+    .tc-tl { top: 1rem; left: 1rem; border-right: none; border-bottom: none; }
+    .tc-tr { top: 1rem; right: 1rem; border-left: none; border-bottom: none; }
+    .tc-bl { bottom: 1rem; left: 1rem; border-right: none; border-top: none; }
+    .tc-br { bottom: 1rem; right: 1rem; border-left: none; border-top: none; }
+    
+    .telemetry-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.25);
+    }
+    
+    .telemetry-display {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1.5rem 0;
+    }
+    
+    .telemetry-logs {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent-green);
+      line-height: 1.5;
+      width: 100%;
+      max-height: 180px;
+      overflow-y: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    
+    .telemetry-log-item {
+      opacity: 0.8;
+      white-space: nowrap;
+    }
+    
+    .telemetry-log-item.warn { color: var(--accent-yellow); }
+    .telemetry-log-item.alert { color: var(--accent-red); }
+    .telemetry-log-item.cyan { color: var(--accent-cyan); }
+    
+    @media (max-width: 992px) {
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+      .proj-details {
+        border-right: none;
+        border-bottom: var(--border-thin);
+        padding: 2rem;
+      }
+      .proj-telemetry {
+        min-height: 350px;
+        padding: 2rem;
+      }
+    }
+    
+    /* SECURE UPLINK / CONTACT SECTION */
+    #contact {
+      background: radial-gradient(circle at bottom center, rgba(191, 107, 255, 0.04) 0%, transparent 60%);
+    }
+    
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 5rem;
+      width: 100%;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .edu-box {
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.015);
+      padding: 1.8rem;
+      border-radius: 4px;
+      margin-top: 2rem;
+    }
+    
+    .edu-title {
+      font-size: 1.10rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .edu-meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+      margin-bottom: 1rem;
+    }
+    
+    .edu-desc {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    
+    .contact-form-frame {
+      border: var(--border-thin);
+      background: var(--card-bg);
+      border-radius: 6px;
+      padding: 2.5rem;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    
+    .contact-link-card {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.015);
+      padding: 1.3rem;
+      border-radius: 6px;
+      transition: all var(--transition-cyber);
+      margin-bottom: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-link-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--accent-cyan);
+      transform: scaleY(0);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--glow-cyan);
+    }
+    .contact-link-card:hover::before { transform: scaleY(1); }
+    .contact-link-card:last-child {
+      margin-bottom: 0;
+    }
+    .contact-link-card:hover {
+      background: rgba(109, 255, 238, 0.04);
+      border-color: rgba(109, 255, 238, 0.2);
+      transform: translateX(4px);
+      box-shadow: 4px 0 20px rgba(109, 255, 238, 0.06);
+    }
+    .contact-link-card svg {
+      transition: transform 0.3s var(--transition-cyber);
+      flex-shrink: 0;
+    }
+    .contact-link-card:hover svg {
+      transform: translateX(4px);
+    }
+    
+    @media (max-width: 992px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+    
+    /* FOOTER */
+    footer {
+      border-top: var(--border-thin);
+      padding: 4rem 0;
+      background: #020305;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 4rem;
+    }
+    
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    
+    .footer-title {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--text-tertiary);
+    }
+    
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent-cyan);
+      text-shadow: var(--glow-cyan);
+    }
+    
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+
+  <!-- 1. HUD NAVIGATION BAR -->
+  <header>
+    <!-- Scroll progress line -->
+    <div id="scroll-progress" style="position:absolute; bottom:-1px; left:0; height:1px; width:0%; background:linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); z-index:1001; box-shadow: var(--glow-cyan); transition:none;"></div>
+    <div class="nav-logo">
+      <span class="wordmark logo-text hover-trigger glow-cyan">LOVJYOT SINGH</span>
+      <span class="logo-desc">SYSTEM PORTFOLIO<br>CORE V1.2.6</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#stack">01 // Stack</a></li>
+      <li><a href="#experience">02 // Experience</a></li>
+      <li><a href="#projects">03 // Projects</a></li>
+      <li><a href="#contact">04 // Contact</a></li>
+    </ul>
+    <div class="hud-status">
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span>OPEN TO WORK</span>
+      </div>
+      <div class="hud-clock" id="hud-time">16:00:00</div>
+    </div>
+  </header>
+
+  <!-- 2. FIXED CANVAS BACKGROUND -->
+  <div id="canvas-container">
+    <canvas id="bg-canvas"></canvas>
+  </div>
+
+  <!-- 3. SCROLLABLE CONTENT SECTIONS -->
+  <main>
+    
+    <!-- HERO SECTION -->
+    <section id="hero">
+      <div class="container">
+        <div class="hero-layout">
+          
+          <div class="hero-text">
+            <span class="label-mono glow-green reveal-up" style="margin-bottom: 1rem;">SOFTWARE ENGINEER & SYSTEMS BUILDER</span>
+            <h1 class="wordmark hero-title reveal-up delay-1">LOVJYOT<br>SINGH</h1>
+            <p class="hero-subtitle reveal-up delay-2">
+              Software Engineer crafting scalable full-stack applications and AI-driven systems. Passionate about low-level architecture, clean APIs, and cutting-edge AI integrations.
+            </p>
+            <div class="hero-stats reveal-up delay-3">
+              <div class="stat-item">
+                <span class="label-mono">SPECIALIZATION</span>
+                <span class="stat-val glow-cyan">Full-Stack & AI</span>
+              </div>
+              <div class="stat-item">
+                <span class="label-mono">LOCATION</span>
+                <span class="stat-val">Faridabad, India</span>
+              </div>
+              <div class="stat-item">
+                <span class="label-mono">STATUS</span>
+                <span class="stat-val glow-green">Open to Work</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="hero-console-frame reveal-up delay-2">
+            <div class="console-header">
+              <span class="console-indicator">AI AGENT ENGINE telemetry</span>
+              <div class="console-dots">
+                <div class="console-dot"></div>
+                <div class="console-dot"></div>
+                <div class="console-dot"></div>
+              </div>
+            </div>
+            <div class="hero-console-stream" id="hero-stream-box">
+              <!-- Live typewriter automation streams -->
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- BENTO GRID STACK -->
+    <section id="stack">
+      <div class="container">
+        
+        <div class="sec-header reveal-up">
+          <span class="label-mono glow-purple">// 01 / CORE SYSTEMS STACK</span>
+          <h2 class="wordmark" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-top: 0.5rem;">COGNITIVE SYSTEM ARCHITECTURE</h2>
+        </div>
+        
+        <div class="bento-grid">
+          
+          <!-- Languages Bento Card -->
+          <div class="bento-card b-languages reveal-up delay-1">
+            <span class="bento-card-title">
+              <svg width="12" height="12" fill="var(--accent-cyan)" viewBox="0 0 16 16"><path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 1 0-.708-.708L1.707 5.854a.5.5 0 0 0 0 .708l2.439 2.439a.5.5 0 1 0 .708-.708L2.914 6l1.94-1.854zm6.292 0a.5.5 0 1 0 .708-.708l2.439 2.439a.5.5 0 0 1 0 .708l-2.439 2.439a.5.5 0 1 0-.708-.708L13.086 6l-1.94-1.854z"/></svg>
+              LANGUAGES, DB & CORE CS
+            </span>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.5;">
+              Robust foundation in core computer science, database design, and algorithmic optimization.
+            </p>
+            <div class="pill-container">
+              <span class="tech-pill hover-trigger">Java</span>
+              <span class="tech-pill hover-trigger">Python</span>
+              <span class="tech-pill hover-trigger">JavaScript (ES6+)</span>
+              <span class="tech-pill hover-trigger">SQL</span>
+              <span class="tech-pill hover-trigger">MongoDB (Atlas, Aggregation)</span>
+              <span class="tech-pill hover-trigger">MySQL (Schema Design, Indexing)</span>
+              <span class="tech-pill hover-trigger">Data Structures & Algorithms</span>
+              <span class="tech-pill hover-trigger">Operating Systems</span>
+              <span class="tech-pill hover-trigger">DBMS</span>
+              <span class="tech-pill hover-trigger">Computer Networks</span>
+            </div>
+          </div>
+          
+          <!-- Frameworks Bento Card -->
+          <div class="bento-card b-frameworks reveal-up delay-2">
+            <span class="bento-card-title">
+              <svg width="12" height="12" fill="var(--accent-green)" viewBox="0 0 16 16"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H4.5a.5.5 0 0 1 0-1h7z"/></svg>
+              FRONTEND, BACKEND & DESIGN
+            </span>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.5;">
+              Scale-oriented server applications and clean interfaces with reusable codebases.
+            </p>
+            <div class="pill-container">
+              <span class="tech-pill hover-trigger green">React.js</span>
+              <span class="tech-pill hover-trigger green">Next.js</span>
+              <span class="tech-pill hover-trigger green">Node.js</span>
+              <span class="tech-pill hover-trigger green">Express.js</span>
+              <span class="tech-pill hover-trigger">RESTful APIs</span>
+              <span class="tech-pill hover-trigger">JWT Authentication</span>
+              <span class="tech-pill hover-trigger">OAuth 2.0</span>
+              <span class="tech-pill hover-trigger">Tailwind CSS</span>
+              <span class="tech-pill hover-trigger">Recharts</span>
+              <span class="tech-pill hover-trigger">Zustand</span>
+              <span class="tech-pill hover-trigger">OOP</span>
+              <span class="tech-pill hover-trigger">Low-Level Design</span>
+              <span class="tech-pill hover-trigger">API Design / Microservices</span>
+            </div>
+          </div>
+          
+          <!-- Terminal Emulator Bento Card -->
+          <div class="bento-card b-terminal cmd-trigger reveal-up delay-1">
+            <span class="bento-card-title" style="color: var(--accent-purple);">
+              <svg width="12" height="12" fill="var(--accent-purple)" viewBox="0 0 16 16"><path d="M5.854 4.854a.5.5 0 1 0-.708-.708l-3.5 3.5a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L2.707 8l3.147-3.146zm.646 6.146a.5.5 0 1 1 .708-.708L10.293 7l-3.147-3.146a.5.5 0 0 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5z"/></svg>
+              INTERACTIVE COGNITIVE SHELL
+            </span>
+            <div class="bento-terminal-window hover-trigger" id="terminal-emulator">
+              <div class="term-output" id="term-output">
+                <div>LovjyotOS [v1.2.6] - Live Session</div>
+                <div style="color: var(--text-tertiary)">Type 'help' to display list of command logs.</div>
+              </div>
+              <div class="term-input-row">
+                <span class="term-prompt">visitor@lovjyot:~$</span>
+                <input type="text" class="term-shell-input" id="shell-input" autocomplete="off" placeholder="type here...">
+              </div>
+            </div>
+          </div>
+          
+          <!-- AI Automation Bento Card -->
+          <div class="bento-card b-ai reveal-up delay-3">
+            <span class="bento-card-title" style="color: var(--accent-purple)">
+              <svg width="12" height="12" fill="var(--accent-purple)" viewBox="0 0 16 16"><path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zM3 8.005a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg>
+              AI & AUTOMATION
+            </span>
+            <div class="pill-container" style="margin-top:0;">
+              <span class="tech-pill hover-trigger purple" style="font-size:0.6rem; padding:0.2rem 0.5rem;">OpenRouter AI</span>
+              <span class="tech-pill hover-trigger purple" style="font-size:0.6rem; padding:0.2rem 0.5rem;">LangChain</span>
+              <span class="tech-pill hover-trigger purple" style="font-size:0.6rem; padding:0.2rem 0.5rem;">OpenAI</span>
+              <span class="tech-pill hover-trigger purple" style="font-size:0.6rem; padding:0.2rem 0.5rem;">Vapi AI</span>
+              <span class="tech-pill hover-trigger purple" style="font-size:0.6rem; padding:0.2rem 0.5rem;">Prompt Eng.</span>
+            </div>
+          </div>
+          
+          <!-- Cloud Bento Card -->
+          <div class="bento-card b-cloud reveal-up delay-4">
+            <span class="bento-card-title">CLOUD & DEVOPS</span>
+            <div class="pill-container" style="margin-top:0;">
+              <span class="tech-pill hover-trigger" style="font-size:0.6rem; padding:0.2rem 0.5rem;">AWS</span>
+              <span class="tech-pill hover-trigger" style="font-size:0.6rem; padding:0.2rem 0.5rem;">Docker</span>
+              <span class="tech-pill hover-trigger" style="font-size:0.6rem; padding:0.2rem 0.5rem;">Vercel</span>
+              <span class="tech-pill hover-trigger" style="font-size:0.6rem; padding:0.2rem 0.5rem;">Railway</span>
+              <span class="tech-pill hover-trigger" style="font-size:0.6rem; padding:0.2rem 0.5rem;">Render</span>
+              <span class="tech-pill hover-trigger" style="font-size:0.6rem; padding:0.2rem 0.5rem;">CI/CD</span>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- IBM EXPERIENCE SECTION -->
+    <section id="experience">
+      <div class="container">
+        
+        <div class="sec-header reveal-up">
+          <span class="label-mono glow-green">// 02 / PROFESSIONAL TIMELINE</span>
+          <h2 class="wordmark" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-top: 0.5rem;">OPERATIONAL DEPLOYMENTS</h2>
+        </div>
+        
+        <div class="timeline-wrapper">
+          <div class="exp-grid">
+            
+            <div class="exp-title-block reveal-up delay-1">
+              <span class="exp-company">IBM</span>
+              <span class="exp-role">Web Development Intern</span>
+              <span class="exp-duration">Jun 2024 – Aug 2024 | Remote, India</span>
+            </div>
+            
+            <div class="exp-details reveal-up delay-2">
+              <ul class="exp-list">
+                <li class="exp-list-item">Developed 15+ production-grade React.js components with Tailwind CSS, reducing initial page load time by 35% and bundle size by 28% via code splitting, lazy loading, and component memoization.</li>
+                <li class="exp-list-item">Integrated RESTful APIs using Axios with centralized error handling, powering real-time dashboard data updates across 3 core product modules.</li>
+                <li class="exp-list-item">Collaborated in 2-week Agile sprints to ship 6 feature releases on schedule, contributing to a measured 15% improvement in user engagement metrics.</li>
+              </ul>
+              
+              <!-- Metrics telemetry dials -->
+              <div class="exp-gauges">
+                <div class="gauge-card">
+                  <svg class="gauge-svg">
+                    <circle class="gauge-bg" cx="40" cy="40" r="35"></circle>
+                    <circle class="gauge-progress cyan" id="gauge-load" cx="40" cy="40" r="35"></circle>
+                  </svg>
+                  <div>
+                    <span class="gauge-val glow-cyan">-35%</span>
+                    <div class="gauge-label">LOAD TIME REDUCTION</div>
+                  </div>
+                </div>
+                
+                <div class="gauge-card">
+                  <svg class="gauge-svg">
+                    <circle class="gauge-bg" cx="40" cy="40" r="35"></circle>
+                    <circle class="gauge-progress green" id="gauge-bundle" cx="40" cy="40" r="35"></circle>
+                  </svg>
+                  <div>
+                    <span class="gauge-val glow-green">-28%</span>
+                    <div class="gauge-label">BUNDLE SIZE MINIFIED</div>
+                  </div>
+                </div>
+                
+                <div class="gauge-card">
+                  <svg class="gauge-svg">
+                    <circle class="gauge-bg" cx="40" cy="40" r="35"></circle>
+                    <circle class="gauge-progress purple" id="gauge-engage" cx="40" cy="40" r="35"></circle>
+                  </svg>
+                  <div>
+                    <span class="gauge-val glow-purple">+15%</span>
+                    <div class="gauge-label">USER ENGAGEMENT</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- PROJECTS SHOWCASE -->
+    <section id="projects">
+      <div class="container">
+        
+        <div class="sec-header reveal-up">
+          <span class="label-mono glow-cyan">// 03 / SYSTEM INITIATIVES</span>
+          <h2 class="wordmark" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-top: 0.5rem;">TELEMETRY CASES & PROJECTS</h2>
+        </div>
+        
+        <div class="projects-grid">
+          
+          <!-- Project 1: PlacementPrep AI -->
+          <div class="project-card reveal-up delay-1" id="proj-placement">
+            <div class="proj-details">
+              <div>
+                <span class="proj-badge live">LIVE DEVELOPMENT DEPLOYED</span>
+                <h3 class="proj-title" style="display: flex; align-items: center; gap: 1rem;">
+                  PlacementPrep AI
+                  <a href="#" class="proj-badge live hover-trigger" style="margin-bottom: 0; font-size: 0.65rem; text-decoration: none;">LIVE</a>
+                </h3>
+                <p class="proj-desc">
+                  Built an end-to-end placement preparation platform featuring role-specific AI mock interviews and automated response evaluation (technical accuracy, communication, and confidence) powered by OpenRouter GPT-4o-mini. Engineered an ATS resume analyzer with keyword gap detection and a Recharts analytics dashboard.
+                </p>
+                <div class="proj-tech">
+                  <span>React.js</span>
+                  <span>Node.js</span>
+                  <span>Express.js</span>
+                  <span>OpenRouter AI</span>
+                  <span>GPT-4o-mini</span>
+                  <span>MongoDB Atlas</span>
+                  <span>Recharts</span>
+                  <span>JWT Auth</span>
+                  <span>bcrypt</span>
+                </div>
+              </div>
+              <div class="label-mono" style="font-size:0.75rem;">MODULE ID: #PP-01 // PRODUCTION</div>
+            </div>
+            <div class="proj-telemetry">
+              <div class="telemetry-overlay">
+                <div class="tc-tl telemetry-corners"></div>
+                <div class="tc-tr telemetry-corners"></div>
+                <div class="tc-bl telemetry-corners"></div>
+                <div class="tc-br telemetry-corners"></div>
+                <div style="display:flex; justify-content:space-between; width:100%;">
+                  <span class="telemetry-label">ATS FEEDBACK MONITOR</span>
+                  <span class="telemetry-label glow-cyan">CHANNEL ACTIVE</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; width:100%;">
+                  <span class="telemetry-label">AI_RESPONSE_MATRIX</span>
+                  <span class="telemetry-label glow-green">SECURE ENCRYPTED</span>
+                </div>
+              </div>
+              <div class="telemetry-display">
+                <div class="telemetry-logs" id="logs-placement">
+                  <!-- Dynamic Logs generated by script -->
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project 2: Voice AI Appointment Agent -->
+          <div class="project-card" id="proj-voice">
+            <div class="proj-details">
+              <div>
+                <span class="proj-badge live">SYSTEM INTERFACE STABLE</span>
+                <h3 class="proj-title">Voice AI Appointment Agent</h3>
+                <p class="proj-desc">
+                  Built an AI voice agent using Vapi AI + OpenAI that handles inbound patient calls, collects appointment details, and checks Google Calendar availability in real time to identify open appointment slots automatically. Automated staff notifications via Telegram and WhatsApp webhook pipeline.
+                </p>
+                <div class="proj-tech">
+                  <span>Vapi AI</span>
+                  <span>OpenAI</span>
+                  <span>Node.js</span>
+                  <span>Express.js</span>
+                  <span>Google Calendar API</span>
+                  <span>Webhooks</span>
+                  <span>Telegram API</span>
+                  <span>WhatsApp Integration</span>
+                </div>
+              </div>
+              <div class="label-mono" style="font-size:0.75rem;">MODULE ID: #VO-02 // DEPLOYED</div>
+            </div>
+            <div class="proj-telemetry">
+              <div class="telemetry-overlay">
+                <div class="tc-tl telemetry-corners"></div>
+                <div class="tc-tr telemetry-corners"></div>
+                <div class="tc-bl telemetry-corners"></div>
+                <div class="tc-br telemetry-corners"></div>
+                <div style="display:flex; justify-content:space-between; width:100%;">
+                  <span class="telemetry-label">VOICE RECOGNITION VAD</span>
+                  <span class="telemetry-label glow-purple">LISTENING</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; width:100%;">
+                  <span class="telemetry-label">CALENDAR SYNCING</span>
+                  <span class="telemetry-label glow-cyan">NOMINAL</span>
+                </div>
+              </div>
+              <div class="telemetry-display">
+                <div class="telemetry-logs" id="logs-voice">
+                  <!-- Dynamic Logs -->
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- SECURE COMMS / CONTACT & EDUCATION -->
+    <section id="contact">
+      <div class="container">
+        
+        <div class="sec-header">
+          <span class="label-mono glow-purple">// 04 / DIRECT UPLINK</span>
+          <h2 class="wordmark" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-top: 0.5rem;">DIRECT COMM NODES & ACCESS</h2>
+        </div>
+        
+        <div class="contact-layout">
+          
+          <div class="contact-info">
+            <div>
+              <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 2rem;">
+                Looking for a Full-Stack Developer or Software Engineer to join your team? Uplink directly through the communication channels below.
+              </p>
+              <div class="label-mono" style="font-size:0.6rem; color:var(--text-tertiary);">PORTFOLIO ENDPOINT DATA</div>
+              
+              <div class="edu-box">
+                <div class="edu-title">USICT, Guru Gobind Singh Indraprastha University</div>
+                <div class="edu-meta">Bachelor of Technology in Computer Science and Engineering</div>
+                <p class="edu-desc">
+                  Rigorous curriculum focusing on Data Structures & Algorithms, Operating Systems, DBMS, Computer Networks, and modern software engineering practices. (2022 – 2026).
+                </p>
+              </div>
+            </div>
+            
+            <p class="label-mono" style="font-size:0.55rem; color:var(--text-tertiary); margin-top:2rem;">
+              COGNITIVE INTERFACE SYST-V1.2.6 // FARIDABAD, IN
+            </p>
+          </div>
+          
+          <div class="contact-form-frame" style="display: flex; flex-direction: column; justify-content: center; gap: 1rem;">
+            <div style="border-bottom: var(--border-thin); padding-bottom: 0.8rem; margin-bottom: 0.5rem;">
+              <span class="label-mono glow-purple">SECURE COMMS DIRECT ACCESS</span>
+            </div>
+            
+            <!-- Email Card -->
+            <a href="mailto:contactlovjyotsingh@gmail.com" class="contact-link-card hover-trigger">
+              <div>
+                <div class="label-mono" style="font-size: 0.55rem; color: var(--text-secondary);">PRIMARY EMAIL</div>
+                <div style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-top: 0.2rem;">contactlovjyotsingh@gmail.com</div>
+              </div>
+              <svg width="18" height="18" fill="none" stroke="var(--accent-purple)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+
+            <!-- LinkedIn Card -->
+            <a href="https://www.linkedin.com/in/lovjyotsingh" target="_blank" class="contact-link-card hover-trigger">
+              <div>
+                <div class="label-mono" style="font-size: 0.55rem; color: var(--text-secondary);">LINKEDIN NETWORK</div>
+                <div style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-top: 0.2rem;">linkedin.com/in/lovjyotsingh</div>
+              </div>
+              <svg width="18" height="18" fill="none" stroke="var(--accent-cyan)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+
+            <!-- GitHub Card -->
+            <a href="https://github.com/LovjyotSingh" target="_blank" class="contact-link-card hover-trigger">
+              <div>
+                <div class="label-mono" style="font-size: 0.55rem; color: var(--text-secondary);">GITHUB CODESPACE</div>
+                <div style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-top: 0.2rem;">github.com/LovjyotSingh</div>
+              </div>
+              <svg width="18" height="18" fill="none" stroke="var(--accent-green)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+
+            <!-- Phone Card -->
+            <a href="tel:+919958473062" class="contact-link-card hover-trigger">
+              <div>
+                <div class="label-mono" style="font-size: 0.55rem; color: var(--text-secondary);">VOICE COMMUNICATIONS</div>
+                <div style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-top: 0.2rem;">+91-9958473062</div>
+              </div>
+              <svg width="18" height="18" fill="none" stroke="var(--accent-yellow)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          
+        </div>
+        
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="wordmark" style="font-size: 1.5rem; letter-spacing: -0.02em;">LOVJYOT SINGH</span>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+            Systems architect & developer. Specializing in low-level details, highly-responsive client applications, and AI integrations.
+          </p>
+        </div>
+        
+        <div class="footer-col">
+          <span class="footer-title">COMMS PORTS</span>
+          <ul class="footer-links">
+            <li><a href="mailto:contactlovjyotsingh@gmail.com" class="hover-trigger">contactlovjyotsingh@gmail.com</a></li>
+            <li><a href="https://www.linkedin.com/in/lovjyotsingh" target="_blank" class="hover-trigger">LinkedIn Portal</a></li>
+            <li><a href="https://github.com/LovjyotSingh" target="_blank" class="hover-trigger">GitHub Space</a></li>
+            <li><span class="label-mono" style="font-size:0.7rem; color:var(--accent-green)">+91-9958473062</span></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <span class="footer-title">NAVIGATION NODES</span>
+          <ul class="footer-links">
+            <li><a href="#hero" class="hover-trigger">00 // HERO_UPLINK</a></li>
+            <li><a href="#stack" class="hover-trigger">01 // COGNITIVE_STACK</a></li>
+            <li><a href="#experience" class="hover-trigger">02 // TIMELINE_DEPS</a></li>
+            <li><a href="#projects" class="hover-trigger">03 // INITIATIVES_LOG</a></li>
+            <li><a href="#contact" class="hover-trigger">04 // SECURE_ uplink</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       7. CINEMATIC INTERACTIVE ENGINE (JS LOGIC)
+       ======================================================== -->
+  <script>
+    // ==========================================
+    // CYBER SYNTH AUDIO ENGINE
+    // ==========================================
+    // Mouse drift for particle interaction
+    let mX = window.innerWidth / 2;
+    let mY = window.innerHeight / 2;
+    
+    window.addEventListener('mousemove', (e) => {
+      mX = e.clientX;
+      mY = e.clientY;
+    });
+
+    // ==========================================
+    // SCROLL PROGRESS BAR
+    // ==========================================
+    function updateScrollProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      const bar = document.getElementById('scroll-progress');
+      if (bar) bar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    updateScrollProgress();
+
+    // ==========================================
+    // INTERSECTION OBSERVER — REVEAL-UP ANIMATIONS
+    // ==========================================
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
+    // Trigger hero elements immediately
+    setTimeout(() => {
+      document.querySelectorAll('#hero .reveal-up').forEach(el => el.classList.add('is-visible'));
+    }, 100);
+
+    // ==========================================
+    // DYNAMIC 3D MORPHING PARTICLE BG MATH
+    // ==========================================
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    function sizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    sizeCanvas();
+    window.addEventListener('resize', sizeCanvas);
+    
+    const PARTICLE_COUNT = 400;
+    const particles = [];
+    
+    // Morph States managed by ScrollTrigger (from 0.0 to 1.0)
+    const morphStates = {
+      sphereToGrid: 0.0,
+      gridToHelix: 0.0,
+      helixToTunnel: 0.0,
+      
+      rotSpeedX: 0.0005,
+      rotSpeedY: 0.0008,
+      cameraZoom: 1.0,
+      cameraX: 0,
+      cameraY: 0
+    };
+    
+    // Node particle class containing predefined coordinate states
+    class NodeParticle {
+      constructor(idx) {
+        this.idx = idx;
+        this.size = 1 + Math.random() * 2;
+        
+        // Color assignments
+        const group = Math.random();
+        if (group < 0.4) this.color = 'cyan';
+        else if (group < 0.75) this.color = 'purple';
+        else this.color = 'green';
+        
+        // 1. Sphere State (Fibonacci distribution for uniform spacing)
+        const phi = Math.acos(2 * idx / PARTICLE_COUNT - 1);
+        const theta = Math.sqrt(PARTICLE_COUNT * Math.PI) * phi;
+        const R = 180;
+        this.xSphere = R * Math.sin(phi) * Math.cos(theta);
+        this.ySphere = R * Math.sin(phi) * Math.sin(theta);
+        this.zSphere = R * Math.cos(phi);
+        
+        // 2. Wave Grid State
+        const cols = 50;
+        const col = idx % cols;
+        const row = Math.floor(idx / cols);
+        const gridSpacingX = 14;
+        const gridSpacingY = 12;
+        this.xGrid = (col - cols/2) * gridSpacingX;
+        this.yGrid = (row - (PARTICLE_COUNT/cols)/2) * gridSpacingY;
+        this.zGrid = 0; // Wave computed dynamically in update
+        
+        // 3. Double Helix State
+        const helixStrand = idx % 2;
+        const angle = (idx / PARTICLE_COUNT) * Math.PI * 10; // 5 full turns
+        const helixR = 80;
+        this.xHelix = helixR * Math.cos(angle + (helixStrand * Math.PI)) + (Math.random() - 0.5) * 15;
+        this.yHelix = helixR * Math.sin(angle + (helixStrand * Math.PI)) + (Math.random() - 0.5) * 15;
+        this.zHelix = (idx / PARTICLE_COUNT) * 450 - 225;
+        
+        // 4. Spiral Tunnel State
+        const tAngle = (idx / PARTICLE_COUNT) * Math.PI * 24; // 12 full loops
+        const tRadius = 15 + (idx / PARTICLE_COUNT) * 120;
+        this.xTunnel = tRadius * Math.cos(tAngle);
+        this.yTunnel = tRadius * Math.sin(tAngle);
+        this.zTunnel = (idx / PARTICLE_COUNT) * 500 - 250;
+        
+        // Actual current positions
+        this.x = this.xSphere;
+        this.y = this.ySphere;
+        this.z = this.zSphere;
+      }
+      
+      update(time) {
+        // Grid Z wave updates dynamically
+        const cols = 50;
+        const col = this.idx % cols;
+        const row = Math.floor(this.idx / cols);
+        const waveZ = Math.sin(col * 0.15 + time * 0.003) * Math.cos(row * 0.15 + time * 0.002) * 40;
+        
+        // Dynamic interpolations based on morphStates
+        let tx = this.xSphere;
+        let ty = this.ySphere;
+        let tz = this.zSphere;
+        
+        // Morph: Sphere -> Grid
+        if (morphStates.sphereToGrid > 0) {
+          tx += (this.xGrid - tx) * morphStates.sphereToGrid;
+          ty += (this.yGrid - ty) * morphStates.sphereToGrid;
+          tz += ((this.zGrid + waveZ) - tz) * morphStates.sphereToGrid;
+        }
+        
+        // Morph: Grid -> Helix
+        if (morphStates.gridToHelix > 0) {
+          // Calculate grid source including dynamic wave factor
+          const gridZ = this.zGrid + waveZ;
+          tx = tx + (this.xHelix - tx) * morphStates.gridToHelix;
+          ty = ty + (this.yHelix - ty) * morphStates.gridToHelix;
+          tz = tz + (this.zHelix - tz) * morphStates.gridToHelix;
+        }
+        
+        // Morph: Helix -> Tunnel
+        if (morphStates.helixToTunnel > 0) {
+          tx = tx + (this.xTunnel - tx) * morphStates.helixToTunnel;
+          ty = ty + (this.yTunnel - ty) * morphStates.helixToTunnel;
+          tz = tz + (this.zTunnel - tz) * morphStates.helixToTunnel;
+        }
+        
+        this.x = tx;
+        this.y = ty;
+        this.z = tz;
+      }
+    }
+    
+    // Initialize Particles
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push(new NodeParticle(i));
+    }
+    
+    // Create sprite canvas caches for glow acceleration
+    const glowSprites = {};
+    function buildGlow(color) {
+      const s = document.createElement('canvas');
+      s.width = 32;
+      s.height = 32;
+      const c = s.getContext('2d');
+      const g = c.createRadialGradient(16, 16, 1, 16, 16, 15);
+      g.addColorStop(0, '#ffffff');
+      g.addColorStop(0.2, color);
+      g.addColorStop(0.5, color.replace('1)', '0.2)'));
+      g.addColorStop(1, 'rgba(0,0,0,0)');
+      c.fillStyle = g;
+      c.fillRect(0,0,32,32);
+      return s;
+    }
+    glowSprites.cyan = buildGlow('rgba(136, 255, 212, 1)');
+    glowSprites.purple = buildGlow('rgba(191, 107, 255, 1)');
+    glowSprites.green = buildGlow('rgba(124, 255, 107, 1)');
+    
+    // Camera angle states
+    let curRotX = 0.5;
+    let curRotY = 0.5;
+    let targetCameraX = window.innerWidth * 0.22;
+    let cameraX = targetCameraX;
+    
+    // Interactive Loop
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const time = Date.now();
+      
+      // Interpolate layout offset positions
+      cameraX += (targetCameraX - cameraX) * 0.08;
+      const screenCenterX = canvas.width / 2 + cameraX + morphStates.cameraX;
+      const screenCenterY = canvas.height / 2 + morphStates.cameraY;
+      
+      // Auto-rotation angles
+      curRotX += morphStates.rotSpeedX;
+      curRotY += morphStates.rotSpeedY;
+      
+      // Add slight mouse drift relative to screen center
+      const mouseInfluenceX = (mY - window.innerHeight / 2) * 0.0003;
+      const mouseInfluenceY = (mX - window.innerWidth / 2) * 0.0003;
+      const rotX = curRotX + mouseInfluenceX;
+      const rotY = curRotY + mouseInfluenceY;
+      
+      const fov = 420 * morphStates.cameraZoom;
+      const camDist = 400;
+      
+      // Cache trigonometry calculations
+      const cosY = Math.cos(rotY);
+      const sinY = Math.sin(rotY);
+      const cosX = Math.cos(rotX);
+      const sinX = Math.sin(rotX);
+      
+      // Loop through particles
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.update(time);
+        
+        // Apply 3D Rotations (Euler angles)
+        // Y rotation
+        let x1 = p.x * cosY - p.z * sinY;
+        let z1 = p.x * sinY + p.z * cosY;
+        
+        // X rotation
+        let y2 = p.y * cosX - z1 * sinX;
+        let z2 = p.y * sinX + z1 * cosX;
+        
+        // Perspective projection
+        const pScale = fov / (camDist + z2);
+        const sx = x1 * pScale + screenCenterX;
+        const sy = y2 * pScale + screenCenterY;
+        
+        if (sx < 0 || sx > canvas.width || sy < 0 || sy > canvas.height) continue;
+        
+        const alpha = Math.min(1.0, Math.max(0.08, (z2 + 250) / 500));
+        ctx.globalAlpha = alpha;
+        
+        const sprite = glowSprites[p.color];
+        const sSize = p.size * pScale * 2.0;
+        
+        ctx.drawImage(sprite, sx - sSize/2, sy - sSize/2, sSize, sSize);
+
+        // Store screen coords for constellation draw
+        p._sx = sx;
+        p._sy = sy;
+        p._sz = z2;
+      }
+      
+      ctx.globalAlpha = 1.0;
+
+      // ==========================================
+      // CONSTELLATION CONNECTIONS
+      // ==========================================
+      const CONNECT_DIST = 80;
+      const projected = [];
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        // Re-project for connections (use already computed values via loop above)
+        // We store screen coords in a simple array during particle draw pass
+        projected.push(p._sx !== undefined ? { x: p._sx, y: p._sy, z: p._sz } : null);
+      }
+
+      // Draw lines between close particles
+      for (let i = 0; i < projected.length; i++) {
+        if (!projected[i]) continue;
+        for (let j = i + 1; j < Math.min(i + 12, projected.length); j++) {
+          if (!projected[j]) continue;
+          const dx = projected[i].x - projected[j].x;
+          const dy = projected[i].y - projected[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < CONNECT_DIST) {
+            const alpha = (1 - dist / CONNECT_DIST) * 0.18;
+            ctx.globalAlpha = alpha;
+            ctx.strokeStyle = 'rgba(109, 255, 238, 1)';
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(projected[i].x, projected[i].y);
+            ctx.lineTo(projected[j].x, projected[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      ctx.globalAlpha = 1.0;
+      requestAnimationFrame(render);
+    }
+    
+    // Toggle spacing depending on responsive sizes
+    function checkLayout() {
+      if (window.innerWidth < 992) {
+        targetCameraX = 0;
+      } else {
+        targetCameraX = window.innerWidth * 0.22;
+      }
+    }
+    checkLayout();
+    window.addEventListener('resize', checkLayout);
+    
+    // ==========================================
+    // GSAP SCROLL DRIVER AND TIMELINES
+    // ==========================================
+    function setupScrollTriggers() {
+      // Register scrolltrigger plugin
+      gsap.registerPlugin(ScrollTrigger);
+      
+      // Hero to Stack: Morph Sphere to flat Wave Grid
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: "#stack",
+          start: "top 80%",
+          end: "top 20%",
+          scrub: 1.0
+        }
+      })
+      .to(morphStates, {
+        sphereToGrid: 1.0,
+        cameraZoom: 0.9,
+        rotSpeedX: 0.0001,
+        rotSpeedY: 0.0003
+      });
+      
+      // Stack to Experience: Morph Grid to Double Helix
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: "#experience",
+          start: "top 80%",
+          end: "top 20%",
+          scrub: 1.0,
+          onEnter: () => {
+            // Animate SVG Gauges in IBM timeline
+            gsap.to("#gauge-load", { strokeDashoffset: 143, duration: 1.5, ease: "power2.out" }); // -35% (65% off)
+            gsap.to("#gauge-bundle", { strokeDashoffset: 158, duration: 1.5, ease: "power2.out" }); // -28% (72% off)
+            gsap.to("#gauge-engage", { strokeDashoffset: 187, duration: 1.5, ease: "power2.out" }); // +15% (85% off)
+          }
+        }
+      })
+      .to(morphStates, {
+        gridToHelix: 1.0,
+        cameraZoom: 1.1,
+        rotSpeedX: 0.002, // Spin helix slightly faster for bio tech feels
+        rotSpeedY: 0.001
+      });
+      
+      // Experience to Projects: Morph Helix to tunnel and reposition to center
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: "#projects",
+          start: "top 80%",
+          end: "top 20%",
+          scrub: 1.0
+        }
+      })
+      .to(morphStates, {
+        helixToTunnel: 1.0,
+        cameraZoom: 0.8,
+        rotSpeedX: 0.0004,
+        rotSpeedY: 0.0006
+      });
+      
+      // Focus particles behind contact form as we exit
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: "#contact",
+          start: "top 60%",
+          end: "bottom bottom",
+          scrub: 1.0
+        }
+      })
+      .to(morphStates, {
+        cameraZoom: 0.5,
+        cameraY: -100
+      });
+    }
+
+    // ==========================================
+    // HERO AGENT ENGINE TELEMETRY TYPEWRITER
+    // ==========================================
+    const heroConsole = document.getElementById('hero-stream-box');
+    const logsList = [
+      ">> RUNNING LOVJYOT_INTELLIGENCE_LAYER [v1.0]",
+      ">> MOUNTING VOICE AGENT POOL STATE: ONLINE",
+      ">> PARSING WORKFLOW: PATIENT INBOUND CALL DETECTED",
+      ">> CHECKING GOOGLE CALENDAR SLOTS IN REAL TIME...",
+      ">> STATUS: AVAILABLE SLOT FOUND FOR 10:30 AM",
+      ">> INITIATING BOOKING EVENT PIPELINE",
+      ">> ALERT: SECURE GOOGLE ACCESS OAUTH SIGNED",
+      ">> WEBHOOK EXECUTING FOR POST-CALL NOTIFICATIONS...",
+      ">> SENDING TELEGRAM SUMMARY PACKET: OK",
+      ">> PLACEMENTPREP ENGINE: INITIALIZED",
+      ">> PARSING RESUME STREAM IN REAL TIME...",
+      ">> RUNNING ATS ANALYSIS AND RECHARTS MATRIX UPDATE",
+      ">> GPT-4O-MINI EVALUATION PIPELINE: COMPLETE",
+      ">> SYSTEM TELEMETRY NOMINAL. WAITING VISITOR COMMANDS."
+    ];
+    
+    let currentLogLineIndex = 0;
+    function printNextHeroConsoleLine() {
+      if (currentLogLineIndex < logsList.length) {
+        const div = document.createElement('div');
+        div.style.marginBottom = "0.2rem";
+        
+        const lineText = logsList[currentLogLineIndex];
+        // Green highlight for statuses
+        if (lineText.includes("ONLINE") || lineText.includes("OK") || lineText.includes("COMPLETE") || lineText.includes("NOMINAL")) {
+          div.style.color = "var(--accent-green)";
+        } else if (lineText.includes("ALERT") || lineText.includes("WORKFLOW")) {
+          div.style.color = "var(--accent-yellow)";
+        } else if (lineText.includes("LOVJYOT")) {
+          div.style.color = "var(--accent-purple)";
+        }
+        
+        heroConsole.appendChild(div);
+        
+        // Typewriter characters
+        let charIndex = 0;
+        function typeChar() {
+          if (charIndex < lineText.length) {
+            div.textContent += lineText.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeChar, 15);
+          } else {
+            currentLogLineIndex++;
+            // Scroll frame
+            heroConsole.scrollTop = heroConsole.scrollHeight;
+            setTimeout(printNextHeroConsoleLine, 600);
+          }
+        }
+        typeChar();
+      }
+    }
+
+    // ==========================================
+    // INTERACTIVE SHELL EMULATOR
+    // ==========================================
+    const shellInput = document.getElementById('shell-input');
+    const termOutput = document.getElementById('term-output');
+    const commands = {
+      help: () => `<span style="color:var(--accent-cyan)">LOVJYOT_OS v1.2.6</span> — Available commands:<br>
+        &nbsp;<span style="color:var(--accent-green)">about</span>&nbsp;&nbsp;&nbsp;&nbsp;— Summary of Lovjyot's profile<br>
+        &nbsp;<span style="color:var(--accent-green)">skills</span>&nbsp;&nbsp;&nbsp;— Cognitive skills matrix<br>
+        &nbsp;<span style="color:var(--accent-green)">projects</span>&nbsp;— Deployed system modules<br>
+        &nbsp;<span style="color:var(--accent-green)">contact</span>&nbsp;&nbsp;— Active comm channels<br>
+        &nbsp;<span style="color:var(--accent-purple)">ls</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— List portfolio directories<br>
+        &nbsp;<span style="color:var(--accent-purple)">cat</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— Read a project file (e.g. cat project1)<br>
+        &nbsp;<span style="color:var(--accent-purple)">neofetch</span>&nbsp;— System info &amp; profile card<br>
+        &nbsp;<span style="color:var(--accent-purple)">whoami</span>&nbsp;&nbsp;&nbsp;— Current operator identity<br>
+        &nbsp;<span style="color:var(--accent-purple)">date</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— System timestamp<br>
+        &nbsp;<span style="color:var(--accent-red)">clear</span>&nbsp;&nbsp;&nbsp;&nbsp;— Wipe terminal logs`,
+      about: () => `<span style="color:var(--accent-cyan)">// LOVJYOT SINGH — Software Engineer</span><br>
+        ├── University: USICT, GGSIPU — B.Tech CSE (2022–2026)<br>
+        ├── Expertise: Full-Stack Dev &amp; AI Automation Systems<br>
+        ├── Stack: React.js, Node.js, MongoDB, Java, Python<br>
+        ├── Internship: IBM — Web Development (Jun–Aug 2024)<br>
+        └── Mission: Build scalable, AI-first engineering solutions`,
+      skills: () => `<span style="color:var(--accent-cyan)">// COGNITIVE SKILLS MATRIX</span><br>
+        ├── <span style="color:var(--accent-yellow)">Languages</span>: Java, Python, JavaScript (ES6+), SQL<br>
+        ├── <span style="color:var(--accent-green)">Backend</span>: Node.js, Express.js, RESTful APIs, JWT, OAuth 2.0<br>
+        ├── <span style="color:var(--accent-green)">Frontend</span>: React.js, Next.js, Tailwind CSS, Recharts, Zustand<br>
+        ├── <span style="color:var(--accent-blue)">Databases</span>: MongoDB (Atlas, Aggregation), MySQL<br>
+        ├── <span style="color:var(--accent-blue)">Cloud</span>: AWS, Docker, Vercel, Railway, Render, CI/CD<br>
+        ├── <span style="color:var(--accent-purple)">AI/ML</span>: OpenRouter AI, LangChain, OpenAI, Vapi AI<br>
+        ├── <span style="color:var(--accent-yellow)">Design</span>: OOP, Low-Level Design, API Design, Microservices<br>
+        └── <span style="color:var(--text-secondary)">CS Core</span>: DSA, OS, DBMS, Computer Networks`,
+      projects: () => `<span style="color:var(--accent-cyan)">// DEPLOYED SYSTEM INITIATIVES</span><br>
+        ┌── <span style="color:var(--accent-green)">PlacementPrep AI</span> [#PP-01 PRODUCTION]<br>
+        │ &nbsp;&nbsp;&nbsp;End-to-end AI mock interview &amp; ATS resume analyzer platform.<br>
+        │ &nbsp;&nbsp;&nbsp;Stack: React.js, Node.js, OpenRouter GPT-4o-mini, MongoDB<br>
+        └── <span style="color:var(--accent-purple)">Voice AI Appointment Agent</span> [#VO-02 DEPLOYED]<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;Autonomous call-handling with Google Calendar + Telegram hooks.<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;Stack: Vapi AI, OpenAI, Node.js, Google Calendar API`,
+      contact: () => `<span style="color:var(--accent-cyan)">// SECURE UPLINK PORTS</span><br>
+        ├── Email: <a href="mailto:contactlovjyotsingh@gmail.com" style="color:var(--accent-green)">contactlovjyotsingh@gmail.com</a><br>
+        ├── LinkedIn: <a href="https://www.linkedin.com/in/lovjyotsingh" target="_blank" style="color:var(--accent-cyan)">linkedin.com/in/lovjyotsingh</a><br>
+        ├── GitHub: <a href="https://github.com/LovjyotSingh" target="_blank" style="color:var(--accent-purple)">github.com/LovjyotSingh</a><br>
+        └── Phone: +91-9958473062`,
+      ls: () => `<span style="color:var(--accent-cyan)">total 5 directories</span><br>
+        drwxr-x  <span style="color:var(--accent-green)">projects/</span><br>
+        drwxr-x  <span style="color:var(--accent-green)">skills/</span><br>
+        drwxr-x  <span style="color:var(--accent-green)">experience/</span><br>
+        drwxr-x  <span style="color:var(--accent-green)">education/</span><br>
+        -rwxr-x  <span style="color:var(--accent-yellow)">resume.pdf</span> &nbsp;[open: <a href="mailto:contactlovjyotsingh@gmail.com" style="color:var(--accent-cyan)">request via email</a>]`,
+      cat: () => `<span style="color:var(--accent-red)">Usage: cat &lt;filename&gt;</span><br>Available: <span style="color:var(--accent-purple)">cat project1</span> | <span style="color:var(--accent-purple)">cat project2</span>`,
+      'cat project1': () => `<span style="color:var(--accent-green)"># PlacementPrep AI — README.md</span><br>
+        ## Overview<br>
+        End-to-end AI-powered placement prep platform for tech interviews.<br>
+        ## Features<br>
+        - Role-specific mock AI interviews via OpenRouter GPT-4o-mini<br>
+        - Automated scoring: technical accuracy, communication, confidence<br>
+        - ATS resume analyzer with keyword gap detection<br>
+        - Recharts analytics dashboard for progress tracking<br>
+        ## Stack: React, Node.js, Express, MongoDB, JWT, bcrypt`,
+      'cat project2': () => `<span style="color:var(--accent-purple)"># Voice AI Appointment Agent — README.md</span><br>
+        ## Overview<br>
+        Autonomous AI phone agent for clinic appointment scheduling.<br>
+        ## Features<br>
+        - Handles inbound patient calls with Vapi AI + OpenAI<br>
+        - Real-time Google Calendar availability checking<br>
+        - Auto-booking and staff notification via Telegram + WhatsApp<br>
+        ## Stack: Vapi AI, OpenAI, Node.js, Google Calendar API, Webhooks`,
+      neofetch: () => `<span style="color:var(--accent-purple)">██╗      ██████╗ ██╗   ██╗     ██╗██╗   ██╗ ██████╗ ████████╗</span><br>
+        <span style="color:var(--accent-cyan)">██║     ██╔═══██╗██║   ██║     ██║╚██╗ ██╔╝██╔═══██╗╚══██╔══╝</span><br>
+        <span style="color:var(--accent-green)">██║     ██║   ██║██║   ██║     ██║ ╚████╔╝ ██║   ██║   ██║</span><br>
+        <span style="color:var(--accent-cyan)">██║     ██║   ██║╚██╗ ██╔╝     ██║  ╚██╔╝  ██║   ██║   ██║</span><br>
+        <span style="color:var(--accent-purple)">███████╗╚██████╔╝ ╚████╔╝ ██╗ ██║   ██║   ╚██████╔╝   ██║</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--accent-yellow)">LovjyotOS v1.2.6</span><br>
+        &nbsp;OS:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--text-primary)">LovjyotOS (Full-Stack AI Kernel)</span><br>
+        &nbsp;Host:&nbsp;&nbsp;&nbsp;<span style="color:var(--accent-cyan)">USICT, GGSIPU — New Delhi, India</span><br>
+        &nbsp;Uptime:&nbsp;<span style="color:var(--accent-green)">4 years (2022-2026)</span><br>
+        &nbsp;Shell:&nbsp;&nbsp;<span style="color:var(--accent-purple)">Java, Python, JavaScript, SQL</span><br>
+        &nbsp;DE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--accent-cyan)">React.js + Node.js Desktop</span><br>
+        &nbsp;GPU:&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--accent-yellow)">OpenRouter AI / GPT-4o-mini</span><br>
+        &nbsp;RAM:&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--accent-green)">MongoDB Atlas (∞ documents)</span><br>
+        &nbsp;CPU:&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--accent-purple)">DSA + LLD @ 2026 GHz</span>`,
+      whoami: () => `<span style="color:var(--accent-green)">lovjyot</span> — Software Engineer &amp; Systems Builder<br>
+        Role: Full-Stack Developer &amp; AI Automation Specialist<br>
+        Groups: IBM-Alumni, USICT-CSE, OpenSource`,
+      date: () => `System Timestamp: <span style="color:var(--accent-cyan)">${new Date().toUTCString()}</span><br>
+        Timezone: <span style="color:var(--accent-green)">IST (UTC+5:30) — Faridabad, India</span>`,
+      clear: () => {
+        termOutput.innerHTML = '';
+        return '';
+      }
+    };
+    
+    shellInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const rawValue = shellInput.value.trim();
+        const value = rawValue.toLowerCase();
+        shellInput.value = '';
+        
+        // Print command
+        const promptLine = document.createElement('div');
+        promptLine.innerHTML = `<span style="color:var(--accent-purple)">visitor@lovjyot:~$</span> <span style="color:var(--accent-green)">${rawValue}</span>`;
+        termOutput.appendChild(promptLine);
+        
+        const responseLine = document.createElement('div');
+        responseLine.style.marginTop = "0.2rem";
+        responseLine.style.marginBottom = "0.6rem";
+        responseLine.style.lineHeight = "1.6";
+        responseLine.style.fontSize = "0.72rem";
+        
+        const matchKey = Object.keys(commands).find(k => k === value);
+        if (matchKey) {
+          const res = commands[matchKey]();
+          if (res) {
+            responseLine.innerHTML = res;
+            termOutput.appendChild(responseLine);
+          }
+        } else if (value !== '') {
+          responseLine.innerHTML = `<span style="color:var(--accent-red)">bash: ${rawValue}: command not found.</span> Type <span style="color:var(--accent-cyan)">'help'</span> for options.`;
+          termOutput.appendChild(responseLine);
+        }
+        
+        termOutput.scrollTop = termOutput.scrollHeight;
+      }
+    });
+
+    // ==========================================
+    // PROJECTS SHOWCASE TELEMETRY LOGGER
+    // ==========================================
+    const placementLogs = [
+      "SYSTEM: INIT RECHARTS ENGINE",
+      "OAUTH: TOKEN SIGNED FOR USER_AGENT",
+      "API: GET /api/v1/resume/analyze",
+      "ATS_CRITICAL: PARSING RESUME STREAM...",
+      "GPT_4O: ESTIMATING EVALUATION WEIGHTS",
+      "AI_RESPONSE: SCORE 85/100 IN COMPLIANCE",
+      "METRIC: ATS PARSE FINISHED in 800ms",
+      "DB: SAVING SCORES TO MONGO_ATLAS"
+    ];
+    
+    const voiceLogs = [
+      "AGENT: VOIP INCOMING HOOK REGISTERED",
+      "VAD: VOICE ACTIVITY STATUS: TALKING",
+      "AI: SYNTHESIZING VOICE STREAM RESPONSE",
+      "API: CALENDAR CHECK INITIATED",
+      "CALENDAR: 3 FREE SLOTS SYNCED",
+      "STATION: APPOINTMENT REGISTERED",
+      "WEBHOOK: DISPATCHING TELEGRAM ALERTS",
+      "WHATSAPP: SMS COMPILING TO +91-XXXXXXXXXX"
+    ];
+    
+    const expenseLogs = [
+      "MYSQL: PORT 3306 INBOUND PIPELINE ACTIVE",
+      "ZUSTAND: STACK RE-INJECTING TRANSACTION",
+      "DB_SPEED: INDEX SCAN INITIATED ON UserExpenses",
+      "QUERY_BENCHMARK: SELECT * FROM exp_history",
+      "TELEMETRY: DATA RETRIEVED in 45ms",
+      "GAIN: INDEX OPTIMIZATION YIELDED 40% SPEEDUP",
+      "EXPORT: CONVERTING ARRAY STREAM TO CSV",
+      "FILE: EXPORT FLOW COMPLETED"
+    ];
+    
+    function startTelemetryLog(boxId, logArray) {
+      const box = document.getElementById(boxId);
+      let idx = 0;
+      
+      setInterval(() => {
+        const item = document.createElement('div');
+        item.className = 'telemetry-log-item';
+        
+        const line = logArray[idx % logArray.length];
+        
+        if (line.includes("SPEEDUP") || line.includes("ACTIVE") || line.includes("SECURE") || line.includes("FINISHED")) {
+          item.classList.add('cyan');
+        } else if (line.includes("WARN") || line.includes("CALENDAR") || line.includes("ATS_CRITICAL")) {
+          item.classList.add('warn');
+        } else if (line.includes("ALERT") || line.includes("ERROR")) {
+          item.classList.add('alert');
+        }
+        
+        const time = new Date().toISOString().slice(14, 19);
+        item.textContent = `[${time}] ${line}`;
+        box.appendChild(item);
+        
+        if (box.children.length > 8) {
+          box.removeChild(box.firstChild);
+        }
+        box.scrollTop = box.scrollHeight;
+        
+        idx++;
+      }, 1500 + Math.random() * 1000);
+    }
+
+    // Clock setup
+    function updateClock() {
+      const clock = document.getElementById('hud-time');
+      if (clock) {
+        const time = new Date().toTimeString().split(' ')[0];
+        clock.textContent = time;
+      }
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+    
+    // Page load trigger
+    window.addEventListener('load', () => {
+      // Bind scroll anims
+      setupScrollTriggers();
+      // Start live typewriters and telemetries
+      printNextHeroConsoleLine();
+      startTelemetryLog('logs-placement', placementLogs);
+      startTelemetryLog('logs-voice', voiceLogs);
+    });
+    
+    // Start Canvas render loop
+    render();
+  </script>
+</body>
+</html>
