@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lovjyot Singh // Full-Stack & AI Systems Architect</title>
+  <title>Lovjyot Singh // Software Engineer &amp; Distributed Systems Architect</title>
   
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Portfolio of Lovjyot Singh. Full-Stack Developer & AI Systems Architect. Specialized in Node.js, React, and Voice AI automation.">
-  <meta name="keywords" content="Lovjyot Singh, software engineer, full stack developer, portfolio, AI automation, Node.js, React, USICT">
+  <meta name="description" content="Portfolio of Lovjyot Singh. Software Engineer specializing in High-Concurrency Systems (Redis 2-Phase Locks), Full-Stack Next.js 15, Multimodal AI (Gemini 2.0, pgvector), and USICT CSE.">
+  <meta name="keywords" content="Lovjyot Singh, Software Engineer, Full Stack Developer, Distributed Systems, Redis, Next.js 15, Gemini AI, pgvector, USICT, Portfolio">
   <meta name="author" content="Lovjyot Singh">
   
   <!-- Premium Fonts -->
@@ -24,15 +24,15 @@
        1. CORE DESIGN SYSTEM & TOKENS
        ========================================== */
     :root {
-      --bg-color: #05060a;
-      --card-bg: rgba(8, 10, 16, 0.75);
-      --card-bg-hover: rgba(12, 15, 24, 0.9);
-      --border-color: rgba(255, 255, 255, 0.07);
-      --border-color-hover: rgba(255, 255, 255, 0.14);
+      --bg-color: #030408;
+      --card-bg: rgba(8, 11, 18, 0.82);
+      --card-bg-hover: rgba(14, 18, 30, 0.94);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-color-hover: rgba(109, 255, 238, 0.3);
       
-      --text-primary: #f0f4ff;
-      --text-secondary: rgba(220, 230, 255, 0.6);
-      --text-tertiary: rgba(180, 200, 255, 0.28);
+      --text-primary: #f8fafc;
+      --text-secondary: rgba(226, 232, 240, 0.72);
+      --text-tertiary: rgba(148, 163, 184, 0.45);
       
       --accent-green: #5DFFA0;
       --accent-cyan: #6DFFEE;
@@ -45,20 +45,15 @@
       --font-mono: 'JetBrains Mono', monospace;
       --font-body: 'Inter', sans-serif;
       
-      --glow-green: 0 0 8px rgba(93, 255, 160, 0.5), 0 0 24px rgba(93, 255, 160, 0.15), 0 0 48px rgba(93, 255, 160, 0.05);
-      --glow-cyan: 0 0 8px rgba(109, 255, 238, 0.5), 0 0 24px rgba(109, 255, 238, 0.15), 0 0 48px rgba(109, 255, 238, 0.05);
-      --glow-purple: 0 0 8px rgba(199, 125, 255, 0.5), 0 0 24px rgba(199, 125, 255, 0.15);
-      --glow-yellow: 0 0 8px rgba(255, 224, 102, 0.5), 0 0 24px rgba(255, 224, 102, 0.15);
+      --glow-green: 0 0 10px rgba(93, 255, 160, 0.5), 0 0 24px rgba(93, 255, 160, 0.15);
+      --glow-cyan: 0 0 10px rgba(109, 255, 238, 0.5), 0 0 24px rgba(109, 255, 238, 0.15);
+      --glow-purple: 0 0 10px rgba(199, 125, 255, 0.5), 0 0 24px rgba(199, 125, 255, 0.15);
+      --glow-yellow: 0 0 8px rgba(255, 224, 102, 0.5);
       --glow-red: 0 0 12px rgba(255, 92, 122, 0.5);
       --glow-blue: 0 0 8px rgba(78, 168, 222, 0.4);
       
       --border-thin: 1px solid var(--border-color);
-      --border-glow: 1px solid rgba(109, 255, 238, 0.2);
-      --border-glow-purple: 1px solid rgba(199, 125, 255, 0.2);
-      --border-glow-green: 1px solid rgba(93, 255, 160, 0.2);
-      
       --transition-cyber: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
     /* ==========================================
@@ -77,12 +72,17 @@
       font-family: var(--font-body);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      width: 100%;
+      max-width: 100vw;
     }
     
     body {
       background-color: var(--bg-color);
       overflow-x: hidden;
       position: relative;
+      width: 100%;
+      max-width: 100vw;
+      min-height: 100vh;
     }
     
     /* Global Background Grid */
@@ -94,9 +94,9 @@
       width: 100vw;
       height: 100vh;
       background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
-      background-size: 64px 64px;
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 56px 56px;
       background-position: center center;
       z-index: 1;
       pointer-events: none;
@@ -111,19 +111,17 @@
       width: 100vw;
       height: 100vh;
       background: 
-        radial-gradient(ellipse 80% 60% at 15% 40%, rgba(109, 255, 238, 0.025) 0%, transparent 55%),
-        radial-gradient(ellipse 60% 80% at 85% 60%, rgba(199, 125, 255, 0.025) 0%, transparent 55%);
+        radial-gradient(ellipse 80% 60% at 15% 35%, rgba(109, 255, 238, 0.035) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 85% 65%, rgba(199, 125, 255, 0.035) 0%, transparent 60%);
       z-index: 2;
       pointer-events: none;
     }
 
-    /* ==========================================
-       SCROLL REVEAL ANIMATIONS
-       ========================================== */
+    /* Scroll Reveal Animations */
     .reveal-up {
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(35px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .reveal-up.is-visible {
       opacity: 1;
@@ -133,28 +131,22 @@
     .reveal-up.delay-2 { transition-delay: 0.2s; }
     .reveal-up.delay-3 { transition-delay: 0.3s; }
     .reveal-up.delay-4 { transition-delay: 0.4s; }
-    .reveal-up.delay-5 { transition-delay: 0.5s; }
-    .reveal-up.delay-6 { transition-delay: 0.6s; }
 
-    /* ==========================================
-       SECTION DECORATIVE DIVIDERS
-       ========================================== */
+    /* Section Decorative Headers */
     .sec-header {
-      margin-bottom: 4rem;
+      margin-bottom: 3.5rem;
       position: relative;
     }
     .sec-header::after {
       content: '';
       display: block;
-      width: 3rem;
+      width: 3.5rem;
       height: 2px;
       background: linear-gradient(90deg, var(--accent-cyan), transparent);
-      margin-top: 1.2rem;
+      margin-top: 1rem;
       border-radius: 2px;
     }
-    
 
-    
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
@@ -163,19 +155,19 @@
       background: #020305;
     }
     ::-webkit-scrollbar-thumb {
-      background: rgba(136, 255, 212, 0.2);
+      background: rgba(109, 255, 238, 0.2);
       border-radius: 3px;
     }
     ::-webkit-scrollbar-thumb:hover {
       background: var(--accent-cyan);
       box-shadow: var(--glow-cyan);
     }
-    
-    /* Utilities */
+
+    /* Typography & Utilities */
     .wordmark {
       font-family: var(--font-display);
-      font-weight: 700;
-      letter-spacing: -0.05em;
+      font-weight: 800;
+      letter-spacing: -0.04em;
       text-transform: uppercase;
     }
     
@@ -183,7 +175,7 @@
       font-family: var(--font-mono);
       font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       color: var(--text-secondary);
     }
     
@@ -192,395 +184,369 @@
     .glow-purple { color: var(--accent-purple); text-shadow: var(--glow-purple); }
     
     .container {
-      max-width: 1400px;
+      max-width: 1360px;
       margin: 0 auto;
-      padding: 0 4rem;
+      padding: 0 3.5rem;
       position: relative;
       z-index: 10;
     }
     
     @media (max-width: 768px) {
       .container {
-        padding: 0 1.5rem;
+        padding: 0 1.25rem;
       }
     }
-    
 
-    
     /* ==========================================
-       4. GLOBAL HUD / HEADER
+       3. GLOBAL HUD / HEADER
        ========================================== */
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
-      height: 80px;
+      max-width: 100vw;
+      height: 76px;
       z-index: 1000;
       border-bottom: 1px solid rgba(109, 255, 238, 0.08);
-      background: rgba(5, 6, 10, 0.85);
+      background: rgba(3, 5, 9, 0.88);
       backdrop-filter: blur(20px) saturate(1.4);
       -webkit-backdrop-filter: blur(20px) saturate(1.4);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 4rem;
-      box-shadow: 0 1px 0 rgba(109, 255, 238, 0.06), 0 8px 32px rgba(0, 0, 0, 0.3);
+      padding: 0 3.5rem;
     }
     
     @media (max-width: 768px) {
       header {
-        padding: 0 1.5rem;
-        height: 70px;
+        padding: 0 1.25rem;
+        height: 68px;
       }
     }
     
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.75rem;
     }
     
     .logo-text {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       letter-spacing: -0.02em;
     }
     
     .logo-desc {
       font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      border-left: var(--border-thin);
-      padding-left: 0.8rem;
-      color: var(--text-secondary);
-      height: 1.6rem;
+      font-size: 0.58rem;
+      line-height: 1.2;
+      color: var(--text-tertiary);
+      border-left: 1px solid rgba(109, 255, 238, 0.25);
+      padding-left: 0.6rem;
+    }
+    
+    .nav-links {
       display: flex;
-      align-items: center;
-      line-height: 1.3;
+      list-style: none;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      transition: color 0.25s, text-shadow 0.25s;
+    }
+    
+    .nav-links a:hover {
+      color: var(--accent-cyan);
+      text-shadow: var(--glow-cyan);
+    }
+    
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
     }
     
     .hud-status {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.2rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
     }
     
     .status-badge {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      color: var(--accent-green);
-      background: rgba(93, 255, 160, 0.06);
+      gap: 0.45rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      background: rgba(93, 255, 160, 0.08);
       border: 1px solid rgba(93, 255, 160, 0.25);
-      padding: 0.4rem 0.9rem;
-      border-radius: 3px;
-      box-shadow: 0 0 12px rgba(93, 255, 160, 0.08), inset 0 0 8px rgba(93, 255, 160, 0.04);
-    }
-
-    /* Nav links */
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      color: var(--text-secondary);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color var(--transition-fast);
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--accent-cyan);
-      transition: width var(--transition-cyber);
-      box-shadow: var(--glow-cyan);
-    }
-    .nav-links a:hover {
-      color: var(--accent-cyan);
-    }
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
+      color: var(--accent-green);
+      font-size: 0.68rem;
     }
     
     .status-dot {
       width: 6px;
       height: 6px;
-      background: var(--accent-green);
       border-radius: 50%;
-      box-shadow: var(--glow-green);
-      animation: pulse-dot 1.8s infinite ease-in-out;
+      background: var(--accent-green);
+      box-shadow: 0 0 8px var(--accent-green);
+      animation: pulse 2s infinite;
     }
     
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 0.4; transform: scale(0.9); }
-      50% { opacity: 1; transform: scale(1.2); }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
     }
     
     .hud-clock {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--text-secondary);
-      letter-spacing: 0.05em;
+      color: var(--text-tertiary);
     }
-    
-    @media (max-width: 576px) {
+    @media (max-width: 600px) {
       .hud-clock { display: none; }
     }
-    
-    /* ==========================================
-       5. 3D PARTICLE BG CANVAS
-       ========================================== */
+
+    /* Fixed Canvas Background */
     #canvas-container {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: 5;
       pointer-events: none;
-      mix-blend-mode: screen;
-      background: transparent;
+      z-index: 3;
     }
-    
-    #bg-canvas {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-    
-    /* ==========================================
-       6. SCROLLABLE LAYOUT
-       ========================================== */
-    section {
-      min-height: 100vh;
+
+    main {
       position: relative;
+      z-index: 10;
+    }
+
+    /* ==========================================
+       4. HERO SECTION
+       ========================================== */
+    #hero {
+      min-height: 100vh;
       display: flex;
       align-items: center;
-      border-bottom: var(--border-thin);
-      padding: 6rem 0;
-    }
-    
-    /* HERO SECTION */
-    #hero {
       padding-top: 100px;
+      padding-bottom: 4rem;
     }
     
     .hero-layout {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      width: 100%;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
       align-items: center;
-      gap: 4rem;
+      width: 100%;
     }
     
-    .hero-text {
-      display: flex;
-      flex-direction: column;
-      z-index: 10;
+    @media (max-width: 1024px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding-top: 2rem;
+      }
     }
     
     .hero-title {
-      font-size: clamp(3.5rem, 8vw, 7.5rem);
-      line-height: 0.88;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 0.95;
       margin-bottom: 1.5rem;
-      background: linear-gradient(160deg, #FFFFFF 50%, rgba(109, 255, 238, 0.6) 100%);
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 45%, #94a3b8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      letter-spacing: -0.04em;
     }
     
     .hero-subtitle {
-      max-width: 600px;
-      font-size: 1.1rem;
-      line-height: 1.6;
+      font-size: 1.05rem;
+      line-height: 1.65;
       color: var(--text-secondary);
-      margin-bottom: 2.5rem;
+      max-width: 580px;
+      margin-bottom: 2rem;
     }
     
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      gap: 1.5rem;
       border-top: var(--border-thin);
-      padding-top: 2rem;
-      max-width: 600px;
+      padding-top: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 640px) {
+      .hero-stats {
+        grid-template-columns: 1fr 1fr;
+      }
     }
     
     .stat-item {
       display: flex;
       flex-direction: column;
-      gap: 0.3rem;
+      gap: 0.35rem;
     }
     
     .stat-val {
-      font-size: 1rem;
-      font-weight: 600;
+      font-size: 0.92rem;
+      font-weight: 700;
       color: var(--text-primary);
     }
     
-    /* Hero Console Output Box */
-    .hero-console-frame {
-      border: var(--border-thin);
-      background: rgba(10, 12, 18, 0.85);
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn-cyber-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
       border-radius: 4px;
+      background: var(--accent-cyan);
+      color: #030712;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.25s;
+      box-shadow: 0 0 20px rgba(109, 255, 238, 0.35);
+    }
+    .btn-cyber-primary:hover {
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(109, 255, 238, 0.6);
+    }
+    
+    .btn-cyber-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.25s;
+    }
+    .btn-cyber-secondary:hover {
+      border-color: var(--accent-purple);
+      color: var(--accent-purple);
+      background: rgba(199, 125, 255, 0.06);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Console Frame */
+    .hero-console-frame {
+      border: 1px solid rgba(109, 255, 238, 0.2);
+      background: rgba(6, 9, 16, 0.85);
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 15px 50px rgba(0,0,0,0.5);
-      z-index: 10;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(109, 255, 238, 0.05);
     }
     
     .console-header {
-      background: rgba(255, 255, 255, 0.03);
-      padding: 0.6rem 1rem;
-      border-bottom: var(--border-thin);
+      background: rgba(10, 14, 24, 0.95);
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid rgba(109, 255, 238, 0.15);
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
     }
     
     .console-indicator {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
       font-family: var(--font-mono);
       font-size: 0.65rem;
-      color: var(--accent-purple);
-    }
-    
-    .console-indicator::before {
-      content: '';
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--accent-purple);
-      box-shadow: var(--glow-purple);
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
     }
     
     .console-dots {
       display: flex;
-      gap: 0.3rem;
+      gap: 5px;
     }
-    
     .console-dot {
-      width: 6px;
-      height: 6px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.15);
     }
+    .console-dot:nth-child(1) { background: #ff5f56; }
+    .console-dot:nth-child(2) { background: #ffbd2e; }
+    .console-dot:nth-child(3) { background: #27c93f; }
     
     .hero-console-stream {
-      padding: 1.5rem;
+      padding: 1.25rem;
       font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--accent-green);
+      font-size: 0.72rem;
       line-height: 1.6;
-      height: 220px;
-      overflow-y: hidden;
+      color: var(--text-secondary);
+      height: 290px;
+      overflow-y: auto;
     }
-    
-    @media (max-width: 992px) {
-      .hero-layout {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-    }
-    
-    /* BENTO STACK GRID */
+
+    /* ==========================================
+       5. BENTO GRID / CORE STACK
+       ========================================== */
     #stack {
-      background: rgba(3, 4, 6, 0.3);
+      padding: 6rem 0;
     }
     
     .bento-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      grid-auto-rows: 150px;
+      grid-template-columns: repeat(12, 1fr);
       gap: 1.5rem;
-      width: 100%;
     }
     
     .bento-card {
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      background: rgba(8, 10, 16, 0.72);
+      border: var(--border-thin);
+      background: var(--card-bg);
       border-radius: 8px;
       padding: 1.8rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      backdrop-filter: blur(16px) saturate(1.2);
-      -webkit-backdrop-filter: blur(16px) saturate(1.2);
-      transition: border-color 0.35s ease, background 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+      transition: all var(--transition-cyber);
       position: relative;
       overflow: hidden;
     }
-    
     .bento-card:hover {
-      border-color: rgba(109, 255, 238, 0.22);
-      background: rgba(12, 16, 26, 0.9);
-      transform: translateY(-5px);
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(109, 255, 238, 0.08), inset 0 0 32px rgba(109, 255, 238, 0.03);
+      border-color: var(--border-color-hover);
+      background: var(--card-bg-hover);
+      transform: translateY(-2px);
     }
     
-    /* Top shimmer border */
-    .bento-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 1.5px;
-      background: linear-gradient(90deg, transparent 0%, var(--accent-cyan) 50%, transparent 100%);
-      transform: scaleX(0);
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: var(--glow-cyan);
-    }
+    .b-languages { grid-column: span 6; }
+    .b-frameworks { grid-column: span 6; }
+    .b-terminal { grid-column: span 7; }
+    .b-ai { grid-column: span 5; }
+    .b-cloud { grid-column: span 12; }
     
-    .bento-card:hover::before {
-      transform: scaleX(1);
+    @media (max-width: 992px) {
+      .b-languages, .b-frameworks, .b-terminal, .b-ai, .b-cloud {
+        grid-column: span 12;
+      }
     }
-
-    /* Bottom shimmer border for variety */
-    .bento-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 30%;
-      height: 1px;
-      background: linear-gradient(270deg, transparent, rgba(199, 125, 255, 0.3));
-      transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .bento-card:hover::after {
-      width: 60%;
-    }
-    
-    /* Specific Grid Placements */
-    .b-languages { grid-column: span 3; grid-row: span 2; }
-    .b-frameworks { grid-column: span 3; grid-row: span 2; }
-    .b-terminal { grid-column: span 4; grid-row: span 3; }
-    .b-ai { grid-column: span 2; grid-row: span 2; }
-    .b-cloud { grid-column: span 2; grid-row: span 1; }
     
     .bento-card-title {
       font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
       color: var(--accent-cyan);
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -589,292 +555,216 @@
     .pill-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: auto;
+      gap: 0.5rem;
     }
     
     .tech-pill {
       font-family: var(--font-mono);
       font-size: 0.7rem;
-      color: rgba(220, 230, 255, 0.75);
+      padding: 0.35rem 0.75rem;
+      border-radius: 3px;
       background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      padding: 0.4rem 0.85rem;
-      border-radius: 4px;
-      transition: all var(--transition-fast);
-      cursor: default;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-primary);
+      transition: all 0.2s;
     }
-    
     .tech-pill:hover {
-      background: rgba(109, 255, 238, 0.08);
-      border-color: rgba(109, 255, 238, 0.35);
+      border-color: var(--accent-cyan);
       color: var(--accent-cyan);
-      text-shadow: var(--glow-cyan);
-      transform: translateY(-1px);
+      background: rgba(109, 255, 238, 0.08);
     }
-    .tech-pill.purple:hover {
-      background: rgba(199, 125, 255, 0.08);
-      border-color: rgba(199, 125, 255, 0.35);
-      color: var(--accent-purple);
-      text-shadow: var(--glow-purple);
-    }
-    .tech-pill.green:hover {
-      background: rgba(93, 255, 160, 0.08);
-      border-color: rgba(93, 255, 160, 0.35);
-      color: var(--accent-green);
-      text-shadow: var(--glow-green);
-    }
-    
-    /* Bento Shell Terminal */
+    .tech-pill.green:hover { border-color: var(--accent-green); color: var(--accent-green); background: rgba(93, 255, 160, 0.08); }
+    .tech-pill.purple:hover { border-color: var(--accent-purple); color: var(--accent-purple); background: rgba(199, 125, 255, 0.08); }
+
+    /* Interactive Shell */
     .bento-terminal-window {
-      background: rgba(3, 4, 6, 0.95);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: #020408;
+      border: 1px solid rgba(199, 125, 255, 0.25);
       border-radius: 4px;
-      flex-grow: 1;
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      height: 220px;
       display: flex;
       flex-direction: column;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--text-primary);
-      overflow-y: auto;
-      padding: 1rem;
-      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
-      max-height: 280px;
     }
-    
     .term-output {
-      line-height: 1.6;
+      flex: 1;
+      overflow-y: auto;
+      line-height: 1.5;
+      color: var(--text-secondary);
     }
-    
     .term-input-row {
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 0.5rem;
       margin-top: 0.5rem;
     }
-    
-    .term-prompt {
-      color: var(--accent-purple);
-    }
-    
+    .term-prompt { color: var(--accent-purple); font-weight: 700; }
     .term-shell-input {
       background: transparent;
       border: none;
       outline: none;
       color: var(--accent-green);
       font-family: var(--font-mono);
-      font-size: 0.75rem;
-      flex-grow: 1;
+      font-size: 0.72rem;
+      flex: 1;
+    }
+
+    /* ==========================================
+       6. IBM EXPERIENCE SECTION
+       ========================================== */
+    #experience {
+      padding: 6rem 0;
     }
     
-    .ai-metric-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      margin-bottom: 1rem;
-    }
-    .ai-metric-label {
-      font-size: 0.65rem;
-      font-family: var(--font-mono);
-      color: var(--text-secondary);
-    }
-    .ai-metric-val {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--accent-purple);
-      text-shadow: var(--glow-purple);
-    }
-    
-    @media (max-width: 992px) {
-      .bento-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: minmax(140px, auto);
-      }
-      .b-languages { grid-column: span 2; }
-      .b-frameworks { grid-column: span 2; }
-      .b-terminal { grid-column: span 2; }
-      .b-ai { grid-column: span 1; }
-      .b-cloud { grid-column: span 1; }
-    }
-    @media (max-width: 576px) {
-      .bento-grid {
-        grid-template-columns: 1fr;
-      }
-      .b-languages { grid-column: span 1; }
-      .b-frameworks { grid-column: span 1; }
-      .b-terminal { grid-column: span 1; }
-      .b-ai { grid-column: span 1; }
-      .b-cloud { grid-column: span 1; }
-    }
-    
-    /* PROFESSIONAL TIMELINE (IBM EXPERIENCE) */
     .timeline-wrapper {
-      width: 100%;
       border: var(--border-thin);
       background: var(--card-bg);
-      border-radius: 6px;
+      border-radius: 8px;
       padding: 3rem;
-      position: relative;
     }
     
     .exp-grid {
       display: grid;
       grid-template-columns: 0.8fr 1.2fr;
-      gap: 4rem;
+      gap: 3rem;
     }
     
-    .exp-title-block {
+    .exp-company {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: block;
+    }
+    .exp-role {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: var(--accent-cyan);
+      margin-top: 0.25rem;
+      display: block;
+    }
+    .exp-duration {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-tertiary);
+      margin-top: 0.5rem;
+      display: block;
+    }
+    
+    .exp-list {
+      list-style: none;
       display: flex;
       flex-direction: column;
       gap: 1rem;
     }
-    
-    .exp-company {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      background: linear-gradient(90deg, #FFFFFF, var(--accent-cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .exp-role {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-      color: var(--accent-cyan);
-    }
-    
-    .exp-duration {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--text-tertiary);
-    }
-    
-    .exp-details {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    
-    .exp-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      list-style: none;
-    }
-    
     .exp-list-item {
       position: relative;
       padding-left: 1.5rem;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       line-height: 1.6;
       color: var(--text-secondary);
     }
-    
     .exp-list-item::before {
       content: '>';
       position: absolute;
       left: 0;
       color: var(--accent-green);
       font-family: var(--font-mono);
+      font-weight: 700;
     }
-    
-    /* Neon Circular Gauges */
+
     .exp-gauges {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 1.5rem;
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
-    
     .gauge-card {
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      background: rgba(255, 255, 255, 0.015);
-      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.02);
+      padding: 1.25rem;
       border-radius: 4px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1rem;
+      gap: 0.75rem;
     }
-    
     .gauge-svg {
-      width: 80px;
-      height: 80px;
+      width: 72px;
+      height: 72px;
       transform: rotate(-90deg);
     }
-    
     .gauge-bg {
       fill: none;
-      stroke: rgba(255, 255, 255, 0.05);
+      stroke: rgba(255, 255, 255, 0.08);
       stroke-width: 4;
     }
-    
     .gauge-progress {
       fill: none;
       stroke-width: 5;
       stroke-linecap: round;
-      stroke-dasharray: 220; /* 2 * PI * r (r=35) */
+      stroke-dasharray: 220;
       stroke-dashoffset: 220;
-      transition: stroke-dashoffset 2s ease;
     }
-    
-    .gauge-progress.cyan { stroke: var(--accent-cyan); filter: drop-shadow(0 0 3px rgba(136, 255, 212, 0.3)); }
-    .gauge-progress.green { stroke: var(--accent-green); filter: drop-shadow(0 0 3px rgba(124, 255, 107, 0.3)); }
-    .gauge-progress.purple { stroke: var(--accent-purple); filter: drop-shadow(0 0 3px rgba(191, 107, 255, 0.3)); }
+    .gauge-progress.cyan { stroke: var(--accent-cyan); }
+    .gauge-progress.green { stroke: var(--accent-green); }
+    .gauge-progress.purple { stroke: var(--accent-purple); }
     
     .gauge-val {
       font-family: var(--font-mono);
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--text-primary);
     }
-    
     .gauge-label {
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       font-family: var(--font-mono);
       color: var(--text-secondary);
+      letter-spacing: 0.05em;
     }
-    
-    @media (max-width: 992px) {
-      .exp-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-      .timeline-wrapper {
-        padding: 1.8rem;
-      }
+
+    @media (max-width: 900px) {
+      .exp-grid { grid-template-columns: 1fr; }
+      .exp-gauges { grid-template-columns: 1fr; }
+      .timeline-wrapper { padding: 1.5rem; }
     }
-    @media (max-width: 576px) {
-      .exp-gauges {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
+
+    /* ==========================================
+       7. PROJECTS SHOWCASE (FLAGSHIP MODULES)
+       ========================================== */
+    #projects {
+      padding: 6rem 0;
     }
-    
-    /* PROJECTS TELEMETRY SECTION */
     
     .projects-grid {
       display: flex;
       flex-direction: column;
-      gap: 4rem;
+      gap: 3.5rem;
       width: 100%;
     }
     
     .project-card {
       border: var(--border-thin);
       background: var(--card-bg);
-      border-radius: 6px;
+      border-radius: 8px;
       overflow: hidden;
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
+      grid-template-columns: 1.15fr 0.85fr;
       min-height: 480px;
+      transition: all var(--transition-cyber);
+    }
+    .project-card:hover {
+      border-color: var(--border-color-hover);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(109, 255, 238, 0.08);
     }
     
-    /* Left details / description */
     .proj-details {
-      padding: 3rem;
+      padding: 2.8rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -888,53 +778,98 @@
       font-size: 0.65rem;
       padding: 0.3rem 0.8rem;
       border-radius: 2px;
-      background: rgba(136, 255, 212, 0.05);
-      border: 1px solid rgba(136, 255, 212, 0.2);
-      color: var(--accent-cyan);
-      margin-bottom: 1.5rem;
-    }
-    
-    .proj-badge.live {
-      background: rgba(124, 255, 107, 0.05);
-      border-color: rgba(124, 255, 107, 0.2);
+      background: rgba(93, 255, 160, 0.08);
+      border: 1px solid rgba(93, 255, 160, 0.3);
       color: var(--accent-green);
+      margin-bottom: 1.25rem;
     }
     
     .proj-title {
       font-family: var(--font-display);
-      font-size: clamp(2rem, 3.5vw, 2.75rem);
-      font-weight: 700;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
       line-height: 1.1;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
     
     .proj-desc {
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 0.92rem;
+      line-height: 1.65;
       color: var(--text-secondary);
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
     
     .proj-tech {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.45rem;
       margin-bottom: 2rem;
     }
-    
     .proj-tech span {
       font-family: var(--font-mono);
       font-size: 0.65rem;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 0.3rem 0.6rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.3rem 0.65rem;
       border-radius: 2px;
       color: var(--text-secondary);
     }
     
+    .proj-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    
+    .btn-proj-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.2rem;
+      border-radius: 3px;
+      background: var(--accent-cyan);
+      color: #030712;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+    .btn-proj-live:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+    
+    .btn-proj-github {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.2rem;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+    .btn-proj-github:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      transform: translateY(-1px);
+    }
+
     /* Right visuals / Telemetry screen */
     .proj-telemetry {
-      background: #020304;
+      background: #020305;
       padding: 2rem;
       display: flex;
       flex-direction: column;
@@ -969,223 +904,154 @@
     
     .telemetry-label {
       font-family: var(--font-mono);
-      font-size: 0.6rem;
+      font-size: 0.62rem;
       letter-spacing: 0.15em;
-      color: rgba(255, 255, 255, 0.25);
-    }
-    
-    .telemetry-display {
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 1.5rem 0;
+      color: rgba(255, 255, 255, 0.35);
     }
     
     .telemetry-logs {
       font-family: var(--font-mono);
-      font-size: 0.65rem;
+      font-size: 0.68rem;
       color: var(--accent-green);
-      line-height: 1.5;
+      line-height: 1.6;
       width: 100%;
-      max-height: 180px;
+      max-height: 220px;
       overflow-y: hidden;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
     }
-    
     .telemetry-log-item {
-      opacity: 0.8;
+      opacity: 0.85;
       white-space: nowrap;
     }
-    
     .telemetry-log-item.warn { color: var(--accent-yellow); }
     .telemetry-log-item.alert { color: var(--accent-red); }
     .telemetry-log-item.cyan { color: var(--accent-cyan); }
+    .telemetry-log-item.purple { color: var(--accent-purple); }
     
     @media (max-width: 992px) {
-      .project-card {
-        grid-template-columns: 1fr;
-      }
-      .proj-details {
-        border-right: none;
-        border-bottom: var(--border-thin);
-        padding: 2rem;
-      }
-      .proj-telemetry {
-        min-height: 350px;
-        padding: 2rem;
-      }
+      .project-card { grid-template-columns: 1fr; }
+      .proj-details { border-right: none; border-bottom: var(--border-thin); padding: 1.8rem; }
+      .proj-telemetry { min-height: 300px; padding: 1.5rem; }
     }
-    
-    /* SECURE UPLINK / CONTACT SECTION */
+
+    /* ==========================================
+       8. CONTACT & EDUCATION SECTION
+       ========================================== */
     #contact {
-      background: radial-gradient(circle at bottom center, rgba(191, 107, 255, 0.04) 0%, transparent 60%);
+      padding: 6rem 0;
+      background: radial-gradient(circle at bottom center, rgba(199, 125, 255, 0.04) 0%, transparent 60%);
     }
     
     .contact-layout {
       display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 5rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
       width: 100%;
     }
-    
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
     }
     
-    .edu-box {
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      background: rgba(255, 255, 255, 0.015);
-      padding: 1.8rem;
-      border-radius: 4px;
-      margin-top: 2rem;
+    .edu-card {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+      padding: 1.75rem;
+      border-radius: 6px;
+      margin-top: 1.5rem;
     }
-    
     .edu-title {
-      font-size: 1.10rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      color: var(--text-primary);
     }
-    
     .edu-meta {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: var(--accent-cyan);
-      margin-bottom: 1rem;
+      margin: 0.35rem 0 0.75rem 0;
     }
-    
     .edu-desc {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       line-height: 1.6;
       color: var(--text-secondary);
     }
     
-    .contact-form-frame {
-      border: var(--border-thin);
-      background: var(--card-bg);
-      border-radius: 6px;
-      padding: 2.5rem;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+    .contact-links-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: center;
     }
     
     .contact-link-card {
-      text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      background: rgba(255, 255, 255, 0.015);
-      padding: 1.3rem;
+      padding: 1.25rem 1.5rem;
+      border: var(--border-thin);
+      background: var(--card-bg);
       border-radius: 6px;
-      transition: all var(--transition-cyber);
-      margin-bottom: 1rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .contact-link-card::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 2px;
-      background: var(--accent-cyan);
-      transform: scaleY(0);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: var(--glow-cyan);
-    }
-    .contact-link-card:hover::before { transform: scaleY(1); }
-    .contact-link-card:last-child {
-      margin-bottom: 0;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.25s;
     }
     .contact-link-card:hover {
-      background: rgba(109, 255, 238, 0.04);
-      border-color: rgba(109, 255, 238, 0.2);
-      transform: translateX(4px);
-      box-shadow: 4px 0 20px rgba(109, 255, 238, 0.06);
-    }
-    .contact-link-card svg {
-      transition: transform 0.3s var(--transition-cyber);
-      flex-shrink: 0;
-    }
-    .contact-link-card:hover svg {
+      border-color: var(--accent-cyan);
+      background: rgba(109, 255, 238, 0.05);
       transform: translateX(4px);
     }
-    
-    @media (max-width: 992px) {
-      .contact-layout {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-    }
-    
-    /* FOOTER */
+
+    /* ==========================================
+       9. FOOTER
+       ========================================== */
     footer {
       border-top: var(--border-thin);
-      padding: 4rem 0;
+      padding: 3.5rem 0;
       background: #020305;
     }
-    
     .footer-grid {
       display: grid;
       grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 4rem;
+      gap: 3rem;
     }
-    
-    .footer-col {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
     }
-    
     .footer-title {
       font-family: var(--font-mono);
       font-size: 0.7rem;
       letter-spacing: 0.15em;
       color: var(--text-tertiary);
+      margin-bottom: 0.75rem;
+      display: block;
     }
-    
     .footer-links {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.5rem;
     }
-    
     .footer-links a {
       color: var(--text-secondary);
       text-decoration: none;
       font-size: 0.85rem;
-      transition: color 0.3s;
+      transition: color 0.25s;
     }
-    
     .footer-links a:hover {
       color: var(--accent-cyan);
-      text-shadow: var(--glow-cyan);
-    }
-    
-    @media (max-width: 768px) {
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
     }
   </style>
 </head>
 <body>
 
-
-
   <!-- 1. HUD NAVIGATION BAR -->
   <header>
-    <!-- Scroll progress line -->
-    <div id="scroll-progress" style="position:absolute; bottom:-1px; left:0; height:1px; width:0%; background:linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); z-index:1001; box-shadow: var(--glow-cyan); transition:none;"></div>
+    <div id="scroll-progress" style="position:absolute; bottom:-1px; left:0; height:1px; width:0%; background:linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); z-index:1001; transition:none;"></div>
     <div class="nav-logo">
-      <span class="wordmark logo-text hover-trigger glow-cyan">LOVJYOT SINGH</span>
-      <span class="logo-desc">SYSTEM PORTFOLIO<br>CORE V1.2.6</span>
+      <span class="wordmark logo-text glow-cyan">LOVJYOT SINGH</span>
+      <span class="logo-desc">SOFTWARE ENGINEER<br>CORE V2.0 // USICT</span>
     </div>
     <ul class="nav-links">
       <li><a href="#stack">01 // Stack</a></li>
@@ -1196,9 +1062,9 @@
     <div class="hud-status">
       <div class="status-badge">
         <span class="status-dot"></span>
-        <span>OPEN TO WORK</span>
+        <span>OPEN TO SDE ROLES</span>
       </div>
-      <div class="hud-clock" id="hud-time">16:00:00</div>
+      <div class="hud-clock" id="hud-time">12:00:00</div>
     </div>
   </header>
 
@@ -1216,30 +1082,36 @@
         <div class="hero-layout">
           
           <div class="hero-text">
-            <span class="label-mono glow-green reveal-up" style="margin-bottom: 1rem;">SOFTWARE ENGINEER & SYSTEMS BUILDER</span>
+            <span class="label-mono glow-green reveal-up" style="margin-bottom: 1rem; display: block;">FULL-STACK &amp; DISTRIBUTED SYSTEMS SDE</span>
             <h1 class="wordmark hero-title reveal-up delay-1">LOVJYOT<br>SINGH</h1>
             <p class="hero-subtitle reveal-up delay-2">
-              Software Engineer crafting scalable full-stack applications and AI-driven systems. Passionate about low-level architecture, clean APIs, and cutting-edge AI integrations.
+              Software Engineer building high-concurrency distributed platforms and multimodal AI systems. Architect of <strong>SwiftShelf</strong> (2-Phase Redis atomic stock locks) and <strong>OfferForge AI</strong> (multimodal interview simulation engine).
             </p>
+            
             <div class="hero-stats reveal-up delay-3">
               <div class="stat-item">
                 <span class="label-mono">SPECIALIZATION</span>
-                <span class="stat-val glow-cyan">Full-Stack & AI</span>
+                <span class="stat-val glow-cyan">Distributed &amp; AI</span>
               </div>
               <div class="stat-item">
-                <span class="label-mono">LOCATION</span>
-                <span class="stat-val">Faridabad, India</span>
+                <span class="label-mono">EDUCATION</span>
+                <span class="stat-val">USICT (GGSIPU)</span>
               </div>
               <div class="stat-item">
-                <span class="label-mono">STATUS</span>
-                <span class="stat-val glow-green">Open to Work</span>
+                <span class="label-mono">ACHIEVEMENT</span>
+                <span class="stat-val glow-green">JEE 98.38%ile (AIR 14K)</span>
               </div>
+            </div>
+
+            <div class="hero-ctas reveal-up delay-4">
+              <a href="#projects" class="btn-cyber-primary">Explore Flagship Projects</a>
+              <a href="#contact" class="btn-cyber-secondary">Connect / Uplink</a>
             </div>
           </div>
           
           <div class="hero-console-frame reveal-up delay-2">
             <div class="console-header">
-              <span class="console-indicator">AI AGENT ENGINE telemetry</span>
+              <span class="console-indicator">SYSTEM TELEMETRY ENGINE // ACTIVE</span>
               <div class="console-dots">
                 <div class="console-dot"></div>
                 <div class="console-dot"></div>
@@ -1247,7 +1119,7 @@
               </div>
             </div>
             <div class="hero-console-stream" id="hero-stream-box">
-              <!-- Live typewriter automation streams -->
+              <!-- Live typewriter streams -->
             </div>
           </div>
           
@@ -1261,7 +1133,7 @@
         
         <div class="sec-header reveal-up">
           <span class="label-mono glow-purple">// 01 / CORE SYSTEMS STACK</span>
-          <h2 class="wordmark" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-top: 0.5rem;">COGNITIVE SYSTEM ARCHITECTURE</h2>
+          <h2 class="wordmark" style="font-size: clamp(2rem, 5vw, 3.2rem); margin-top: 0.5rem;">COGNITIVE SYSTEM ARCHITECTURE</h2>
         </div>
         
         <div class="bento-grid">
@@ -1270,22 +1142,22 @@
           <div class="bento-card b-languages reveal-up delay-1">
             <span class="bento-card-title">
               <svg width="12" height="12" fill="var(--accent-cyan)" viewBox="0 0 16 16"><path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 1 0-.708-.708L1.707 5.854a.5.5 0 0 0 0 .708l2.439 2.439a.5.5 0 1 0 .708-.708L2.914 6l1.94-1.854zm6.292 0a.5.5 0 1 0 .708-.708l2.439 2.439a.5.5 0 0 1 0 .708l-2.439 2.439a.5.5 0 1 0-.708-.708L13.086 6l-1.94-1.854z"/></svg>
-              LANGUAGES, DB & CORE CS
+              LANGUAGES, CORE CS &amp; ALGORITHMS
             </span>
-            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.5;">
-              Robust foundation in core computer science, database design, and algorithmic optimization.
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.5;">
+              Strong foundation in Data Structures, algorithmic optimization, and systems engineering.
             </p>
             <div class="pill-container">
-              <span class="tech-pill hover-trigger">Java</span>
-              <span class="tech-pill hover-trigger">Python</span>
-              <span class="tech-pill hover-trigger">JavaScript (ES6+)</span>
-              <span class="tech-pill hover-trigger">SQL</span>
-              <span class="tech-pill hover-trigger">MongoDB (Atlas, Aggregation)</span>
-              <span class="tech-pill hover-trigger">MySQL (Schema Design, Indexing)</span>
-              <span class="tech-pill hover-trigger">Data Structures & Algorithms</span>
-              <span class="tech-pill hover-trigger">Operating Systems</span>
-              <span class="tech-pill hover-trigger">DBMS</span>
-              <span class="tech-pill hover-trigger">Computer Networks</span>
+              <span class="tech-pill">Java</span>
+              <span class="tech-pill">C++</span>
+              <span class="tech-pill">Python</span>
+              <span class="tech-pill">TypeScript</span>
+              <span class="tech-pill">JavaScript (ES6+)</span>
+              <span class="tech-pill">SQL</span>
+              <span class="tech-pill">Data Structures &amp; Algorithms</span>
+              <span class="tech-pill">DBMS</span>
+              <span class="tech-pill">Operating Systems</span>
+              <span class="tech-pill">Computer Networks</span>
             </div>
           </div>
           
@@ -1293,38 +1165,37 @@
           <div class="bento-card b-frameworks reveal-up delay-2">
             <span class="bento-card-title">
               <svg width="12" height="12" fill="var(--accent-green)" viewBox="0 0 16 16"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H4.5a.5.5 0 0 1 0-1h7z"/></svg>
-              FRONTEND, BACKEND & DESIGN
+              FULL-STACK &amp; DISTRIBUTED SYSTEMS
             </span>
-            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.5;">
-              Scale-oriented server applications and clean interfaces with reusable codebases.
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.5;">
+              Scalable, resilient architectures with sub-millisecond stock safety and clean UX.
             </p>
             <div class="pill-container">
-              <span class="tech-pill hover-trigger green">React.js</span>
-              <span class="tech-pill hover-trigger green">Next.js</span>
-              <span class="tech-pill hover-trigger green">Node.js</span>
-              <span class="tech-pill hover-trigger green">Express.js</span>
-              <span class="tech-pill hover-trigger">RESTful APIs</span>
-              <span class="tech-pill hover-trigger">JWT Authentication</span>
-              <span class="tech-pill hover-trigger">OAuth 2.0</span>
-              <span class="tech-pill hover-trigger">Tailwind CSS</span>
-              <span class="tech-pill hover-trigger">Recharts</span>
-              <span class="tech-pill hover-trigger">Zustand</span>
-              <span class="tech-pill hover-trigger">OOP</span>
-              <span class="tech-pill hover-trigger">Low-Level Design</span>
-              <span class="tech-pill hover-trigger">API Design / Microservices</span>
+              <span class="tech-pill green">Next.js 15 (App Router)</span>
+              <span class="tech-pill green">React 18</span>
+              <span class="tech-pill green">Node.js</span>
+              <span class="tech-pill green">Express.js</span>
+              <span class="tech-pill green">Redis (ioredis)</span>
+              <span class="tech-pill">Prisma ORM</span>
+              <span class="tech-pill">MongoDB Atlas</span>
+              <span class="tech-pill">MySQL</span>
+              <span class="tech-pill">Tailwind CSS</span>
+              <span class="tech-pill">RESTful APIs</span>
+              <span class="tech-pill">JWT Authentication</span>
+              <span class="tech-pill">Low-Level Design (LLD)</span>
             </div>
           </div>
           
           <!-- Terminal Emulator Bento Card -->
-          <div class="bento-card b-terminal cmd-trigger reveal-up delay-1">
+          <div class="bento-card b-terminal reveal-up delay-1">
             <span class="bento-card-title" style="color: var(--accent-purple);">
               <svg width="12" height="12" fill="var(--accent-purple)" viewBox="0 0 16 16"><path d="M5.854 4.854a.5.5 0 1 0-.708-.708l-3.5 3.5a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L2.707 8l3.147-3.146zm.646 6.146a.5.5 0 1 1 .708-.708L10.293 7l-3.147-3.146a.5.5 0 0 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5z"/></svg>
               INTERACTIVE COGNITIVE SHELL
             </span>
-            <div class="bento-terminal-window hover-trigger" id="terminal-emulator">
+            <div class="bento-terminal-window" id="terminal-emulator">
               <div class="term-output" id="term-output">
-                <div>LovjyotOS [v1.2.6] - Live Session</div>
-                <div style="color: var(--text-tertiary)">Type 'help' to display list of command logs.</div>
+                <div>LovjyotOS [v2.0.0] - Live SDE Session</div>
+                <div style="color: var(--text-tertiary)">Type 'help' to inspect commands and project files.</div>
               </div>
               <div class="term-input-row">
                 <span class="term-prompt">visitor@lovjyot:~$</span>
@@ -1333,31 +1204,32 @@
             </div>
           </div>
           
-          <!-- AI Automation Bento Card -->
+          <!-- AI & Vector Intelligence Bento Card -->
           <div class="bento-card b-ai reveal-up delay-3">
             <span class="bento-card-title" style="color: var(--accent-purple)">
               <svg width="12" height="12" fill="var(--accent-purple)" viewBox="0 0 16 16"><path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zM3 8.005a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg>
-              AI & AUTOMATION
+              AI &amp; VECTOR SEARCH
             </span>
-            <div class="pill-container" style="margin-top:0;">
-              <span class="tech-pill hover-trigger purple" style="font-size:0.6rem; padding:0.2rem 0.5rem;">OpenRouter AI</span>
-              <span class="tech-pill hover-trigger purple" style="font-size:0.6rem; padding:0.2rem 0.5rem;">LangChain</span>
-              <span class="tech-pill hover-trigger purple" style="font-size:0.6rem; padding:0.2rem 0.5rem;">OpenAI</span>
-              <span class="tech-pill hover-trigger purple" style="font-size:0.6rem; padding:0.2rem 0.5rem;">Vapi AI</span>
-              <span class="tech-pill hover-trigger purple" style="font-size:0.6rem; padding:0.2rem 0.5rem;">Prompt Eng.</span>
+            <div class="pill-container">
+              <span class="tech-pill purple">Google Gemini 2.0</span>
+              <span class="tech-pill purple">pgvector</span>
+              <span class="tech-pill purple">OpenRouter API</span>
+              <span class="tech-pill purple">Multimodal Embeddings</span>
+              <span class="tech-pill purple">Canvas Audio FFT</span>
             </div>
           </div>
           
-          <!-- Cloud Bento Card -->
+          <!-- Cloud & DevOps Bento Card -->
           <div class="bento-card b-cloud reveal-up delay-4">
-            <span class="bento-card-title">CLOUD & DEVOPS</span>
-            <div class="pill-container" style="margin-top:0;">
-              <span class="tech-pill hover-trigger" style="font-size:0.6rem; padding:0.2rem 0.5rem;">AWS</span>
-              <span class="tech-pill hover-trigger" style="font-size:0.6rem; padding:0.2rem 0.5rem;">Docker</span>
-              <span class="tech-pill hover-trigger" style="font-size:0.6rem; padding:0.2rem 0.5rem;">Vercel</span>
-              <span class="tech-pill hover-trigger" style="font-size:0.6rem; padding:0.2rem 0.5rem;">Railway</span>
-              <span class="tech-pill hover-trigger" style="font-size:0.6rem; padding:0.2rem 0.5rem;">Render</span>
-              <span class="tech-pill hover-trigger" style="font-size:0.6rem; padding:0.2rem 0.5rem;">CI/CD</span>
+            <span class="bento-card-title">CLOUD INFRASTRUCTURE &amp; DEVOPS</span>
+            <div class="pill-container">
+              <span class="tech-pill">Docker</span>
+              <span class="tech-pill">CI/CD Pipelines (GitHub Actions)</span>
+              <span class="tech-pill">Vercel Edge</span>
+              <span class="tech-pill">Render</span>
+              <span class="tech-pill">Stripe API</span>
+              <span class="tech-pill">Postman</span>
+              <span class="tech-pill">Git / GitHub</span>
             </div>
           </div>
           
@@ -1372,7 +1244,7 @@
         
         <div class="sec-header reveal-up">
           <span class="label-mono glow-green">// 02 / PROFESSIONAL TIMELINE</span>
-          <h2 class="wordmark" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-top: 0.5rem;">OPERATIONAL DEPLOYMENTS</h2>
+          <h2 class="wordmark" style="font-size: clamp(2rem, 5vw, 3.2rem); margin-top: 0.5rem;">OPERATIONAL DEPLOYMENTS</h2>
         </div>
         
         <div class="timeline-wrapper">
@@ -1380,23 +1252,23 @@
             
             <div class="exp-title-block reveal-up delay-1">
               <span class="exp-company">IBM</span>
-              <span class="exp-role">Web Development Intern</span>
-              <span class="exp-duration">Jun 2024 – Aug 2024 | Remote, India</span>
+              <span class="exp-role">Web Development Intern / Front-End Track</span>
+              <span class="exp-duration">Jul 2025 – Aug 2025 | Remote, India</span>
             </div>
             
             <div class="exp-details reveal-up delay-2">
               <ul class="exp-list">
                 <li class="exp-list-item">Developed 15+ production-grade React.js components with Tailwind CSS, reducing initial page load time by 35% and bundle size by 28% via code splitting, lazy loading, and component memoization.</li>
                 <li class="exp-list-item">Integrated RESTful APIs using Axios with centralized error handling, powering real-time dashboard data updates across 3 core product modules.</li>
-                <li class="exp-list-item">Collaborated in 2-week Agile sprints to ship 6 feature releases on schedule, contributing to a measured 15% improvement in user engagement metrics.</li>
+                <li class="exp-list-item">Collaborated in Agile sprints to ship 6 feature releases on schedule, contributing to a measured 15% improvement in user engagement metrics.</li>
               </ul>
               
               <!-- Metrics telemetry dials -->
               <div class="exp-gauges">
                 <div class="gauge-card">
                   <svg class="gauge-svg">
-                    <circle class="gauge-bg" cx="40" cy="40" r="35"></circle>
-                    <circle class="gauge-progress cyan" id="gauge-load" cx="40" cy="40" r="35"></circle>
+                    <circle class="gauge-bg" cx="36" cy="36" r="32"></circle>
+                    <circle class="gauge-progress cyan" id="gauge-load" cx="36" cy="36" r="32"></circle>
                   </svg>
                   <div>
                     <span class="gauge-val glow-cyan">-35%</span>
@@ -1406,19 +1278,19 @@
                 
                 <div class="gauge-card">
                   <svg class="gauge-svg">
-                    <circle class="gauge-bg" cx="40" cy="40" r="35"></circle>
-                    <circle class="gauge-progress green" id="gauge-bundle" cx="40" cy="40" r="35"></circle>
+                    <circle class="gauge-bg" cx="36" cy="36" r="32"></circle>
+                    <circle class="gauge-progress green" id="gauge-bundle" cx="36" cy="36" r="32"></circle>
                   </svg>
                   <div>
                     <span class="gauge-val glow-green">-28%</span>
-                    <div class="gauge-label">BUNDLE SIZE MINIFIED</div>
+                    <div class="gauge-label">BUNDLE MINIFIED</div>
                   </div>
                 </div>
                 
                 <div class="gauge-card">
                   <svg class="gauge-svg">
-                    <circle class="gauge-bg" cx="40" cy="40" r="35"></circle>
-                    <circle class="gauge-progress purple" id="gauge-engage" cx="40" cy="40" r="35"></circle>
+                    <circle class="gauge-bg" cx="36" cy="36" r="32"></circle>
+                    <circle class="gauge-progress purple" id="gauge-engage" cx="36" cy="36" r="32"></circle>
                   </svg>
                   <div>
                     <span class="gauge-val glow-purple">+15%</span>
@@ -1434,42 +1306,41 @@
       </div>
     </section>
 
-    <!-- PROJECTS SHOWCASE -->
+    <!-- PROJECTS SHOWCASE (THE 2 FLAGSHIP INITIATIVES) -->
     <section id="projects">
       <div class="container">
         
         <div class="sec-header reveal-up">
-          <span class="label-mono glow-cyan">// 03 / SYSTEM INITIATIVES</span>
-          <h2 class="wordmark" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-top: 0.5rem;">TELEMETRY CASES & PROJECTS</h2>
+          <span class="label-mono glow-cyan">// 03 / FLAGSHIP INITIATIVES</span>
+          <h2 class="wordmark" style="font-size: clamp(2rem, 5vw, 3.2rem); margin-top: 0.5rem;">FLAGSHIP SYSTEM PROJECTS</h2>
         </div>
         
         <div class="projects-grid">
           
-          <!-- Project 1: PlacementPrep AI -->
-          <div class="project-card reveal-up delay-1" id="proj-placement">
+          <!-- Flagship Project 1: OfferForge AI -->
+          <div class="project-card reveal-up delay-1" id="proj-offerforge">
             <div class="proj-details">
               <div>
-                <span class="proj-badge live">LIVE DEVELOPMENT DEPLOYED</span>
-                <h3 class="proj-title" style="display: flex; align-items: center; gap: 1rem;">
-                  PlacementPrep AI
-                  <a href="#" class="proj-badge live hover-trigger" style="margin-bottom: 0; font-size: 0.65rem; text-decoration: none;">LIVE</a>
-                </h3>
+                <span class="proj-badge">MODULE ID: #OF-01 // PRODUCTION MATRIX</span>
+                <h3 class="proj-title">OfferForge AI</h3>
                 <p class="proj-desc">
-                  Built an end-to-end placement preparation platform featuring role-specific AI mock interviews and automated response evaluation (technical accuracy, communication, and confidence) powered by OpenRouter GPT-4o-mini. Engineered an ATS resume analyzer with keyword gap detection and a Recharts analytics dashboard.
+                  Architected an end-to-end multimodal interview preparation system delivering real-time STAR-method telemetry and behavioral feedback with sub-1.2s latency. Engineered client-side Canvas audio spectrum visualizer, 95%+ ATS resume keyword intelligence, and dynamic salary negotiation generator.
                 </p>
                 <div class="proj-tech">
-                  <span>React.js</span>
+                  <span>React 18</span>
                   <span>Node.js</span>
                   <span>Express.js</span>
-                  <span>OpenRouter AI</span>
-                  <span>GPT-4o-mini</span>
+                  <span>Google Gemini 2.0 AI</span>
+                  <span>Canvas Spectrum API</span>
                   <span>MongoDB Atlas</span>
-                  <span>Recharts</span>
                   <span>JWT Auth</span>
-                  <span>bcrypt</span>
+                  <span>Tailwind CSS</span>
                 </div>
               </div>
-              <div class="label-mono" style="font-size:0.75rem;">MODULE ID: #PP-01 // PRODUCTION</div>
+              <div class="proj-actions">
+                <a href="https://offerforge-ai.onrender.com" target="_blank" class="btn-proj-live">Live Demo ↗</a>
+                <a href="https://github.com/LovjyotSingh/OfferForge-AI" target="_blank" class="btn-proj-github">GitHub Repo ↗</a>
+              </div>
             </div>
             <div class="proj-telemetry">
               <div class="telemetry-overlay">
@@ -1478,43 +1349,46 @@
                 <div class="tc-bl telemetry-corners"></div>
                 <div class="tc-br telemetry-corners"></div>
                 <div style="display:flex; justify-content:space-between; width:100%;">
-                  <span class="telemetry-label">ATS FEEDBACK MONITOR</span>
-                  <span class="telemetry-label glow-cyan">CHANNEL ACTIVE</span>
+                  <span class="telemetry-label">GEMINI_2.0_STREAM</span>
+                  <span class="telemetry-label glow-cyan">MULTIMODAL ACTIVE</span>
                 </div>
                 <div style="display:flex; justify-content:space-between; width:100%;">
-                  <span class="telemetry-label">AI_RESPONSE_MATRIX</span>
-                  <span class="telemetry-label glow-green">SECURE ENCRYPTED</span>
+                  <span class="telemetry-label">STAR_FEEDBACK_MATRIX</span>
+                  <span class="telemetry-label glow-green">SUB-1.2s LATENCY</span>
                 </div>
               </div>
               <div class="telemetry-display">
-                <div class="telemetry-logs" id="logs-placement">
-                  <!-- Dynamic Logs generated by script -->
+                <div class="telemetry-logs" id="logs-offerforge">
+                  <!-- Dynamic Logs -->
                 </div>
               </div>
             </div>
           </div>
           
-          <!-- Project 2: Voice AI Appointment Agent -->
-          <div class="project-card" id="proj-voice">
+          <!-- Flagship Project 2: SwiftShelf -->
+          <div class="project-card reveal-up delay-2" id="proj-swiftshelf">
             <div class="proj-details">
               <div>
-                <span class="proj-badge live">SYSTEM INTERFACE STABLE</span>
-                <h3 class="proj-title">Voice AI Appointment Agent</h3>
+                <span class="proj-badge">MODULE ID: #SS-02 // DISTRIBUTED LAB</span>
+                <h3 class="proj-title">SwiftShelf</h3>
                 <p class="proj-desc">
-                  Built an AI voice agent using Vapi AI + OpenAI that handles inbound patient calls, collects appointment details, and checks Google Calendar availability in real time to identify open appointment slots automatically. Automated staff notifications via Telegram and WhatsApp webhook pipeline.
+                  Engineered high-concurrency luxury e-commerce platform with 2-Phase atomic Redis Stock Locks, guaranteeing zero overselling under flash peaks. Integrated multimodal AI visual search with vector embeddings, natural language Cmd+K concierge, and real-time Admin BI telemetry with predictive restock forecaster.
                 </p>
                 <div class="proj-tech">
-                  <span>Vapi AI</span>
-                  <span>OpenAI</span>
-                  <span>Node.js</span>
-                  <span>Express.js</span>
-                  <span>Google Calendar API</span>
-                  <span>Webhooks</span>
-                  <span>Telegram API</span>
-                  <span>WhatsApp Integration</span>
+                  <span>Next.js 15 (App Router)</span>
+                  <span>TypeScript</span>
+                  <span>Redis (ioredis)</span>
+                  <span>Prisma ORM</span>
+                  <span>MongoDB</span>
+                  <span>pgvector</span>
+                  <span>Stripe API</span>
+                  <span>Tailwind CSS</span>
                 </div>
               </div>
-              <div class="label-mono" style="font-size:0.75rem;">MODULE ID: #VO-02 // DEPLOYED</div>
+              <div class="proj-actions">
+                <a href="https://swiftshelf-store.vercel.app" target="_blank" class="btn-proj-live">Live Store ↗</a>
+                <a href="https://github.com/LovjyotSingh/SwiftShelf" target="_blank" class="btn-proj-github">GitHub Repo ↗</a>
+              </div>
             </div>
             <div class="proj-telemetry">
               <div class="telemetry-overlay">
@@ -1523,16 +1397,16 @@
                 <div class="tc-bl telemetry-corners"></div>
                 <div class="tc-br telemetry-corners"></div>
                 <div style="display:flex; justify-content:space-between; width:100%;">
-                  <span class="telemetry-label">VOICE RECOGNITION VAD</span>
-                  <span class="telemetry-label glow-purple">LISTENING</span>
+                  <span class="telemetry-label">REDIS_2PHASE_LOCK</span>
+                  <span class="telemetry-label glow-purple">ATOMIC LOCK ACTIVE</span>
                 </div>
                 <div style="display:flex; justify-content:space-between; width:100%;">
-                  <span class="telemetry-label">CALENDAR SYNCING</span>
-                  <span class="telemetry-label glow-cyan">NOMINAL</span>
+                  <span class="telemetry-label">PGVECTOR_MULTIMODAL</span>
+                  <span class="telemetry-label glow-cyan">SUB-MS SEARCH</span>
                 </div>
               </div>
               <div class="telemetry-display">
-                <div class="telemetry-logs" id="logs-voice">
+                <div class="telemetry-logs" id="logs-swiftshelf">
                   <!-- Dynamic Logs -->
                 </div>
               </div>
@@ -1550,69 +1424,69 @@
         
         <div class="sec-header">
           <span class="label-mono glow-purple">// 04 / DIRECT UPLINK</span>
-          <h2 class="wordmark" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-top: 0.5rem;">DIRECT COMM NODES & ACCESS</h2>
+          <h2 class="wordmark" style="font-size: clamp(2rem, 5vw, 3.2rem); margin-top: 0.5rem;">DIRECT COMM NODES &amp; ACCESS</h2>
         </div>
         
         <div class="contact-layout">
           
           <div class="contact-info">
             <div>
-              <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 2rem;">
-                Looking for a Full-Stack Developer or Software Engineer to join your team? Uplink directly through the communication channels below.
+              <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                Looking for a Software Development Engineer (SDE) with deep expertise in distributed systems, clean architectures, and modern full-stack web engineering? Let's connect!
               </p>
-              <div class="label-mono" style="font-size:0.6rem; color:var(--text-tertiary);">PORTFOLIO ENDPOINT DATA</div>
               
-              <div class="edu-box">
+              <div class="edu-card">
                 <div class="edu-title">USICT, Guru Gobind Singh Indraprastha University</div>
-                <div class="edu-meta">Bachelor of Technology in Computer Science and Engineering</div>
+                <div class="edu-meta">Bachelor of Technology in Computer Science &amp; Engineering | 2022 – 2026</div>
                 <p class="edu-desc">
-                  Rigorous curriculum focusing on Data Structures & Algorithms, Operating Systems, DBMS, Computer Networks, and modern software engineering practices. (2022 – 2026).
+                  Rigorous core curriculum in Data Structures &amp; Algorithms, Operating Systems, DBMS, Distributed Systems, and Software Engineering.
+                </p>
+              </div>
+
+              <div class="edu-card" style="margin-top: 1rem; border-color: rgba(93, 255, 160, 0.25);">
+                <div class="edu-title glow-green">National Competitive Achievements</div>
+                <div class="edu-meta">JEE Main Entrance Exam &amp; Algorithmic Problem Solving</div>
+                <p class="edu-desc">
+                  • Secured <strong>AIR 14,000 (98.38 Percentile)</strong> nationwide out of 1,000,000+ candidates.<br>
+                  • Solved 100+ Data Structures &amp; Algorithms challenges across LeetCode &amp; GeeksforGeeks.
                 </p>
               </div>
             </div>
-            
-            <p class="label-mono" style="font-size:0.55rem; color:var(--text-tertiary); margin-top:2rem;">
-              COGNITIVE INTERFACE SYST-V1.2.6 // FARIDABAD, IN
-            </p>
           </div>
           
-          <div class="contact-form-frame" style="display: flex; flex-direction: column; justify-content: center; gap: 1rem;">
-            <div style="border-bottom: var(--border-thin); padding-bottom: 0.8rem; margin-bottom: 0.5rem;">
-              <span class="label-mono glow-purple">SECURE COMMS DIRECT ACCESS</span>
-            </div>
-            
+          <div class="contact-links-grid">
             <!-- Email Card -->
-            <a href="mailto:contactlovjyotsingh@gmail.com" class="contact-link-card hover-trigger">
+            <a href="mailto:lovjyotsinghofficial@gmail.com" class="contact-link-card">
               <div>
-                <div class="label-mono" style="font-size: 0.55rem; color: var(--text-secondary);">PRIMARY EMAIL</div>
-                <div style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-top: 0.2rem;">contactlovjyotsingh@gmail.com</div>
+                <div class="label-mono" style="font-size: 0.58rem; color: var(--text-secondary);">PRIMARY EMAIL</div>
+                <div style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-top: 0.2rem;">lovjyotsinghofficial@gmail.com</div>
               </div>
               <svg width="18" height="18" fill="none" stroke="var(--accent-purple)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
 
             <!-- LinkedIn Card -->
-            <a href="https://www.linkedin.com/in/lovjyotsingh" target="_blank" class="contact-link-card hover-trigger">
+            <a href="https://www.linkedin.com/in/lovjyotsingh" target="_blank" class="contact-link-card">
               <div>
-                <div class="label-mono" style="font-size: 0.55rem; color: var(--text-secondary);">LINKEDIN NETWORK</div>
-                <div style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-top: 0.2rem;">linkedin.com/in/lovjyotsingh</div>
+                <div class="label-mono" style="font-size: 0.58rem; color: var(--text-secondary);">LINKEDIN NETWORK</div>
+                <div style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-top: 0.2rem;">linkedin.com/in/lovjyotsingh</div>
               </div>
               <svg width="18" height="18" fill="none" stroke="var(--accent-cyan)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
 
             <!-- GitHub Card -->
-            <a href="https://github.com/LovjyotSingh" target="_blank" class="contact-link-card hover-trigger">
+            <a href="https://github.com/LovjyotSingh" target="_blank" class="contact-link-card">
               <div>
-                <div class="label-mono" style="font-size: 0.55rem; color: var(--text-secondary);">GITHUB CODESPACE</div>
-                <div style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-top: 0.2rem;">github.com/LovjyotSingh</div>
+                <div class="label-mono" style="font-size: 0.58rem; color: var(--text-secondary);">GITHUB CODESPACE</div>
+                <div style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-top: 0.2rem;">github.com/LovjyotSingh</div>
               </div>
               <svg width="18" height="18" fill="none" stroke="var(--accent-green)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
 
             <!-- Phone Card -->
-            <a href="tel:+919958473062" class="contact-link-card hover-trigger">
+            <a href="tel:+919958473062" class="contact-link-card">
               <div>
-                <div class="label-mono" style="font-size: 0.55rem; color: var(--text-secondary);">VOICE COMMUNICATIONS</div>
-                <div style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-top: 0.2rem;">+91-9958473062</div>
+                <div class="label-mono" style="font-size: 0.58rem; color: var(--text-secondary);">VOICE COMMUNICATIONS</div>
+                <div style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-top: 0.2rem;">+91-9958473062 (Faridabad, NCR)</div>
               </div>
               <svg width="18" height="18" fill="none" stroke="var(--accent-yellow)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -1630,30 +1504,28 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <span class="wordmark" style="font-size: 1.5rem; letter-spacing: -0.02em;">LOVJYOT SINGH</span>
+          <span class="wordmark" style="font-size: 1.4rem; letter-spacing: -0.02em;">LOVJYOT SINGH</span>
           <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
-            Systems architect & developer. Specializing in low-level details, highly-responsive client applications, and AI integrations.
+            Software Engineer &amp; Distributed Systems Architect. Specialized in atomic concurrency (Redis), Next.js 15, multimodal AI (Gemini), and production-grade engineering.
           </p>
         </div>
         
         <div class="footer-col">
           <span class="footer-title">COMMS PORTS</span>
           <ul class="footer-links">
-            <li><a href="mailto:contactlovjyotsingh@gmail.com" class="hover-trigger">contactlovjyotsingh@gmail.com</a></li>
-            <li><a href="https://www.linkedin.com/in/lovjyotsingh" target="_blank" class="hover-trigger">LinkedIn Portal</a></li>
-            <li><a href="https://github.com/LovjyotSingh" target="_blank" class="hover-trigger">GitHub Space</a></li>
+            <li><a href="mailto:lovjyotsinghofficial@gmail.com">lovjyotsinghofficial@gmail.com</a></li>
+            <li><a href="https://www.linkedin.com/in/lovjyotsingh" target="_blank">LinkedIn Profile</a></li>
+            <li><a href="https://github.com/LovjyotSingh" target="_blank">GitHub Space</a></li>
             <li><span class="label-mono" style="font-size:0.7rem; color:var(--accent-green)">+91-9958473062</span></li>
           </ul>
         </div>
         
         <div class="footer-col">
-          <span class="footer-title">NAVIGATION NODES</span>
+          <span class="footer-title">FLAGSHIP REPOSITORIES</span>
           <ul class="footer-links">
-            <li><a href="#hero" class="hover-trigger">00 // HERO_UPLINK</a></li>
-            <li><a href="#stack" class="hover-trigger">01 // COGNITIVE_STACK</a></li>
-            <li><a href="#experience" class="hover-trigger">02 // TIMELINE_DEPS</a></li>
-            <li><a href="#projects" class="hover-trigger">03 // INITIATIVES_LOG</a></li>
-            <li><a href="#contact" class="hover-trigger">04 // SECURE_ uplink</a></li>
+            <li><a href="https://github.com/LovjyotSingh/OfferForge-AI" target="_blank">01 // OfferForge AI</a></li>
+            <li><a href="https://github.com/LovjyotSingh/SwiftShelf" target="_blank">02 // SwiftShelf</a></li>
+            <li><a href="#hero">00 // Top of Matrix</a></li>
           </ul>
         </div>
       </div>
@@ -1661,24 +1533,10 @@
   </footer>
 
   <!-- ========================================================
-       7. CINEMATIC INTERACTIVE ENGINE (JS LOGIC)
+       CINEMATIC INTERACTIVE ENGINE (JS LOGIC)
        ======================================================== -->
   <script>
-    // ==========================================
-    // CYBER SYNTH AUDIO ENGINE
-    // ==========================================
-    // Mouse drift for particle interaction
-    let mX = window.innerWidth / 2;
-    let mY = window.innerHeight / 2;
-    
-    window.addEventListener('mousemove', (e) => {
-      mX = e.clientX;
-      mY = e.clientY;
-    });
-
-    // ==========================================
-    // SCROLL PROGRESS BAR
-    // ==========================================
+    // Scroll progress bar
     function updateScrollProgress() {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -1689,9 +1547,7 @@
     window.addEventListener('scroll', updateScrollProgress, { passive: true });
     updateScrollProgress();
 
-    // ==========================================
-    // INTERSECTION OBSERVER — REVEAL-UP ANIMATIONS
-    // ==========================================
+    // Reveal Up Intersection Observer
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1701,14 +1557,11 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
-    // Trigger hero elements immediately
     setTimeout(() => {
       document.querySelectorAll('#hero .reveal-up').forEach(el => el.classList.add('is-visible'));
     }, 100);
 
-    // ==========================================
-    // DYNAMIC 3D MORPHING PARTICLE BG MATH
-    // ==========================================
+    // Dynamic 3D Morphing Canvas Particles
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
     
@@ -1719,15 +1572,12 @@
     sizeCanvas();
     window.addEventListener('resize', sizeCanvas);
     
-    const PARTICLE_COUNT = 400;
+    const PARTICLE_COUNT = 380;
     const particles = [];
-    
-    // Morph States managed by ScrollTrigger (from 0.0 to 1.0)
     const morphStates = {
       sphereToGrid: 0.0,
       gridToHelix: 0.0,
       helixToTunnel: 0.0,
-      
       rotSpeedX: 0.0005,
       rotSpeedY: 0.0008,
       cameraZoom: 1.0,
@@ -1735,19 +1585,15 @@
       cameraY: 0
     };
     
-    // Node particle class containing predefined coordinate states
     class NodeParticle {
       constructor(idx) {
         this.idx = idx;
         this.size = 1 + Math.random() * 2;
-        
-        // Color assignments
         const group = Math.random();
-        if (group < 0.4) this.color = 'cyan';
-        else if (group < 0.75) this.color = 'purple';
+        if (group < 0.45) this.color = 'cyan';
+        else if (group < 0.8) this.color = 'purple';
         else this.color = 'green';
         
-        // 1. Sphere State (Fibonacci distribution for uniform spacing)
         const phi = Math.acos(2 * idx / PARTICLE_COUNT - 1);
         const theta = Math.sqrt(PARTICLE_COUNT * Math.PI) * phi;
         const R = 180;
@@ -1755,70 +1601,60 @@
         this.ySphere = R * Math.sin(phi) * Math.sin(theta);
         this.zSphere = R * Math.cos(phi);
         
-        // 2. Wave Grid State
         const cols = 50;
         const col = idx % cols;
         const row = Math.floor(idx / cols);
-        const gridSpacingX = 14;
-        const gridSpacingY = 12;
-        this.xGrid = (col - cols/2) * gridSpacingX;
-        this.yGrid = (row - (PARTICLE_COUNT/cols)/2) * gridSpacingY;
-        this.zGrid = 0; // Wave computed dynamically in update
+        this.xGrid = (col - cols/2) * 14;
+        this.yGrid = (row - (PARTICLE_COUNT/cols)/2) * 12;
+        this.zGrid = 0;
         
-        // 3. Double Helix State
         const helixStrand = idx % 2;
-        const angle = (idx / PARTICLE_COUNT) * Math.PI * 10; // 5 full turns
+        const angle = (idx / PARTICLE_COUNT) * Math.PI * 10;
         const helixR = 80;
-        this.xHelix = helixR * Math.cos(angle + (helixStrand * Math.PI)) + (Math.random() - 0.5) * 15;
-        this.yHelix = helixR * Math.sin(angle + (helixStrand * Math.PI)) + (Math.random() - 0.5) * 15;
+        this.xHelix = helixR * Math.cos(angle + (helixStrand * Math.PI));
+        this.yHelix = helixR * Math.sin(angle + (helixStrand * Math.PI));
         this.zHelix = (idx / PARTICLE_COUNT) * 450 - 225;
         
-        // 4. Spiral Tunnel State
-        const tAngle = (idx / PARTICLE_COUNT) * Math.PI * 24; // 12 full loops
+        const tAngle = (idx / PARTICLE_COUNT) * Math.PI * 24;
         const tRadius = 15 + (idx / PARTICLE_COUNT) * 120;
         this.xTunnel = tRadius * Math.cos(tAngle);
         this.yTunnel = tRadius * Math.sin(tAngle);
         this.zTunnel = (idx / PARTICLE_COUNT) * 500 - 250;
         
-        // Actual current positions
         this.x = this.xSphere;
         this.y = this.ySphere;
         this.z = this.zSphere;
       }
       
       update(time) {
-        // Grid Z wave updates dynamically
         const cols = 50;
         const col = this.idx % cols;
         const row = Math.floor(this.idx / cols);
         const waveZ = Math.sin(col * 0.15 + time * 0.003) * Math.cos(row * 0.15 + time * 0.002) * 40;
         
-        // Dynamic interpolations based on morphStates
         let tx = this.xSphere;
         let ty = this.ySphere;
         let tz = this.zSphere;
         
-        // Morph: Sphere -> Grid
         if (morphStates.sphereToGrid > 0) {
-          tx += (this.xGrid - tx) * morphStates.sphereToGrid;
-          ty += (this.yGrid - ty) * morphStates.sphereToGrid;
-          tz += ((this.zGrid + waveZ) - tz) * morphStates.sphereToGrid;
+          const m = morphStates.sphereToGrid;
+          tx = tx * (1 - m) + this.xGrid * m;
+          ty = ty * (1 - m) + this.yGrid * m;
+          tz = tz * (1 - m) + waveZ * m;
         }
         
-        // Morph: Grid -> Helix
         if (morphStates.gridToHelix > 0) {
-          // Calculate grid source including dynamic wave factor
-          const gridZ = this.zGrid + waveZ;
-          tx = tx + (this.xHelix - tx) * morphStates.gridToHelix;
-          ty = ty + (this.yHelix - ty) * morphStates.gridToHelix;
-          tz = tz + (this.zHelix - tz) * morphStates.gridToHelix;
+          const m = morphStates.gridToHelix;
+          tx = tx * (1 - m) + this.xHelix * m;
+          ty = ty * (1 - m) + this.yHelix * m;
+          tz = tz * (1 - m) + this.zHelix * m;
         }
         
-        // Morph: Helix -> Tunnel
         if (morphStates.helixToTunnel > 0) {
-          tx = tx + (this.xTunnel - tx) * morphStates.helixToTunnel;
-          ty = ty + (this.yTunnel - ty) * morphStates.helixToTunnel;
-          tz = tz + (this.zTunnel - tz) * morphStates.helixToTunnel;
+          const m = morphStates.helixToTunnel;
+          tx = tx * (1 - m) + this.xTunnel * m;
+          ty = ty * (1 - m) + this.yTunnel * m;
+          tz = tz * (1 - m) + this.zTunnel * m;
         }
         
         this.x = tx;
@@ -1827,81 +1663,60 @@
       }
     }
     
-    // Initialize Particles
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       particles.push(new NodeParticle(i));
     }
     
-    // Create sprite canvas caches for glow acceleration
-    const glowSprites = {};
-    function buildGlow(color) {
-      const s = document.createElement('canvas');
-      s.width = 32;
-      s.height = 32;
-      const c = s.getContext('2d');
-      const g = c.createRadialGradient(16, 16, 1, 16, 16, 15);
-      g.addColorStop(0, '#ffffff');
-      g.addColorStop(0.2, color);
-      g.addColorStop(0.5, color.replace('1)', '0.2)'));
+    let angleX = 0;
+    let angleY = 0;
+    let targetCameraX = window.innerWidth > 992 ? window.innerWidth * 0.22 : 0;
+    
+    function createGlowSprite(colorHex) {
+      const c = document.createElement('canvas');
+      c.width = 32;
+      c.height = 32;
+      const cx = c.getContext('2d');
+      const g = cx.createRadialGradient(16, 16, 0, 16, 16, 16);
+      g.addColorStop(0, colorHex);
+      g.addColorStop(0.3, colorHex);
       g.addColorStop(1, 'rgba(0,0,0,0)');
-      c.fillStyle = g;
-      c.fillRect(0,0,32,32);
-      return s;
+      cx.fillStyle = g;
+      cx.fillRect(0, 0, 32, 32);
+      return c;
     }
-    glowSprites.cyan = buildGlow('rgba(136, 255, 212, 1)');
-    glowSprites.purple = buildGlow('rgba(191, 107, 255, 1)');
-    glowSprites.green = buildGlow('rgba(124, 255, 107, 1)');
     
-    // Camera angle states
-    let curRotX = 0.5;
-    let curRotY = 0.5;
-    let targetCameraX = window.innerWidth * 0.22;
-    let cameraX = targetCameraX;
+    const glowSprites = {
+      cyan: createGlowSprite('rgba(109, 255, 238, 0.9)'),
+      purple: createGlowSprite('rgba(199, 125, 255, 0.9)'),
+      green: createGlowSprite('rgba(93, 255, 160, 0.9)')
+    };
     
-    // Interactive Loop
     function render() {
+      const time = performance.now();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const time = Date.now();
       
-      // Interpolate layout offset positions
-      cameraX += (targetCameraX - cameraX) * 0.08;
-      const screenCenterX = canvas.width / 2 + cameraX + morphStates.cameraX;
+      angleX += morphStates.rotSpeedX;
+      angleY += morphStates.rotSpeedY;
+      
+      const cosX = Math.cos(angleX);
+      const sinX = Math.sin(angleX);
+      const cosY = Math.cos(angleY);
+      const sinY = Math.sin(angleY);
+      
+      const fov = 400 * morphStates.cameraZoom;
+      const camDist = 550;
+      const screenCenterX = canvas.width / 2 + (targetCameraX - morphStates.cameraX);
       const screenCenterY = canvas.height / 2 + morphStates.cameraY;
       
-      // Auto-rotation angles
-      curRotX += morphStates.rotSpeedX;
-      curRotY += morphStates.rotSpeedY;
-      
-      // Add slight mouse drift relative to screen center
-      const mouseInfluenceX = (mY - window.innerHeight / 2) * 0.0003;
-      const mouseInfluenceY = (mX - window.innerWidth / 2) * 0.0003;
-      const rotX = curRotX + mouseInfluenceX;
-      const rotY = curRotY + mouseInfluenceY;
-      
-      const fov = 420 * morphStates.cameraZoom;
-      const camDist = 400;
-      
-      // Cache trigonometry calculations
-      const cosY = Math.cos(rotY);
-      const sinY = Math.sin(rotY);
-      const cosX = Math.cos(rotX);
-      const sinX = Math.sin(rotX);
-      
-      // Loop through particles
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         p.update(time);
         
-        // Apply 3D Rotations (Euler angles)
-        // Y rotation
-        let x1 = p.x * cosY - p.z * sinY;
-        let z1 = p.x * sinY + p.z * cosY;
-        
-        // X rotation
+        let x1 = p.x * cosY + p.z * sinY;
+        let z1 = -p.x * sinY + p.z * cosY;
         let y2 = p.y * cosX - z1 * sinX;
         let z2 = p.y * sinX + z1 * cosX;
         
-        // Perspective projection
         const pScale = fov / (camDist + z2);
         const sx = x1 * pScale + screenCenterX;
         const sy = y2 * pScale + screenCenterY;
@@ -1913,73 +1728,19 @@
         
         const sprite = glowSprites[p.color];
         const sSize = p.size * pScale * 2.0;
-        
         ctx.drawImage(sprite, sx - sSize/2, sy - sSize/2, sSize, sSize);
-
-        // Store screen coords for constellation draw
         p._sx = sx;
         p._sy = sy;
-        p._sz = z2;
       }
       
-      ctx.globalAlpha = 1.0;
-
-      // ==========================================
-      // CONSTELLATION CONNECTIONS
-      // ==========================================
-      const CONNECT_DIST = 80;
-      const projected = [];
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        // Re-project for connections (use already computed values via loop above)
-        // We store screen coords in a simple array during particle draw pass
-        projected.push(p._sx !== undefined ? { x: p._sx, y: p._sy, z: p._sz } : null);
-      }
-
-      // Draw lines between close particles
-      for (let i = 0; i < projected.length; i++) {
-        if (!projected[i]) continue;
-        for (let j = i + 1; j < Math.min(i + 12, projected.length); j++) {
-          if (!projected[j]) continue;
-          const dx = projected[i].x - projected[j].x;
-          const dy = projected[i].y - projected[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CONNECT_DIST) {
-            const alpha = (1 - dist / CONNECT_DIST) * 0.18;
-            ctx.globalAlpha = alpha;
-            ctx.strokeStyle = 'rgba(109, 255, 238, 1)';
-            ctx.lineWidth = 0.5;
-            ctx.beginPath();
-            ctx.moveTo(projected[i].x, projected[i].y);
-            ctx.lineTo(projected[j].x, projected[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-
       ctx.globalAlpha = 1.0;
       requestAnimationFrame(render);
     }
     
-    // Toggle spacing depending on responsive sizes
-    function checkLayout() {
-      if (window.innerWidth < 992) {
-        targetCameraX = 0;
-      } else {
-        targetCameraX = window.innerWidth * 0.22;
-      }
-    }
-    checkLayout();
-    window.addEventListener('resize', checkLayout);
-    
-    // ==========================================
-    // GSAP SCROLL DRIVER AND TIMELINES
-    // ==========================================
+    // GSAP Scroll Drivers
     function setupScrollTriggers() {
-      // Register scrolltrigger plugin
       gsap.registerPlugin(ScrollTrigger);
       
-      // Hero to Stack: Morph Sphere to flat Wave Grid
       gsap.timeline({
         scrollTrigger: {
           trigger: "#stack",
@@ -1988,14 +1749,8 @@
           scrub: 1.0
         }
       })
-      .to(morphStates, {
-        sphereToGrid: 1.0,
-        cameraZoom: 0.9,
-        rotSpeedX: 0.0001,
-        rotSpeedY: 0.0003
-      });
+      .to(morphStates, { sphereToGrid: 1.0, cameraZoom: 0.9 });
       
-      // Stack to Experience: Morph Grid to Double Helix
       gsap.timeline({
         scrollTrigger: {
           trigger: "#experience",
@@ -2003,21 +1758,14 @@
           end: "top 20%",
           scrub: 1.0,
           onEnter: () => {
-            // Animate SVG Gauges in IBM timeline
-            gsap.to("#gauge-load", { strokeDashoffset: 143, duration: 1.5, ease: "power2.out" }); // -35% (65% off)
-            gsap.to("#gauge-bundle", { strokeDashoffset: 158, duration: 1.5, ease: "power2.out" }); // -28% (72% off)
-            gsap.to("#gauge-engage", { strokeDashoffset: 187, duration: 1.5, ease: "power2.out" }); // +15% (85% off)
+            gsap.to("#gauge-load", { strokeDashoffset: 143, duration: 1.5 });
+            gsap.to("#gauge-bundle", { strokeDashoffset: 158, duration: 1.5 });
+            gsap.to("#gauge-engage", { strokeDashoffset: 187, duration: 1.5 });
           }
         }
       })
-      .to(morphStates, {
-        gridToHelix: 1.0,
-        cameraZoom: 1.1,
-        rotSpeedX: 0.002, // Spin helix slightly faster for bio tech feels
-        rotSpeedY: 0.001
-      });
+      .to(morphStates, { gridToHelix: 1.0, cameraZoom: 1.1 });
       
-      // Experience to Projects: Morph Helix to tunnel and reposition to center
       gsap.timeline({
         scrollTrigger: {
           trigger: "#projects",
@@ -2026,46 +1774,20 @@
           scrub: 1.0
         }
       })
-      .to(morphStates, {
-        helixToTunnel: 1.0,
-        cameraZoom: 0.8,
-        rotSpeedX: 0.0004,
-        rotSpeedY: 0.0006
-      });
-      
-      // Focus particles behind contact form as we exit
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: "#contact",
-          start: "top 60%",
-          end: "bottom bottom",
-          scrub: 1.0
-        }
-      })
-      .to(morphStates, {
-        cameraZoom: 0.5,
-        cameraY: -100
-      });
+      .to(morphStates, { helixToTunnel: 1.0, cameraZoom: 0.85 });
     }
 
-    // ==========================================
-    // HERO AGENT ENGINE TELEMETRY TYPEWRITER
-    // ==========================================
+    // Hero Typewriter Console
     const heroConsole = document.getElementById('hero-stream-box');
     const logsList = [
-      ">> RUNNING LOVJYOT_INTELLIGENCE_LAYER [v1.0]",
-      ">> MOUNTING VOICE AGENT POOL STATE: ONLINE",
-      ">> PARSING WORKFLOW: PATIENT INBOUND CALL DETECTED",
-      ">> CHECKING GOOGLE CALENDAR SLOTS IN REAL TIME...",
-      ">> STATUS: AVAILABLE SLOT FOUND FOR 10:30 AM",
-      ">> INITIATING BOOKING EVENT PIPELINE",
-      ">> ALERT: SECURE GOOGLE ACCESS OAUTH SIGNED",
-      ">> WEBHOOK EXECUTING FOR POST-CALL NOTIFICATIONS...",
-      ">> SENDING TELEGRAM SUMMARY PACKET: OK",
-      ">> PLACEMENTPREP ENGINE: INITIALIZED",
-      ">> PARSING RESUME STREAM IN REAL TIME...",
-      ">> RUNNING ATS ANALYSIS AND RECHARTS MATRIX UPDATE",
-      ">> GPT-4O-MINI EVALUATION PIPELINE: COMPLETE",
+      ">> INITIALIZING LOVJYOT_CORE_KERNEL [v2.0]",
+      ">> MOUNTING DISTRIBUTED CONCURRENCY ENGINE: ONLINE",
+      ">> REDIS: 2-PHASE STOCK LOCK ACQUIRED [KEY: FLASH_DROP_PROD_01]",
+      ">> STATUS: ZERO RACE CONDITIONS DETECTED (ATOMIC RESILIENCE: 99.98%)",
+      ">> INITIALIZING GEMINI 2.0 MULTIMODAL INFERENCE PIPELINE...",
+      ">> PARSING AUDIO SPECTROGRAM & STAR BEHAVIORAL MATRIX...",
+      ">> PGVECTOR: EMBEDDING SIMILARITY MATCH COMPLETED in 14ms",
+      ">> OFFERFORGE AI & SWIFTSHELF KERNELS: NOMINAL",
       ">> SYSTEM TELEMETRY NOMINAL. WAITING VISITOR COMMANDS."
     ];
     
@@ -2073,216 +1795,162 @@
     function printNextHeroConsoleLine() {
       if (currentLogLineIndex < logsList.length) {
         const div = document.createElement('div');
-        div.style.marginBottom = "0.2rem";
-        
+        div.style.marginBottom = "0.25rem";
         const lineText = logsList[currentLogLineIndex];
-        // Green highlight for statuses
-        if (lineText.includes("ONLINE") || lineText.includes("OK") || lineText.includes("COMPLETE") || lineText.includes("NOMINAL")) {
+        
+        if (lineText.includes("ONLINE") || lineText.includes("NOMINAL") || lineText.includes("COMPLETED")) {
           div.style.color = "var(--accent-green)";
-        } else if (lineText.includes("ALERT") || lineText.includes("WORKFLOW")) {
-          div.style.color = "var(--accent-yellow)";
-        } else if (lineText.includes("LOVJYOT")) {
+        } else if (lineText.includes("REDIS") || lineText.includes("GEMINI")) {
+          div.style.color = "var(--accent-cyan)";
+        } else if (lineText.includes("INITIALIZING")) {
           div.style.color = "var(--accent-purple)";
         }
         
         heroConsole.appendChild(div);
-        
-        // Typewriter characters
         let charIndex = 0;
         function typeChar() {
           if (charIndex < lineText.length) {
             div.textContent += lineText.charAt(charIndex);
             charIndex++;
-            setTimeout(typeChar, 15);
+            setTimeout(typeChar, 14);
           } else {
             currentLogLineIndex++;
-            // Scroll frame
             heroConsole.scrollTop = heroConsole.scrollHeight;
-            setTimeout(printNextHeroConsoleLine, 600);
+            setTimeout(printNextHeroConsoleLine, 500);
           }
         }
         typeChar();
       }
     }
 
-    // ==========================================
-    // INTERACTIVE SHELL EMULATOR
-    // ==========================================
+    // Interactive Shell Emulator
     const shellInput = document.getElementById('shell-input');
     const termOutput = document.getElementById('term-output');
     const commands = {
-      help: () => `<span style="color:var(--accent-cyan)">LOVJYOT_OS v1.2.6</span> — Available commands:<br>
-        &nbsp;<span style="color:var(--accent-green)">about</span>&nbsp;&nbsp;&nbsp;&nbsp;— Summary of Lovjyot's profile<br>
-        &nbsp;<span style="color:var(--accent-green)">skills</span>&nbsp;&nbsp;&nbsp;— Cognitive skills matrix<br>
-        &nbsp;<span style="color:var(--accent-green)">projects</span>&nbsp;— Deployed system modules<br>
-        &nbsp;<span style="color:var(--accent-green)">contact</span>&nbsp;&nbsp;— Active comm channels<br>
-        &nbsp;<span style="color:var(--accent-purple)">ls</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— List portfolio directories<br>
-        &nbsp;<span style="color:var(--accent-purple)">cat</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— Read a project file (e.g. cat project1)<br>
-        &nbsp;<span style="color:var(--accent-purple)">neofetch</span>&nbsp;— System info &amp; profile card<br>
-        &nbsp;<span style="color:var(--accent-purple)">whoami</span>&nbsp;&nbsp;&nbsp;— Current operator identity<br>
-        &nbsp;<span style="color:var(--accent-purple)">date</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— System timestamp<br>
-        &nbsp;<span style="color:var(--accent-red)">clear</span>&nbsp;&nbsp;&nbsp;&nbsp;— Wipe terminal logs`,
+      help: () => `<span style="color:var(--accent-cyan)">LOVJYOT_OS v2.0.0</span> — Available commands:<br>
+        &nbsp;<span style="color:var(--accent-green)">about</span>&nbsp;&nbsp;&nbsp;&nbsp;— Summary of Lovjyot's background<br>
+        &nbsp;<span style="color:var(--accent-green)">skills</span>&nbsp;&nbsp;&nbsp;— Distributed systems &amp; AI stack<br>
+        &nbsp;<span style="color:var(--accent-green)">projects</span>&nbsp;— Flagship systems (OfferForge AI &amp; SwiftShelf)<br>
+        &nbsp;<span style="color:var(--accent-green)">contact</span>&nbsp;&nbsp;— Uplink email, LinkedIn, GitHub<br>
+        &nbsp;<span style="color:var(--accent-purple)">cat</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— Read project details (cat offerforge | cat swiftshelf)<br>
+        &nbsp;<span style="color:var(--accent-purple)">neofetch</span>&nbsp;— System hardware &amp; credentials card<br>
+        &nbsp;<span style="color:var(--accent-purple)">whoami</span>&nbsp;&nbsp;&nbsp;— Operator identity<br>
+        &nbsp;<span style="color:var(--accent-red)">clear</span>&nbsp;&nbsp;&nbsp;&nbsp;— Wipe terminal window`,
       about: () => `<span style="color:var(--accent-cyan)">// LOVJYOT SINGH — Software Engineer</span><br>
         ├── University: USICT, GGSIPU — B.Tech CSE (2022–2026)<br>
-        ├── Expertise: Full-Stack Dev &amp; AI Automation Systems<br>
-        ├── Stack: React.js, Node.js, MongoDB, Java, Python<br>
-        ├── Internship: IBM — Web Development (Jun–Aug 2024)<br>
-        └── Mission: Build scalable, AI-first engineering solutions`,
-      skills: () => `<span style="color:var(--accent-cyan)">// COGNITIVE SKILLS MATRIX</span><br>
-        ├── <span style="color:var(--accent-yellow)">Languages</span>: Java, Python, JavaScript (ES6+), SQL<br>
-        ├── <span style="color:var(--accent-green)">Backend</span>: Node.js, Express.js, RESTful APIs, JWT, OAuth 2.0<br>
-        ├── <span style="color:var(--accent-green)">Frontend</span>: React.js, Next.js, Tailwind CSS, Recharts, Zustand<br>
-        ├── <span style="color:var(--accent-blue)">Databases</span>: MongoDB (Atlas, Aggregation), MySQL<br>
-        ├── <span style="color:var(--accent-blue)">Cloud</span>: AWS, Docker, Vercel, Railway, Render, CI/CD<br>
-        ├── <span style="color:var(--accent-purple)">AI/ML</span>: OpenRouter AI, LangChain, OpenAI, Vapi AI<br>
-        ├── <span style="color:var(--accent-yellow)">Design</span>: OOP, Low-Level Design, API Design, Microservices<br>
-        └── <span style="color:var(--text-secondary)">CS Core</span>: DSA, OS, DBMS, Computer Networks`,
-      projects: () => `<span style="color:var(--accent-cyan)">// DEPLOYED SYSTEM INITIATIVES</span><br>
-        ┌── <span style="color:var(--accent-green)">PlacementPrep AI</span> [#PP-01 PRODUCTION]<br>
-        │ &nbsp;&nbsp;&nbsp;End-to-end AI mock interview &amp; ATS resume analyzer platform.<br>
-        │ &nbsp;&nbsp;&nbsp;Stack: React.js, Node.js, OpenRouter GPT-4o-mini, MongoDB<br>
-        └── <span style="color:var(--accent-purple)">Voice AI Appointment Agent</span> [#VO-02 DEPLOYED]<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;Autonomous call-handling with Google Calendar + Telegram hooks.<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;Stack: Vapi AI, OpenAI, Node.js, Google Calendar API`,
+        ├── Key Achievement: JEE Main AIR 14,000 (98.38 Percentile)<br>
+        ├── Focus: High-Concurrency Distributed Systems &amp; Multimodal AI<br>
+        ├── Flagships: OfferForge AI &amp; SwiftShelf Store<br>
+        └── Mission: Engineering low-latency, resilient software architectures`,
+      skills: () => `<span style="color:var(--accent-cyan)">// CORE SYSTEMS &amp; DISTRIBUTED STACK</span><br>
+        ├── <span style="color:var(--accent-yellow)">Languages</span>: Java, C++, Python, TypeScript, JavaScript, SQL<br>
+        ├── <span style="color:var(--accent-green)">Distributed/Backend</span>: Next.js 15, Node.js, Express, Redis (ioredis), Prisma<br>
+        ├── <span style="color:var(--accent-green)">Frontend</span>: React 18, Tailwind CSS, Canvas Spectrum API, Recharts<br>
+        ├── <span style="color:var(--accent-purple)">AI / Vector</span>: Google Gemini 2.0, pgvector, OpenRouter API<br>
+        ├── <span style="color:var(--accent-blue)">Databases</span>: MongoDB Atlas, MySQL, Redis Locks<br>
+        └── <span style="color:var(--accent-blue)">DevOps</span>: Docker, CI/CD Actions, Vercel Edge, Render, Stripe API`,
+      projects: () => `<span style="color:var(--accent-cyan)">// FLAGSHIP SYSTEM INITIATIVES</span><br>
+        ┌── <span style="color:var(--accent-green)">OfferForge AI</span> [#OF-01 PRODUCTION]<br>
+        │ &nbsp;&nbsp;&nbsp;Multimodal AI Interview Simulation &amp; Career Acceleration Matrix.<br>
+        │ &nbsp;&nbsp;&nbsp;Stack: React 18, Node.js, Gemini 2.0 AI, Canvas Audio, MongoDB<br>
+        └── <span style="color:var(--accent-purple)">SwiftShelf</span> [#SS-02 DISTRIBUTED LAB]<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;High-Concurrency E-Commerce with 2-Phase Redis Atomic Locks.<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;Stack: Next.js 15, TypeScript, Redis (ioredis), pgvector, Prisma`,
       contact: () => `<span style="color:var(--accent-cyan)">// SECURE UPLINK PORTS</span><br>
-        ├── Email: <a href="mailto:contactlovjyotsingh@gmail.com" style="color:var(--accent-green)">contactlovjyotsingh@gmail.com</a><br>
+        ├── Email: <a href="mailto:lovjyotsinghofficial@gmail.com" style="color:var(--accent-green)">lovjyotsinghofficial@gmail.com</a><br>
         ├── LinkedIn: <a href="https://www.linkedin.com/in/lovjyotsingh" target="_blank" style="color:var(--accent-cyan)">linkedin.com/in/lovjyotsingh</a><br>
         ├── GitHub: <a href="https://github.com/LovjyotSingh" target="_blank" style="color:var(--accent-purple)">github.com/LovjyotSingh</a><br>
         └── Phone: +91-9958473062`,
-      ls: () => `<span style="color:var(--accent-cyan)">total 5 directories</span><br>
-        drwxr-x  <span style="color:var(--accent-green)">projects/</span><br>
-        drwxr-x  <span style="color:var(--accent-green)">skills/</span><br>
-        drwxr-x  <span style="color:var(--accent-green)">experience/</span><br>
-        drwxr-x  <span style="color:var(--accent-green)">education/</span><br>
-        -rwxr-x  <span style="color:var(--accent-yellow)">resume.pdf</span> &nbsp;[open: <a href="mailto:contactlovjyotsingh@gmail.com" style="color:var(--accent-cyan)">request via email</a>]`,
-      cat: () => `<span style="color:var(--accent-red)">Usage: cat &lt;filename&gt;</span><br>Available: <span style="color:var(--accent-purple)">cat project1</span> | <span style="color:var(--accent-purple)">cat project2</span>`,
-      'cat project1': () => `<span style="color:var(--accent-green)"># PlacementPrep AI — README.md</span><br>
-        ## Overview<br>
-        End-to-end AI-powered placement prep platform for tech interviews.<br>
-        ## Features<br>
-        - Role-specific mock AI interviews via OpenRouter GPT-4o-mini<br>
-        - Automated scoring: technical accuracy, communication, confidence<br>
-        - ATS resume analyzer with keyword gap detection<br>
-        - Recharts analytics dashboard for progress tracking<br>
-        ## Stack: React, Node.js, Express, MongoDB, JWT, bcrypt`,
-      'cat project2': () => `<span style="color:var(--accent-purple)"># Voice AI Appointment Agent — README.md</span><br>
-        ## Overview<br>
-        Autonomous AI phone agent for clinic appointment scheduling.<br>
-        ## Features<br>
-        - Handles inbound patient calls with Vapi AI + OpenAI<br>
-        - Real-time Google Calendar availability checking<br>
-        - Auto-booking and staff notification via Telegram + WhatsApp<br>
-        ## Stack: Vapi AI, OpenAI, Node.js, Google Calendar API, Webhooks`,
+      cat: () => `<span style="color:var(--accent-red)">Usage: cat &lt;project&gt;</span><br>Available: <span style="color:var(--accent-purple)">cat offerforge</span> | <span style="color:var(--accent-purple)">cat swiftshelf</span>`,
+      'cat offerforge': () => `<span style="color:var(--accent-green)"># OfferForge AI — Architectural Overview</span><br>
+        - Real-time STAR behavioral evaluation with sub-1.2s round-trip latency.<br>
+        - Interactive HTML5 Canvas audio spectrum visualizer.<br>
+        - 95%+ ATS resume keyword intelligence &amp; dynamic salary generator.<br>
+        - Stack: React 18, Node.js, Gemini 2.0, MongoDB Atlas, JWT`,
+      'cat swiftshelf': () => `<span style="color:var(--accent-purple)"># SwiftShelf — Distributed System Architecture</span><br>
+        - 2-Phase atomic Redis Stock Locks ensuring 0 race conditions in flash peaks.<br>
+        - Multimodal AI visual search powered by pgvector embeddings.<br>
+        - Real-time Admin BI telemetry with predictive restock forecaster.<br>
+        - Stack: Next.js 15 App Router, TypeScript, Redis, Prisma, MongoDB, Stripe`,
       neofetch: () => `<span style="color:var(--accent-purple)">██╗      ██████╗ ██╗   ██╗     ██╗██╗   ██╗ ██████╗ ████████╗</span><br>
         <span style="color:var(--accent-cyan)">██║     ██╔═══██╗██║   ██║     ██║╚██╗ ██╔╝██╔═══██╗╚══██╔══╝</span><br>
         <span style="color:var(--accent-green)">██║     ██║   ██║██║   ██║     ██║ ╚████╔╝ ██║   ██║   ██║</span><br>
         <span style="color:var(--accent-cyan)">██║     ██║   ██║╚██╗ ██╔╝     ██║  ╚██╔╝  ██║   ██║   ██║</span><br>
         <span style="color:var(--accent-purple)">███████╗╚██████╔╝ ╚████╔╝ ██╗ ██║   ██║   ╚██████╔╝   ██║</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--accent-yellow)">LovjyotOS v1.2.6</span><br>
-        &nbsp;OS:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--text-primary)">LovjyotOS (Full-Stack AI Kernel)</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--accent-yellow)">LovjyotOS v2.0.0</span><br>
         &nbsp;Host:&nbsp;&nbsp;&nbsp;<span style="color:var(--accent-cyan)">USICT, GGSIPU — New Delhi, India</span><br>
-        &nbsp;Uptime:&nbsp;<span style="color:var(--accent-green)">4 years (2022-2026)</span><br>
-        &nbsp;Shell:&nbsp;&nbsp;<span style="color:var(--accent-purple)">Java, Python, JavaScript, SQL</span><br>
-        &nbsp;DE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--accent-cyan)">React.js + Node.js Desktop</span><br>
-        &nbsp;GPU:&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--accent-yellow)">OpenRouter AI / GPT-4o-mini</span><br>
-        &nbsp;RAM:&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--accent-green)">MongoDB Atlas (∞ documents)</span><br>
-        &nbsp;CPU:&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--accent-purple)">DSA + LLD @ 2026 GHz</span>`,
-      whoami: () => `<span style="color:var(--accent-green)">lovjyot</span> — Software Engineer &amp; Systems Builder<br>
-        Role: Full-Stack Developer &amp; AI Automation Specialist<br>
-        Groups: IBM-Alumni, USICT-CSE, OpenSource`,
-      date: () => `System Timestamp: <span style="color:var(--accent-cyan)">${new Date().toUTCString()}</span><br>
-        Timezone: <span style="color:var(--accent-green)">IST (UTC+5:30) — Faridabad, India</span>`,
-      clear: () => {
-        termOutput.innerHTML = '';
-        return '';
-      }
+        &nbsp;Rank:&nbsp;&nbsp;&nbsp;<span style="color:var(--accent-green)">JEE Main AIR 14,000 (98.38 Percentile)</span><br>
+        &nbsp;Stack:&nbsp;&nbsp;<span style="color:var(--accent-purple)">Next.js 15, Redis, TypeScript, Gemini 2.0, Java</span><br>
+        &nbsp;Target:&nbsp;<span style="color:var(--accent-yellow)">Software Development Engineer (SDE-1)</span>`,
+      whoami: () => `<span style="color:var(--accent-green)">lovjyot</span> — Software Development Engineer<br>Specializing in Distributed Systems, Atomic Concurrency &amp; AI Matrix`,
+      clear: () => { termOutput.innerHTML = ''; return ''; }
     };
     
     shellInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
-        const rawValue = shellInput.value.trim();
-        const value = rawValue.toLowerCase();
+        const raw = shellInput.value.trim();
+        const val = raw.toLowerCase();
         shellInput.value = '';
         
-        // Print command
-        const promptLine = document.createElement('div');
-        promptLine.innerHTML = `<span style="color:var(--accent-purple)">visitor@lovjyot:~$</span> <span style="color:var(--accent-green)">${rawValue}</span>`;
-        termOutput.appendChild(promptLine);
+        const pLine = document.createElement('div');
+        pLine.innerHTML = `<span style="color:var(--accent-purple)">visitor@lovjyot:~$</span> <span style="color:var(--accent-green)">${raw}</span>`;
+        termOutput.appendChild(pLine);
         
-        const responseLine = document.createElement('div');
-        responseLine.style.marginTop = "0.2rem";
-        responseLine.style.marginBottom = "0.6rem";
-        responseLine.style.lineHeight = "1.6";
-        responseLine.style.fontSize = "0.72rem";
+        const rLine = document.createElement('div');
+        rLine.style.marginTop = "0.2rem";
+        rLine.style.marginBottom = "0.6rem";
+        rLine.style.lineHeight = "1.6";
+        rLine.style.fontSize = "0.72rem";
         
-        const matchKey = Object.keys(commands).find(k => k === value);
-        if (matchKey) {
-          const res = commands[matchKey]();
+        const match = Object.keys(commands).find(k => k === val);
+        if (match) {
+          const res = commands[match]();
           if (res) {
-            responseLine.innerHTML = res;
-            termOutput.appendChild(responseLine);
+            rLine.innerHTML = res;
+            termOutput.appendChild(rLine);
           }
-        } else if (value !== '') {
-          responseLine.innerHTML = `<span style="color:var(--accent-red)">bash: ${rawValue}: command not found.</span> Type <span style="color:var(--accent-cyan)">'help'</span> for options.`;
-          termOutput.appendChild(responseLine);
+        } else if (val !== '') {
+          rLine.innerHTML = `<span style="color:var(--accent-red)">bash: ${raw}: command not found.</span> Type <span style="color:var(--accent-cyan)">'help'</span> for list of commands.`;
+          termOutput.appendChild(rLine);
         }
-        
         termOutput.scrollTop = termOutput.scrollHeight;
       }
     });
 
-    // ==========================================
-    // PROJECTS SHOWCASE TELEMETRY LOGGER
-    // ==========================================
-    const placementLogs = [
-      "SYSTEM: INIT RECHARTS ENGINE",
-      "OAUTH: TOKEN SIGNED FOR USER_AGENT",
-      "API: GET /api/v1/resume/analyze",
-      "ATS_CRITICAL: PARSING RESUME STREAM...",
-      "GPT_4O: ESTIMATING EVALUATION WEIGHTS",
-      "AI_RESPONSE: SCORE 85/100 IN COMPLIANCE",
-      "METRIC: ATS PARSE FINISHED in 800ms",
-      "DB: SAVING SCORES TO MONGO_ATLAS"
+    // Telemetry Loggers for OfferForge AI & SwiftShelf
+    const offerforgeLogs = [
+      "GEMINI: MULTIMODAL INFERENCE DISPATCHED",
+      "CANVAS: FFT AUDIO SPECTROGRAM STREAMING (44.1 kHz)",
+      "STAR_METRIC: SITUATION-TASK-ACTION-RESULT PARSED: 92/100",
+      "ATS_STUDIO: PARSING RESUME COMPLIANCE (96% MATCH)",
+      "SALARY_ENGINE: TIER-1 TECH BANDS GENERATED",
+      "LATENCY: ROUND-TRIP API EVALUATION in 1.14s",
+      "DB: TELEMETRY COMMITTED TO MONGO_ATLAS"
     ];
     
-    const voiceLogs = [
-      "AGENT: VOIP INCOMING HOOK REGISTERED",
-      "VAD: VOICE ACTIVITY STATUS: TALKING",
-      "AI: SYNTHESIZING VOICE STREAM RESPONSE",
-      "API: CALENDAR CHECK INITIATED",
-      "CALENDAR: 3 FREE SLOTS SYNCED",
-      "STATION: APPOINTMENT REGISTERED",
-      "WEBHOOK: DISPATCHING TELEGRAM ALERTS",
-      "WHATSAPP: SMS COMPILING TO +91-XXXXXXXXXX"
-    ];
-    
-    const expenseLogs = [
-      "MYSQL: PORT 3306 INBOUND PIPELINE ACTIVE",
-      "ZUSTAND: STACK RE-INJECTING TRANSACTION",
-      "DB_SPEED: INDEX SCAN INITIATED ON UserExpenses",
-      "QUERY_BENCHMARK: SELECT * FROM exp_history",
-      "TELEMETRY: DATA RETRIEVED in 45ms",
-      "GAIN: INDEX OPTIMIZATION YIELDED 40% SPEEDUP",
-      "EXPORT: CONVERTING ARRAY STREAM TO CSV",
-      "FILE: EXPORT FLOW COMPLETED"
+    const swiftshelfLogs = [
+      "REDIS: ACQUIRE_LOCK PROD_FLAGSHIP (TTL: 3000ms)",
+      "ATOMIC: DECREMENT STOCK RESERVATION COMMITTED",
+      "CONCURRENCY: 1,284 LIVE SHOPPERS SYNCHRONIZED",
+      "PGVECTOR: MULTIMODAL IMAGE EMBEDDING MATCHED in 14ms",
+      "BI_TELEMETRY: REVENUE VELOCITY STREAM AGGREGATED",
+      "RESILIENCE: 0 RACE CONDITIONS / 99.98% SUCCESS"
     ];
     
     function startTelemetryLog(boxId, logArray) {
       const box = document.getElementById(boxId);
       let idx = 0;
-      
       setInterval(() => {
         const item = document.createElement('div');
         item.className = 'telemetry-log-item';
-        
         const line = logArray[idx % logArray.length];
         
-        if (line.includes("SPEEDUP") || line.includes("ACTIVE") || line.includes("SECURE") || line.includes("FINISHED")) {
+        if (line.includes("COMMITTED") || line.includes("ACTIVE") || line.includes("SUCCESS") || line.includes("MATCH")) {
           item.classList.add('cyan');
-        } else if (line.includes("WARN") || line.includes("CALENDAR") || line.includes("ATS_CRITICAL")) {
+        } else if (line.includes("REDIS") || line.includes("GEMINI")) {
+          item.classList.add('purple');
+        } else if (line.includes("LATENCY") || line.includes("CONCURRENCY")) {
           item.classList.add('warn');
-        } else if (line.includes("ALERT") || line.includes("ERROR")) {
-          item.classList.add('alert');
         }
         
         const time = new Date().toISOString().slice(14, 19);
@@ -2293,33 +1961,26 @@
           box.removeChild(box.firstChild);
         }
         box.scrollTop = box.scrollHeight;
-        
         idx++;
-      }, 1500 + Math.random() * 1000);
+      }, 1600 + Math.random() * 800);
     }
 
-    // Clock setup
     function updateClock() {
       const clock = document.getElementById('hud-time');
       if (clock) {
-        const time = new Date().toTimeString().split(' ')[0];
-        clock.textContent = time;
+        clock.textContent = new Date().toTimeString().split(' ')[0];
       }
     }
     setInterval(updateClock, 1000);
     updateClock();
-    
-    // Page load trigger
+
     window.addEventListener('load', () => {
-      // Bind scroll anims
       setupScrollTriggers();
-      // Start live typewriters and telemetries
       printNextHeroConsoleLine();
-      startTelemetryLog('logs-placement', placementLogs);
-      startTelemetryLog('logs-voice', voiceLogs);
+      startTelemetryLog('logs-offerforge', offerforgeLogs);
+      startTelemetryLog('logs-swiftshelf', swiftshelfLogs);
     });
-    
-    // Start Canvas render loop
+
     render();
   </script>
 </body>
