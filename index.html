@@ -201,7 +201,7 @@ kbd{font-family:var(--font-body);font-size:.78rem;font-weight:600;padding:.1rem 
 .field span{display:block;font-weight:500;font-size:.95rem;margin-bottom:.35rem}
 .field input,.field textarea{width:100%;font:inherit;padding:.75rem .9rem;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface-solid);color:var(--text)}
 .field textarea{min-height:120px;resize:vertical}
-.form .btn{margin-top:1.2rem}
+.form-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem}
 .form-note{margin-top:.8rem;color:var(--muted);font-size:.92rem;min-height:1.5em}
 
 footer{border-top:1px solid var(--line);padding:1.8rem 0 2.5rem;color:var(--muted);font-size:.93rem}
@@ -267,7 +267,7 @@ footer{border-top:1px solid var(--line);padding:1.8rem 0 2.5rem;color:var(--mute
         <div class="cta rise" style="--i:5">
           <a class="btn primary" href="#projects">See my projects</a>
           <button class="btn ghost js-resume" type="button">Download resume</button>
-          <a class="btn ghost" href="mailto:lovjyotsinghofficial@gmail.com">Email me</a>
+          <a class="btn ghost" href="#contact">Email me</a>
         </div>
         <div class="social rise" style="--i:6">
           <a href="https://github.com/LovjyotSingh" target="_blank" rel="noopener">GitHub</a>
@@ -506,8 +506,8 @@ footer{border-top:1px solid var(--line);padding:1.8rem 0 2.5rem;color:var(--mute
           <h3>Send a quick note</h3>
           <label class="field"><span>Your name and company</span><input id="fName" name="name" type="text" autocomplete="name" placeholder="Jane, Acme Inc."></label>
           <label class="field"><span>Message</span><textarea id="fMsg" name="message" placeholder="Tell me about the role and the team."></textarea></label>
-          <button class="btn primary" type="submit">Open in my email app</button>
-          <p class="form-note" id="formNote" aria-live="polite">This fills in an email to me. Nothing is sent until you press send.</p>
+          <div class="form-actions"><button class="btn primary" type="submit">Open in Gmail</button><button class="btn ghost" type="button" id="mailtoBtn">Use my default mail app</button></div>
+          <p class="form-note" id="formNote" aria-live="polite">Opens a draft addressed to me. Nothing is sent until you press send.</p>
         </form>
       </div>
     </div>
@@ -840,14 +840,33 @@ function copyEmail(){
   } else fallback();
 }
 $('#copyEmail').addEventListener('click',copyEmail);
+function mailParts(){
+  var name=$('#fName').value.trim(), msg=$('#fMsg').value.trim();
+  return {
+    subject:'Opportunity for Lovjyot',
+    body:'Hi Lovjyot,\n\n'+(msg||'I would like to talk with you about a role.')+'\n\n'+(name||'')
+  };
+}
+function openLink(url){
+  var a=document.createElement('a');
+  a.href=url; a.target='_blank'; a.rel='noopener';
+  document.body.appendChild(a); a.click(); a.remove();
+}
+function gmailUrl(subject,body){
+  return 'https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(EMAIL)+'&su='+encodeURIComponent(subject||'')+'&body='+encodeURIComponent(body||'');
+}
 $('#mailForm').addEventListener('submit',function(e){
   e.preventDefault();
-  var name=$('#fName').value.trim(), msg=$('#fMsg').value.trim();
-  var body='Hi Lovjyot,\n\n'+(msg||'I would like to talk with you about a role.')+'\n\n'+(name||'');
+  var m=mailParts();
+  openLink(gmailUrl(m.subject,m.body));
+  $('#formNote').textContent='Gmail should open in a new tab. If it was blocked, allow pop-ups or use the default mail app button.';
+});
+$('#mailtoBtn').addEventListener('click',function(){
+  var m=mailParts();
   var a=document.createElement('a');
-  a.href='mailto:'+EMAIL+'?subject='+encodeURIComponent('Opportunity for Lovjyot')+'&body='+encodeURIComponent(body);
+  a.href='mailto:'+EMAIL+'?subject='+encodeURIComponent(m.subject)+'&body='+encodeURIComponent(m.body);
   document.body.appendChild(a); a.click(); a.remove();
-  $('#formNote').textContent='Opening your email app. If nothing opens, use "Copy email address" and write to me directly.';
+  $('#formNote').textContent='If your mail app did not open, use "Copy email address" and write to me directly.';
 });
 
 /* ---------- command palette ---------- */
@@ -870,7 +889,7 @@ var commands=[
   {label:'LinkedIn profile',hint:'Open',run:function(){open_('https://linkedin.com/in/lovjyotsingh');}},
   {label:'Download resume',hint:'Action',run:downloadResume},
   {label:'Copy email address',hint:'Action',run:copyEmail},
-  {label:'Email Lovjyot',hint:'Action',run:function(){var a=document.createElement('a');a.href='mailto:'+EMAIL;document.body.appendChild(a);a.click();a.remove();}},
+  {label:'Email Lovjyot in Gmail',hint:'Action',run:function(){openLink(gmailUrl('Opportunity for Lovjyot',''));}},
   {label:'Switch light or dark theme',hint:'Action',run:toggleTheme}
 ];
 var pal=$('#palette'), palIn=$('#palInput'), palList=$('#palList'), shown=[], sel=0, lastFocus=null;
