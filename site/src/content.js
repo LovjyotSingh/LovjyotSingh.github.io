@@ -1,0 +1,72 @@
+export const profile = {
+  name: "Lovjyot Singh",
+  given: "Lovjyot",
+  family: "Singh",
+  pitch: "B.Tech CSE graduate looking for a software engineer role.",
+  location: "Delhi NCR",
+  school: "USICT, GGSIPU",
+  degree: "B.Tech CSE",
+  years: "2022–2026",
+  email: "lovjyotsinghofficial@gmail.com",
+  phoneDisplay: "+91 99584 73062",
+  phoneHref: "tel:+919958473062",
+  github: "https://github.com/LovjyotSingh",
+  githubLabel: "github.com/LovjyotSingh",
+  linkedin: "https://linkedin.com/in/lovjyotsingh",
+  linkedinLabel: "linkedin.com/in/lovjyotsingh",
+  resumeHref: "Lovjyot%20Singh%20CV.pdf",
+  resumeName: "Lovjyot_Singh_CV.pdf",
+  training: "IBM Front-End Engineering track, 2025. React, TypeScript, and Tailwind CSS.",
+};
+
+export const projects = [
+  {
+    index: "01",
+    name: "OfferForge AI",
+    featured: true,
+    live: "https://offer-forge-ai.vercel.app/",
+    host: "offer-forge-ai.vercel.app",
+    source: "https://github.com/LovjyotSingh/OfferForge-AI",
+    summary:
+      "A structured AI mock-interview platform. Interviews are split into role-based sections and graded with a rubric. Auth uses MongoDB. The client is React and Vite, the API is Express, and the app is deployed on Vercel.",
+    stack: ["React", "Vite", "Express", "MongoDB", "Vercel"],
+    lines: [
+      "Role-based sections, graded with a rubric",
+      "MongoDB auth for signed-in use",
+      "React and Vite, with an Express API",
+      "Client and API both deployed on Vercel",
+    ],
+  },
+  {
+    index: "02",
+    name: "SyncFlow",
+    featured: false,
+    live: "https://syncflow-sss.vercel.app",
+    host: "syncflow-sss.vercel.app",
+    source: "https://github.com/LovjyotSingh/SyncFlow",
+    summary:
+      "A real-time collaborative workspace. Edits sync over Socket.io, documents are stored in MongoDB, and Redis keeps the hot cache short. Built with Next.js and TypeScript.",
+    stack: ["Next.js", "TypeScript", "Socket.io", "MongoDB", "Redis"],
+  },
+];
+
+export const skills = [
+  "React",
+  "TypeScript",
+  "JavaScript",
+  "Next.js",
+  "Vite",
+  "Node.js",
+  "Express",
+  "MongoDB",
+  "Redis",
+  "Socket.io",
+  "SQL",
+  "MySQL",
+  "Java",
+  "Tailwind CSS",
+  "Docker",
+  "Git",
+  "Vercel",
+  "Render",
+];
