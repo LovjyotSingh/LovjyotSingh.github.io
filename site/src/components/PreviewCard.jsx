@@ -6,7 +6,7 @@ const project = projects[0];
 
 export function PreviewCard() {
   const reduce = useReducedMotion();
-  const { index, typed, done } = useTypewriter(project.lines);
+  const { typed, done, progress } = useTypewriter(project.lines);
 
   return (
     <div className="live-card">
@@ -43,21 +43,13 @@ export function PreviewCard() {
         </span>
       </div>
       <div className="live-progress" aria-hidden="true">
-        {project.lines.map((line, lineIndex) => (
-          <div key={line} className="live-progress-track">
-            <motion.div
-              className="live-progress-fill"
-              animate={{ width: lineIndex < index ? "100%" : lineIndex === index ? "50%" : "0%" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            />
-          </div>
-        ))}
+        <div className="live-progress-track">
+          <motion.div className="live-progress-fill" animate={{ width: `${Math.round(progress * 100)}%` }} transition={{ duration: 0.15 }} />
+        </div>
       </div>
       <div className="live-card-body">
-        <div>
-          <motion.p key={project.lines[index]} className="label" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }}>
-            OfferForge AI
-          </motion.p>
+        <div className="live-copy">
+          <p className="label">OfferForge AI</p>
           <p className="live-typed">
             <span className="sr-only">{project.lines[0]}</span>
             <span aria-hidden="true">

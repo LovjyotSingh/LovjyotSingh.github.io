@@ -154,7 +154,8 @@ export function useTypewriter(items, { typeMs = 28, holdMs = 2600 } = {}) {
   }, [length, full, items.length, typeMs, holdMs, reduce]);
 
   const shown = reduce ? full : full.slice(0, length);
-  return { index, typed: shown, done: reduce || length >= full.length };
+  const progress = full.length ? shown.length / full.length : 0;
+  return { index, typed: shown, done: reduce || length >= full.length, progress };
 }
 
 export function ScoreRing({ score, max = 100, size = 112, stroke = 8, label, delay = 0.2 }) {
@@ -205,9 +206,8 @@ export function FillBars({ items }) {
             <motion.div
               className="fill-bar"
               initial={{ width: 0 }}
-              whileInView={{ width: "100%" }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, delay: 0.2 + index * 0.12, ease: EASE }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 0.9, delay: 0.12 + index * 0.08, ease: EASE }}
             />
           </div>
         </div>

@@ -14,8 +14,8 @@ export const profile = {
   githubLabel: "github.com/LovjyotSingh",
   linkedin: "https://linkedin.com/in/lovjyotsingh",
   linkedinLabel: "linkedin.com/in/lovjyotsingh",
-  resumeHref: "Lovjyot%20Singh%20CV.pdf",
-  resumeName: "Lovjyot_Singh_CV.pdf",
+  resumeHref: "Lovjyot%20Singh%20Resume.pdf",
+  resumeName: "Lovjyot Singh Resume.pdf",
   training: "IBM Front-End Engineering track, 2025. React, TypeScript, and Tailwind CSS.",
 };
 

@@ -361,8 +361,8 @@ h2 .ember-word {
 .hero {
   position: relative;
   overflow: hidden;
-  padding-top: calc(var(--nav-h) + env(safe-area-inset-top) + 2.5rem);
-  padding-bottom: clamp(3rem, 8vh, 5rem);
+  padding-top: calc(var(--nav-h) + env(safe-area-inset-top) + 1rem);
+  padding-bottom: 4.5rem;
 }
 
 .hero-top {
@@ -388,25 +388,25 @@ h2 .ember-word {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  column-gap: 0.16em;
-  row-gap: 0.02em;
-  font-size: clamp(2.7rem, 10.2vw, 7.15rem);
+  column-gap: 0.22em;
+  row-gap: 0.06em;
+  font-size: clamp(2.55rem, 9vw, 6.6rem);
   font-weight: 500;
-  letter-spacing: -0.05em;
-  line-height: 0.96;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
 }
 
 .word-mask {
   display: inline-block;
   overflow: hidden;
   vertical-align: bottom;
-  padding: 0.2em 0.12em 0.2em 0;
-  margin: -0.16em 0 -0.14em;
+  padding: 0.08em 0.1em 0.16em 0;
+  margin: 0;
 }
 
 .pitch .word-mask {
-  margin-right: 0.28em;
-  padding-right: 0;
+  margin-right: 0;
+  padding-right: 0.02em;
 }
 
 .word {
@@ -448,10 +448,30 @@ h2 .ember-word {
   white-space: nowrap;
 }
 
-.hero-school span + span::before {
+.hero-school span:not(:last-child)::after {
   content: "·";
-  margin: 0 0.7em;
+  margin: 0 0.65em;
   color: rgba(245, 241, 234, 0.35);
+}
+
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-chips li {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(11, 10, 9, 0.45);
+  color: var(--secondary);
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1;
 }
 
 .section {
@@ -883,14 +903,7 @@ a.contact-row:hover .contact-value {
 
 @media (max-width: 380px) {
   .hero-school {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.2rem;
-  }
-
-  .hero-school span + span::before {
-    content: none;
-    margin: 0;
+    gap: 0.2rem 0;
   }
 }
 
@@ -1110,6 +1123,10 @@ a.contact-row:hover .contact-value {
 .hero-copy {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100svh - var(--nav-h) - 1.25rem);
 }
 
 .hero-glow {
@@ -1130,7 +1147,7 @@ a.contact-row:hover .contact-value {
 .hero-stage {
   position: relative;
   z-index: 1;
-  margin-top: 4.5rem;
+  margin-top: 1.5rem;
   perspective: 1400px;
 }
 
@@ -1260,6 +1277,19 @@ a.contact-row:hover .contact-value {
   color: var(--secondary);
 }
 
+.live-host {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.live-copy {
+  min-width: 0;
+  flex: 1;
+}
+
 .live-status {
   margin-left: auto;
   display: inline-flex;
@@ -1359,8 +1389,8 @@ a.contact-row:hover .contact-value {
 
 .fill-bars {
   display: grid;
-  gap: 0.75rem;
-  padding-top: 1rem;
+  gap: 0.9rem;
+  padding: 0.35rem 0 0.6rem;
 }
 
 .fill-bars-meta {
@@ -1456,7 +1486,7 @@ a.contact-row:hover .contact-value {
 
 .path-steps {
   display: grid;
-  gap: 3.5rem;
+  gap: clamp(2rem, 5vw, 3.25rem);
 }
 
 .path-step {

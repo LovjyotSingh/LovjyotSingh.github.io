@@ -177,4 +177,4 @@ export const CONTACT_INFO = {
   availability: "Immediate joiner",
 } as const;
 
-export const RESUME_URL = "/lovjyot-singh-cv.pdf";
+export const RESUME_URL = "/Lovjyot%20Singh%20Resume.pdf";

@@ -5,7 +5,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
-const resumePath = path.resolve(root, "../Lovjyot Singh CV.pdf");
+const resumePath = path.resolve(root, "../Lovjyot Singh Resume.pdf");
 
 export default defineConfig({
   base: "./",
@@ -16,7 +16,7 @@ export default defineConfig({
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
           const pathname = decodeURIComponent(req.url.split("?")[0]);
-          if (pathname !== "/Lovjyot Singh CV.pdf") {
+          if (pathname !== "/Lovjyot Singh Resume.pdf") {
             next();
             return;
           }
