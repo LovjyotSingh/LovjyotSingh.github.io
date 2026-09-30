@@ -1,12 +1,12 @@
 import { useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { profile, projects } from "../content.js";
+import { projects } from "../content.js";
 import { Reveal, Spotlight } from "../effects.jsx";
 
 const STEPS = [
   {
     title: "USICT, GGSIPU",
-    body: "B.Tech in Computer Science and Engineering, 2022 to 2026. IBM front-end engineering in 2025.",
+    body: "B.Tech in Computer Science and Engineering, 2022 to 2026.",
   },
   {
     title: "OfferForge AI",
@@ -85,7 +85,6 @@ export function Work() {
             </Spotlight>
           ))}
         </div>
-        <p className="training">{profile.training}</p>
       </div>
     </section>
   );

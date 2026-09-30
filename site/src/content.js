@@ -16,7 +16,6 @@ export const profile = {
   linkedinLabel: "linkedin.com/in/lovjyotsingh",
   resumeHref: "Lovjyot%20Singh%20Resume.pdf",
   resumeName: "Lovjyot Singh Resume.pdf",
-  training: "IBM Front-End Engineering track, 2025. React, TypeScript, and Tailwind CSS.",
 };
 
 export const projects = [
