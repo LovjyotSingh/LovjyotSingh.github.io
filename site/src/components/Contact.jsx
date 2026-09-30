@@ -1,66 +1,68 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 import { profile } from "../content.js";
-import { fadeUp } from "../motion.js";
+import { Magnetic, Reveal } from "../effects.jsx";
 
 export function Contact() {
-  const [copyLabel, setCopyLabel] = useState("Copy");
-
   async function copyEmail() {
     const ok = await writeClipboard(profile.email);
-    setCopyLabel(ok ? "Copied" : "Copy failed");
-    window.setTimeout(() => setCopyLabel("Copy"), 1800);
+    if (ok) toast.success("Email copied");
+    else toast.error("Could not copy the email");
   }
 
   return (
-    <motion.section id="contact" className="section contact" {...fadeUp}>
+    <section id="contact" className="section contact">
+      <div className="contact-orb" aria-hidden="true" />
       <div className="wrap contact-grid">
-        <header>
+        <Reveal>
           <p className="label">03</p>
           <h2>
             Say <span className="ember-word">hello</span>
           </h2>
           <p className="lede">Delhi NCR. Looking for a software engineer role.</p>
-        </header>
-        <div className="contact-list">
-          <div className="contact-row">
-            <span className="contact-label">Email</span>
-            <span className="contact-actions">
-              <a className="contact-value" href={`mailto:${profile.email}`}>
-                {profile.email}
-              </a>
-              <button className="copy-btn" type="button" onClick={copyEmail}>
-                {copyLabel}
-              </button>
-            </span>
-          </div>
-          <a className="contact-row" href={profile.github} target="_blank" rel="noreferrer">
-            <span className="contact-label">GitHub</span>
-            <span className="contact-value">
-              {profile.githubLabel}
-              <span className="sr-only"> (opens in a new tab)</span>
-            </span>
-          </a>
-          <div className="contact-row">
-            <span className="contact-label">Resume</span>
-            <a className="btn btn-primary" href={profile.resumeHref} download={profile.resumeName}>
-              Download resume
+        </Reveal>
+        <Reveal delay={0.12}>
+          <div className="contact-list">
+            <div className="contact-row">
+              <span className="contact-label">Email</span>
+              <span className="contact-actions">
+                <a className="contact-value" href={`mailto:${profile.email}`}>
+                  {profile.email}
+                </a>
+                <button className="copy-btn" type="button" onClick={copyEmail}>
+                  Copy
+                </button>
+              </span>
+            </div>
+            <a className="contact-row" href={profile.github} target="_blank" rel="noreferrer">
+              <span className="contact-label">GitHub</span>
+              <span className="contact-value">
+                {profile.githubLabel}
+                <span className="sr-only"> (opens in a new tab)</span>
+              </span>
+            </a>
+            <div className="contact-row">
+              <span className="contact-label">Resume</span>
+              <Magnetic>
+                <a className="btn btn-primary" href={profile.resumeHref} download={profile.resumeName}>
+                  Download resume
+                </a>
+              </Magnetic>
+            </div>
+            <a className="contact-row" href={profile.linkedin} target="_blank" rel="noreferrer">
+              <span className="contact-label">LinkedIn</span>
+              <span className="contact-value">
+                {profile.linkedinLabel}
+                <span className="sr-only"> (opens in a new tab)</span>
+              </span>
+            </a>
+            <a className="contact-row" href={profile.phoneHref}>
+              <span className="contact-label">Phone</span>
+              <span className="contact-value">{profile.phoneDisplay}</span>
             </a>
           </div>
-          <a className="contact-row" href={profile.linkedin} target="_blank" rel="noreferrer">
-            <span className="contact-label">LinkedIn</span>
-            <span className="contact-value">
-              {profile.linkedinLabel}
-              <span className="sr-only"> (opens in a new tab)</span>
-            </span>
-          </a>
-          <a className="contact-row" href={profile.phoneHref}>
-            <span className="contact-label">Phone</span>
-            <span className="contact-value">{profile.phoneDisplay}</span>
-          </a>
-        </div>
+        </Reveal>
       </div>
-    </motion.section>
+    </section>
   );
 }
 

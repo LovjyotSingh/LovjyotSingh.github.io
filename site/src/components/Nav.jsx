@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { profile } from "../content.js";
-import { easeOut } from "../motion.js";
+import { EASE, Spark } from "../effects.jsx";
 
 const links = [
   { href: "#work", label: "Work" },
@@ -10,38 +10,16 @@ const links = [
 ];
 
 export function Nav() {
-  const [hidden, setHidden] = useState(false);
+  const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
-  const openRef = useRef(false);
 
-  useEffect(() => {
-    openRef.current = open;
-  }, [open]);
-
-  useEffect(() => {
-    let last = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 8);
-      if (openRef.current) {
-        last = y;
-        return;
-      }
-      if (y < 12) {
-        setHidden(false);
-        last = y;
-        return;
-      }
-      const delta = y - last;
-      if (Math.abs(delta) < 8) return;
-      setHidden(delta > 0);
-      last = y;
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    setScrolled(latest > 12);
+    setHidden(latest > 240 && latest > previous && !open);
+  });
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 760px)");
@@ -68,39 +46,42 @@ export function Nav() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  const shown = open || !hidden;
-
   return (
     <motion.header
-      className={scrolled ? "nav scrolled" : "nav"}
-      initial={{ y: "0%" }}
-      animate={{ y: shown ? "0%" : "-110%" }}
-      transition={{ duration: 0.4, ease: easeOut }}
+      className={scrolled || open ? "nav scrolled" : "nav"}
+      animate={{ y: hidden ? -110 : 0 }}
+      transition={{ duration: 0.45, ease: EASE }}
     >
-      <div className="wrap nav-inner">
-        <a className="brand" href="#top">
-          Lovjyot Singh
-        </a>
-        <nav className="nav-links" aria-label="Sections">
-          {links.map((link) => (
-            <a key={link.href} href={link.href}>
-              {link.label}
-            </a>
-          ))}
-        </nav>
-        <div className="nav-right">
-          <a className="btn btn-ghost btn-small nav-resume" href={profile.resumeHref} download={profile.resumeName}>
-            Resume
+      <div className="nav-shell">
+        <div className="wrap nav-inner">
+          <a className="brand" href="#top">
+            <span className="brand-mark">
+              <span className="brand-glow" />
+              <Spark className="spark" />
+            </span>
+            <span>Lovjyot Singh</span>
           </a>
-          <button
-            className="nav-toggle btn btn-ghost"
-            type="button"
-            aria-expanded={open}
-            aria-controls="site-menu"
-            onClick={() => setOpen((value) => !value)}
-          >
-            {open ? "Close" : "Menu"}
-          </button>
+          <nav className="nav-links" aria-label="Sections">
+            {links.map((link) => (
+              <a key={link.href} href={link.href}>
+                {link.label}
+              </a>
+            ))}
+          </nav>
+          <div className="nav-right">
+            <a className="btn btn-ghost btn-small nav-resume" href={profile.resumeHref} download={profile.resumeName}>
+              Resume
+            </a>
+            <button
+              className="nav-toggle btn btn-ghost"
+              type="button"
+              aria-expanded={open}
+              aria-controls="site-menu"
+              onClick={() => setOpen((value) => !value)}
+            >
+              {open ? "Close" : "Menu"}
+            </button>
+          </div>
         </div>
       </div>
       <AnimatePresence>
@@ -108,10 +89,10 @@ export function Nav() {
           <motion.div
             className="nav-panel"
             id="site-menu"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.28, ease: easeOut }}
+            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: 0.3, ease: EASE }}
           >
             <nav className="wrap panel-links" aria-label="Mobile">
               {links.map((link) => (
@@ -122,12 +103,7 @@ export function Nav() {
               <a href={profile.github} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>
                 GitHub
               </a>
-              <a
-                className="btn btn-primary panel-resume"
-                href={profile.resumeHref}
-                download={profile.resumeName}
-                onClick={() => setOpen(false)}
-              >
+              <a className="btn btn-primary panel-resume" href={profile.resumeHref} download={profile.resumeName} onClick={() => setOpen(false)}>
                 Download resume
               </a>
             </nav>

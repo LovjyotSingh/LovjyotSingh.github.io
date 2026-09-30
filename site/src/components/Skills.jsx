@@ -1,17 +1,18 @@
-import { motion } from "framer-motion";
 import { profile, skills } from "../content.js";
-import { fadeUp } from "../motion.js";
+import { Reveal, Spark } from "../effects.jsx";
 
 export function Skills() {
   return (
-    <motion.section id="skills" className="skills" {...fadeUp}>
+    <section id="skills" className="skills">
       <div className="wrap">
-        <p className="label">02</p>
-        <h2>
-          The <span className="ember-word">stack</span>
-        </h2>
+        <Reveal>
+          <p className="label">02</p>
+          <h2>
+            The <span className="ember-word">stack</span>
+          </h2>
+        </Reveal>
       </div>
-      <div className="marquee">
+      <div className="marquee mask-fade-x">
         <div className="marquee-track">
           <SkillRow />
           <SkillRow hidden />
@@ -20,15 +21,18 @@ export function Skills() {
       <div className="wrap">
         <p className="skills-note">{profile.training}</p>
       </div>
-    </motion.section>
+    </section>
   );
 }
 
 function SkillRow({ hidden = false }) {
   return (
     <ul className="skill-row" aria-hidden={hidden ? "true" : undefined}>
-      {skills.map((skill) => (
-        <li key={skill}>{skill}</li>
+      {skills.map((skill, index) => (
+        <li key={skill} className={index % 3 === 1 ? "skill-italic" : undefined}>
+          <span>{skill}</span>
+          <Spark className="spark spark-xs" />
+        </li>
       ))}
     </ul>
   );
