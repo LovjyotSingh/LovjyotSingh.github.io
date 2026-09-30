@@ -15,8 +15,9 @@ Open [http://localhost:3000](http://localhost:3000).
 npm run type-check
 npm run lint
 npm run build
-npm run start
 ```
+
+`npm run build` writes a static site to `out/`. This repository is published with GitHub Pages from the repository root, so the exported files (including `.nojekyll`, which keeps the `_next` folder) are what the live site serves.
 
 ## What’s on the page
 

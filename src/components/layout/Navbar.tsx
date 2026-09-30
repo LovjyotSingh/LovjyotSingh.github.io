@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { Menu, X, Github, Linkedin, Mail, FileText } from "lucide-react";
 import { NAV_LINKS, RESUME_URL, SOCIAL_LINKS } from "@/lib/constants";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
@@ -43,7 +42,7 @@ export function Navbar() {
     >
       <nav className="container-custom" aria-label="Main navigation">
         <div className="flex h-16 items-center justify-between lg:h-[4.25rem]">
-          <Link
+          <a
             href="#top"
             className="font-display text-heading-sm font-bold tracking-tight text-[var(--color-text-primary)]"
             aria-label="Lovjyot Singh - Home"
@@ -53,12 +52,12 @@ export function Navbar() {
                 LS
               </span>
             </MagneticCursor>
-          </Link>
+          </a>
 
           <div className="hidden items-center gap-7 lg:flex">
             {NAV_LINKS.map((link) => (
               <MagneticCursor key={link.href}>
-                <Link
+                <a
                   href={link.href}
                   className={cn(
                     "relative text-body-sm font-medium text-[var(--color-text-secondary)]",
@@ -70,7 +69,7 @@ export function Navbar() {
                   )}
                 >
                   {link.label}
-                </Link>
+                </a>
               </MagneticCursor>
             ))}
           </div>
@@ -119,14 +118,14 @@ export function Navbar() {
         >
           <div className="flex flex-col gap-1 border-t border-[var(--color-border)] pt-4">
             {NAV_LINKS.map((link) => (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
                 className="rounded-xl px-2 py-3 text-body font-medium text-[var(--color-text-secondary)] transition-colors hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)]"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
             <div className="mt-3 flex items-center gap-2 border-t border-[var(--color-border)] pt-4">
               {SOCIAL_LINKS.map((social) => (

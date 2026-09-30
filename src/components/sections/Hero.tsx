@@ -118,9 +118,9 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease, delay: 0.15 }}
-            className="relative mx-auto hidden h-[540px] w-full max-w-xl sm:block"
+            className="relative mx-auto hidden h-[540px] w-full max-w-xl overflow-hidden lg:block"
           >
-            <div className="absolute left-0 top-16 w-[86%] rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)]/80 shadow-card backdrop-blur-xl dark:shadow-card-dark">
+            <div className="absolute left-0 top-28 w-[88%] rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)]/80 shadow-card backdrop-blur-xl dark:shadow-card-dark">
               <div className="flex h-10 items-center gap-1.5 border-b border-[var(--color-border)] px-4">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
                 <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
@@ -146,7 +146,7 @@ export function Hero() {
             </div>
 
             <motion.div
-              className="absolute left-6 top-0 z-20 w-64 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-primary)]/90 p-4 shadow-card backdrop-blur-xl dark:shadow-card-dark"
+              className="absolute right-0 top-2 z-20 w-64 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-primary)]/95 p-4 shadow-card backdrop-blur-xl dark:shadow-card-dark"
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
