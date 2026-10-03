@@ -1,30 +1,35 @@
 # Lovjyot Singh — Portfolio
 
-Personal site for Lovjyot Singh, a full-stack engineer. Built with Next.js 15, TypeScript, Tailwind CSS, and Framer Motion.
+Personal site for Lovjyot Singh, a full-stack engineer. Built with React, Vite, and Framer Motion, with Lenis for smooth scrolling.
 
 ## Run it
 
 ```bash
+cd site
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open the local URL that Vite prints.
+
+## Publish
 
 ```bash
-npm run type-check
-npm run lint
+cd site
 npm run build
 ```
 
-`npm run build` writes a static site to `out/`. This repository is published with GitHub Pages from the repository root, so the exported files (including `.nojekyll`, which keeps the `_next` folder) are what the live site serves.
+`npm run build` bundles the site and copies the result (`index.html`, `assets/`, favicon, `.nojekyll`) to the repository root. GitHub Pages serves the repository root, so commit the generated files.
 
-## What’s on the page
+## What's on the page
 
-- Hero, about, projects, skills, experience, contact, and footer
-- Light and dark theme, with the system preference as the default
-- Particle field, glow orbs, magnetic links, and a scroll progress bar
-- Live links for OfferForge AI and SyncFlow
-- Resume download from the CV in this repo
+- Hero with a live OfferForge AI preview card and quick facts
+- Skills marquee
+- Selected work: OfferForge AI and SyncFlow, each with live and source links
+- Journey timeline that fills as you scroll
+- Skills grouped by area
+- Contact with resume download, email, and copy-to-clipboard
+- Scroll progress bar, active-section nav, magnetic buttons, and card spotlight hover
+- Reduced-motion and keyboard support
 
-Content lives in `src/lib/constants.ts`.
+Content lives in `site/src/content.js`.

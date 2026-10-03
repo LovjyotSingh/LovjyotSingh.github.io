@@ -4,6 +4,12 @@ import { profile } from "../content.js";
 import { EASE, Magnetic, Spark, WordReveal } from "../effects.jsx";
 import { PreviewCard } from "./PreviewCard.jsx";
 
+const facts = [
+  { label: "Education", value: `${profile.degree}, ${profile.school}` },
+  { label: "Shipped", value: "2 products, both live" },
+  { label: "Based in", value: profile.location },
+];
+
 export function Hero() {
   const heroRef = useRef(null);
   const cardRef = useRef(null);
@@ -18,13 +24,13 @@ export function Hero() {
   };
 
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const textY = useTransform(scrollYProgress, [0, 1], [0, -80]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const { scrollYProgress: cardProgress } = useScroll({ target: cardRef, offset: ["start end", "center center"] });
-  const rotateX = useTransform(cardProgress, [0, 1], [28, 0]);
-  const scale = useTransform(cardProgress, [0, 1], [0.9, 1]);
-  const cardY = useTransform(cardProgress, [0, 1], [48, 0]);
+  const rotateX = useTransform(cardProgress, [0, 1], [16, 0]);
+  const scale = useTransform(cardProgress, [0, 1], [0.94, 1]);
+  const cardY = useTransform(cardProgress, [0, 1], [32, 0]);
 
   return (
     <header className="hero" id="top" ref={heroRef} onMouseMove={onMove}>
@@ -32,7 +38,7 @@ export function Hero() {
 
       <motion.div className="hero-copy" style={{ y: textY, opacity: textOpacity }}>
         <motion.p className="chip" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE }}>
-          <Spark className="spark spark-sm" />
+          <span className="status-dot" aria-hidden="true" />
           Open to work · {profile.location}
         </motion.p>
 
@@ -56,6 +62,15 @@ export function Hero() {
             GitHub
           </a>
         </motion.div>
+
+        <motion.dl className="hero-facts" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1.02, ease: EASE }}>
+          {facts.map((fact) => (
+            <div key={fact.label}>
+              <dt>{fact.label}</dt>
+              <dd>{fact.value}</dd>
+            </div>
+          ))}
+        </motion.dl>
       </motion.div>
 
       <div className="hero-stage" ref={cardRef}>

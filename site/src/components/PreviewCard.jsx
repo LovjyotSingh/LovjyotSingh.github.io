@@ -17,7 +17,10 @@ export function PreviewCard() {
           <i />
         </span>
         <span className="live-host">{project.host}</span>
-        <span className="live-pill">Live</span>
+        <span className="live-pill">
+          <span className="status-dot" aria-hidden="true" />
+          Live
+        </span>
       </div>
       <div className="live-body">
         <p className="kicker">OfferForge AI</p>

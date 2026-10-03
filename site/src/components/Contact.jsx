@@ -17,11 +17,11 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="contact">
+    <section id="contact" className="contact" aria-labelledby="contact-title">
       <div className="contact-glow" aria-hidden="true" />
       <Reveal className="contact-copy">
         <p className="kicker">Contact</p>
-        <h2>
+        <h2 id="contact-title">
           Say <span className="ember-word">hello.</span>
         </h2>
         <p className="lede">Delhi NCR. I am looking for a software engineer role.</p>
@@ -34,20 +34,23 @@ export function Contact() {
           <a className="btn btn-ghost btn-lg" href={`mailto:${profile.email}`}>
             Email me
           </a>
+          <button className="btn btn-ghost btn-lg" type="button" onClick={copyEmail}>
+            Copy email
+          </button>
         </div>
       </Reveal>
 
-      <div className="contact-list">
+      <Reveal className="contact-list" delay={0.1}>
         {rows.map((row) => (
           <a key={row.label} className="contact-row" href={row.href} target={row.external ? "_blank" : undefined} rel={row.external ? "noreferrer" : undefined}>
             <span>{row.label}</span>
             <strong>{row.value}</strong>
+            <i className="contact-arrow" aria-hidden="true">
+              ↗
+            </i>
           </a>
         ))}
-        <button className="copy-btn" type="button" onClick={copyEmail}>
-          Copy email
-        </button>
-      </div>
+      </Reveal>
     </section>
   );
 }

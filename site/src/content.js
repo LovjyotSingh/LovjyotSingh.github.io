@@ -46,7 +46,44 @@ export const projects = [
     summary:
       "A real-time collaborative workspace. Edits sync over Socket.io, documents are stored in MongoDB, and Redis keeps the hot cache short. Built with Next.js and TypeScript.",
     stack: ["Next.js", "TypeScript", "Socket.io", "MongoDB", "Redis"],
+    lines: [
+      "Edits sync in real time over Socket.io",
+      "Documents stored in MongoDB",
+      "Redis keeps the hot cache short",
+      "Built with Next.js and TypeScript",
+    ],
   },
+];
+
+export const journey = [
+  {
+    title: "USICT, GGSIPU",
+    meta: "2022 – 2026",
+    body: "B.Tech in Computer Science and Engineering, 2022 to 2026.",
+  },
+  {
+    title: "OfferForge AI",
+    meta: "Shipped",
+    body: "A structured AI mock-interview platform. Role-based sections, rubric grading, and MongoDB auth. React and Vite on the client, Express on the API, both on Vercel.",
+  },
+  {
+    title: "SyncFlow",
+    meta: "Shipped",
+    body: "A real-time collaborative workspace. Socket.io keeps edits in sync, MongoDB stores the documents, and Redis covers the hot cache.",
+  },
+  {
+    title: "What I want next",
+    meta: "Now",
+    body: "A software engineer role. I am in Delhi NCR and I can start.",
+  },
+];
+
+export const skillGroups = [
+  { title: "Languages", items: ["JavaScript", "TypeScript", "Java", "SQL"] },
+  { title: "Frontend", items: ["React", "Next.js", "Vite", "Tailwind CSS"] },
+  { title: "Backend", items: ["Node.js", "Express", "Socket.io"] },
+  { title: "Data", items: ["MongoDB", "Redis", "MySQL"] },
+  { title: "Tooling and deploy", items: ["Docker", "Git", "Vercel", "Render"] },
 ];
 
 export const skills = [

@@ -1,15 +1,16 @@
 import { Backdrop } from "./components/Backdrop.jsx";
 import { Contact } from "./components/Contact.jsx";
+import { Footer } from "./components/Footer.jsx";
 import { Hero } from "./components/Hero.jsx";
+import { Journey } from "./components/Journey.jsx";
 import { Nav } from "./components/Nav.jsx";
-import { Skills } from "./components/Skills.jsx";
+import { Skills, SkillsMarquee } from "./components/Skills.jsx";
 import { Work } from "./components/Work.jsx";
 import { PageTransition } from "./effects.jsx";
 import useSmoothScroll from "./hooks/useSmoothScroll.js";
 
 export default function App() {
   useSmoothScroll();
-  const year = new Date().getFullYear();
 
   return (
     <>
@@ -20,16 +21,13 @@ export default function App() {
       <Nav />
       <PageTransition>
         <Hero />
-        <Skills />
+        <SkillsMarquee />
         <Work />
+        <Journey />
+        <Skills />
         <Contact />
       </PageTransition>
-      <footer className="footer">
-        <div className="container footer-inner">
-          <span>© {year} Lovjyot Singh</span>
-          <span>Delhi NCR</span>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }
