@@ -1,14 +1,15 @@
-import { skills } from "../content.js";
-import { Spark } from "../effects.jsx";
+import { skillGroups, skills } from "../content.js";
+import { Reveal, Spark, Stagger, staggerItem } from "../effects.jsx";
+import { motion } from "framer-motion";
 
-export function Skills() {
+export function SkillsMarquee() {
   return (
-    <section id="skills" className="marquee" aria-label="Skills">
+    <div className="marquee" role="presentation">
       <div className="marquee-track">
         <Row />
         <Row hidden />
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -22,5 +23,34 @@ function Row({ hidden = false }) {
         </li>
       ))}
     </ul>
+  );
+}
+
+export function Skills() {
+  return (
+    <section id="skills" className="section skills" aria-labelledby="skills-title">
+      <div className="container">
+        <Reveal className="section-head">
+          <p className="kicker">Skills</p>
+          <h2 id="skills-title">
+            What I build <span className="serif-muted">with.</span>
+          </h2>
+          <p className="lede">The tools I reach for across the client, the API, and the data layer.</p>
+        </Reveal>
+
+        <Stagger className="skill-grid" as="ul">
+          {skillGroups.map((group) => (
+            <motion.li key={group.title} className="skill-card" variants={staggerItem}>
+              <h3>{group.title}</h3>
+              <ul className="chips">
+                {group.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </motion.li>
+          ))}
+        </Stagger>
+      </div>
+    </section>
   );
 }
