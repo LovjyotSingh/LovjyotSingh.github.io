@@ -4,7 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#0B0A09" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="color-scheme" content="dark light" />
+    <script>
+      try {
+        var saved = localStorage.getItem("theme");
+        if (saved === "light" || saved === "dark") document.documentElement.setAttribute("data-theme", saved);
+        if (saved === "light") document.querySelector('meta[name="theme-color"]').setAttribute("content", "#FAF6EF");
+      } catch (e) {}
+    </script>
     <meta name="format-detection" content="telephone=no" />
     <meta
       name="description"

@@ -29,6 +29,7 @@ npm run build
 - Journey timeline that fills as you scroll
 - Skills grouped by area
 - Contact with resume download, email, and copy-to-clipboard
+- Dark (default) and light themes with a nav toggle; the choice is saved in the browser
 - Scroll progress bar, active-section nav, magnetic buttons, and card spotlight hover
 - Reduced-motion and keyboard support
 
