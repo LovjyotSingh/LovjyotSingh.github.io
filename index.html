@@ -606,7 +606,7 @@ footer a:hover{color:var(--ink)}
   const secIO = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
   }), { rootMargin: '-45% 0px -50% 0px' });
-  ['about', 'work', 'fit', 'contact'].forEach(id => secIO.observe(document.getElementById(id)));
+  ['top', 'about', 'work', 'fit', 'contact'].forEach(id => secIO.observe(document.getElementById(id)));
 
   /* card light follows the cursor */
   $$('.card').forEach(el => el.addEventListener('pointermove', e => {
