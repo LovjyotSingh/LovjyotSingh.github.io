@@ -14,7 +14,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff8a3d'/%3E%3Cstop offset='.5' stop-color='%23ff3d81'/%3E%3Cstop offset='1' stop-color='%238b5cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%23000'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='url(%23g)' stroke-width='5'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap">
 <style>
 /* Layout: pure black. A slow eclipse of colour rises under the hero; everything else is quiet
    hairline structure, crisp sans type, and an italic serif for the one word that matters. Dark-only. */
@@ -63,7 +63,7 @@ h1,h2,h3{margin:0;font-weight:600;text-wrap:balance}
 .nav-links{display:flex;gap:2px;margin:0 auto}
 .nav-links a{font:500 14px var(--f-sans);color:var(--muted);text-decoration:none;padding:9px 13px;border-radius:999px;transition:color .2s,background .2s}
 .nav-links a:hover,.nav-links a.on{color:var(--ink);background:rgba(255,255,255,.06)}
-@media (max-width:720px){.nav-links{display:none}.nav .btn{margin-left:auto}}
+@media (max-width:720px){.nav-links{display:none}}
 
 /* ---------- hero ---------- */
 .hero{position:relative;overflow:hidden;text-align:center;padding-top:calc(150px + env(safe-area-inset-top,0px))}
@@ -182,7 +182,7 @@ h1,h2,h3{margin:0;font-weight:600;text-wrap:balance}
 .try summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;font:500 15px var(--f-sans);color:var(--ink);padding:10px 16px;border-radius:999px;border:1px solid var(--line2);transition:background .25s}
 .try summary::-webkit-details-marker{display:none}
 .try summary:hover{background:rgba(255,255,255,.06)}
-.try summary .tag{font:500 10.5px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:5px;background:var(--grad);color:#000}
+.try summary .tag{font:500 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:5px;background:var(--grad);color:#000}
 .try summary .chev{width:14px;height:14px;transition:transform .3s var(--ease)}
 .try[open] summary .chev{transform:rotate(180deg)}
 .try .ex{margin-top:18px;border:1px solid var(--line);border-radius:18px;background:var(--bg);overflow:hidden}
@@ -289,6 +289,36 @@ footer a:hover{color:var(--ink)}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:100;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--ink);color:#000;font:500 14px var(--f-sans);padding:12px 20px;border-radius:999px;transition:all .4s var(--ease);max-width:calc(100% - 32px)}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
+/* ---------- mobile menu ---------- */
+.menu-btn{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line2);background:transparent;color:var(--ink);cursor:pointer;flex:none;place-items:center;position:relative}
+.menu-btn span{position:absolute;left:50%;width:16px;height:1.5px;border-radius:2px;background:currentColor;transform:translateX(-50%);transition:transform .3s var(--ease),top .3s var(--ease)}
+.menu-btn span:first-child{top:17px}.menu-btn span:last-child{top:25px}
+@media (max-width:720px){.menu-btn{display:grid;margin-left:auto}}
+.menu-btn[aria-expanded="true"] span:first-child{top:21px;transform:translateX(-50%) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:last-child{top:21px;transform:translateX(-50%) rotate(-45deg)}
+.mobile-menu{position:absolute;left:0;right:0;top:calc(100% + 8px);display:flex;flex-direction:column;gap:2px;padding:8px;border-radius:24px;border:1px solid var(--line2);background:var(--s1);box-shadow:0 30px 80px -20px rgba(0,0,0,.9);animation:fade .3s var(--ease)}
+.mobile-menu[hidden]{display:none}
+.mobile-menu a{display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 18px;border-radius:16px;text-decoration:none;font:500 17px var(--f-sans);color:var(--ink)}
+.mobile-menu a::after{content:"→";color:var(--dim)}
+.mobile-menu a:hover,.mobile-menu a:active,.mobile-menu a.on{background:rgba(255,255,255,.06)}
+@keyframes fade{from{opacity:0;transform:translateY(-6px)}}
+
+/* ---------- touch screens ---------- */
+@media (pointer:coarse){
+  .btn.sm{min-height:44px}
+  .mark{width:44px;height:44px}
+  .seg button,.round,.samples button{min-height:42px;padding-inline:16px}
+  .b-dsa a,.link{padding-block:10px}
+  footer a{display:inline-block;padding-block:10px}
+  .try summary{min-height:46px}
+  /* 16px stops iOS Safari from zooming the page when a field is focused */
+  .pane textarea,#jd{font-size:16px}
+}
+
+/* ---------- lighter effects on phones, paused off screen ---------- */
+@media (max-width:720px){.corona{filter:blur(34px)}.halo .corona{filter:blur(44px)}}
+[data-offscreen],[data-offscreen] *{animation-play-state:paused!important}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
@@ -303,7 +333,11 @@ footer a:hover{color:var(--ink)}
   <nav class="nav-links" aria-label="Sections">
     <a href="#about">About</a><a href="#work">Work</a><a href="#fit">Role fit</a><a href="#contact">Contact</a>
   </nav>
+  <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu"><span></span><span></span></button>
   <a class="btn solid sm" href="Lovjyot_Singh_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Sections" hidden>
+    <a href="#about">About</a><a href="#work">Work</a><a href="#fit">Role fit</a><a href="#contact">Contact</a>
+  </nav>
 </header>
 
 <main>
@@ -421,7 +455,7 @@ footer a:hover{color:var(--ink)}
         <div class="p-visual">
           <figure class="shot">
             <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>syncflow-sss.vercel.app</span></div>
-            <img src="assets/syncflow.jpg" width="800" height="510" alt="SyncFlow home page with the headline: write together, in sync." loading="lazy">
+            <img src="assets/syncflow.jpg" width="800" height="510" alt="SyncFlow home page with the headline: write together, in sync." loading="lazy" decoding="async">
           </figure>
         </div>
         <details class="try">
@@ -469,7 +503,7 @@ footer a:hover{color:var(--ink)}
         <div class="p-visual">
           <figure class="shot">
             <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>offer-forge-ai.vercel.app</span></div>
-            <img src="assets/offerforge.jpg" width="800" height="503" alt="OfferForge AI home page with the headline: interviews that feel real." loading="lazy">
+            <img src="assets/offerforge.jpg" width="800" height="503" alt="OfferForge AI home page with the headline: interviews that feel real." loading="lazy" decoding="async">
           </figure>
         </div>
         <details class="try">
@@ -601,15 +635,33 @@ footer a:hover{color:var(--ink)}
   function toast(m){ toastEl.textContent = m; toastEl.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => toastEl.classList.remove('show'), 2400); }
 
   /* nav state + active section */
-  const nav = $('#nav'), links = $$('.nav-links a');
+  const nav = $('#nav'), links = $$('.nav-links a, .mobile-menu a');
   addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 24), { passive: true });
   const secIO = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
   }), { rootMargin: '-45% 0px -50% 0px' });
   ['top', 'about', 'work', 'fit', 'contact'].forEach(id => secIO.observe(document.getElementById(id)));
 
+  /* phone menu */
+  const menuBtn = $('#menuBtn'), menu = $('#mobileMenu');
+  function setMenu(open){
+    menu.hidden = !open;
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  menuBtn.addEventListener('click', () => setMenu(menu.hidden));
+  menu.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('click', e => { if (!menu.hidden && !nav.contains(e.target)) setMenu(false); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) { setMenu(false); menuBtn.focus(); } });
+  matchMedia('(min-width: 721px)').addEventListener('change', e => e.matches && setMenu(false));
+
+  /* pause decorative animations while they're scrolled out of view */
+  const offIO = new IntersectionObserver(es => es.forEach(e => e.target.toggleAttribute('data-offscreen', !e.isIntersecting)));
+  $$('.horizon, .halo, .marquee').forEach(el => offIO.observe(el));
+
   /* card light follows the cursor */
   $$('.card').forEach(el => el.addEventListener('pointermove', e => {
+    if (e.pointerType !== 'mouse') return;
     const r = el.getBoundingClientRect(); el.style.setProperty('--mx', (e.clientX - r.left) + 'px'); el.style.setProperty('--my', (e.clientY - r.top) + 'px');
   }));
 
