@@ -1,30 +1,20 @@
-# Lovjyot Singh — Portfolio
+# lovjyotsingh.github.io
 
-Personal site for Lovjyot Singh, a full-stack engineer. Built with Next.js 15, TypeScript, Tailwind CSS, and Framer Motion.
+Personal portfolio of **Lovjyot Singh**, frontend and full-stack engineer.
 
-## Run it
+Live at **https://lovjyotsingh.github.io**
 
-```bash
-npm install
-npm run dev
+- Featured work: [SyncFlow](https://github.com/LovjyotSingh/SyncFlow) and [OfferForge AI](https://github.com/LovjyotSingh/OfferForge-AI)
+- A role-fit checker for recruiters: paste a job description and see which requirements are on my résumé
+- Plain HTML, CSS and JavaScript with no build step, served by GitHub Pages
+
+## Structure
+
+```
+index.html                  the whole site
+404.html                    not-found page that redirects home
+assets/                     project screenshots
+Lovjyot_Singh_Resume.pdf    résumé linked from the site
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
-
-```bash
-npm run type-check
-npm run lint
-npm run build
-```
-
-`npm run build` writes a static site to `out/`. This repository is published with GitHub Pages from the repository root, so the exported files (including `.nojekyll`, which keeps the `_next` folder) are what the live site serves.
-
-## What’s on the page
-
-- Hero, about, projects, skills, experience, contact, and footer
-- Light and dark theme, with the system preference as the default
-- Particle field, glow orbs, magnetic links, and a scroll progress bar
-- Live links for OfferForge AI and SyncFlow
-- Resume download from the CV in this repo
-
-Content lives in `src/lib/constants.ts`.
+To change something, edit `index.html` and push to `main`. GitHub Pages redeploys in about a minute.
