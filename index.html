@@ -340,7 +340,7 @@ footer a:hover{color:var(--ink)}
 </section>
 
 <div class="marquee" aria-hidden="true">
-  <div class="mq"><span>React</span><span>Next.js</span><span>TypeScript</span><span>Node.js</span><span>Express</span><span>Socket.io</span><span>Yjs</span><span>Redis</span><span>MongoDB</span><span>Tailwind CSS</span><span>Docker</span><span>Vercel</span><span>React</span><span>Next.js</span><span>TypeScript</span><span>Node.js</span><span>Express</span><span>Socket.io</span><span>Yjs</span><span>Redis</span><span>MongoDB</span><span>Tailwind CSS</span><span>Docker</span><span>Vercel</span></div>
+  <div class="mq"><span>React</span><span>Next.js</span><span>TypeScript</span><span>Node.js</span><span>Express</span><span>Socket.io</span><span>Yjs</span><span>Redis</span><span>MongoDB</span><span>Postgres</span><span>Tailwind CSS</span><span>Docker</span><span>Vercel</span><span>React</span><span>Next.js</span><span>TypeScript</span><span>Node.js</span><span>Express</span><span>Socket.io</span><span>Yjs</span><span>Redis</span><span>MongoDB</span><span>Postgres</span><span>Tailwind CSS</span><span>Docker</span><span>Vercel</span></div>
 </div>
 
 <!-- ================= ABOUT ================= -->
@@ -383,7 +383,7 @@ footer a:hover{color:var(--ink)}
         <div class="stack-rows">
           <div><h4>Languages</h4><ul><li>TypeScript</li><li>JavaScript</li><li>Java</li><li>SQL</li><li>HTML &amp; CSS</li></ul></div>
           <div><h4>Frameworks</h4><ul><li>React.js</li><li>Next.js</li><li>Node.js</li><li>Express.js</li><li>Socket.io</li><li>Tailwind CSS</li></ul></div>
-          <div><h4>Data &amp; cloud</h4><ul><li>MongoDB</li><li>MySQL</li><li>Redis</li><li>Docker</li><li>Vercel</li><li>Render</li></ul></div>
+          <div><h4>Data &amp; cloud</h4><ul><li>PostgreSQL</li><li>MongoDB</li><li>MySQL</li><li>Redis</li><li>Docker</li><li>Vercel</li><li>Render</li></ul></div>
           <div><h4>Tools &amp; DevOps</h4><ul><li>REST APIs</li><li>Microservices</li><li>JWT auth</li><li>Webhooks</li><li>CI/CD</li><li>Git &amp; Postman</li></ul></div>
           <div><h4>Fundamentals</h4><ul><li>DSA</li><li>System design (HLD/LLD)</li><li>DBMS</li><li>Operating systems</li><li>Computer networks</li></ul></div>
         </div>
@@ -406,13 +406,13 @@ footer a:hover{color:var(--ink)}
         <div class="p-text">
           <span class="p-meta"><i aria-hidden="true"></i>Live · Real-time collaborative workspace</span>
           <h3>SyncFlow</h3>
-          <p class="p-desc">A multiplayer block editor. People edit the same page at once, edits merge without conflicts, and a reload restores everything.</p>
+          <p class="p-desc">A multiplayer block editor that runs entirely on Vercel. People edit the same page at once with live cursors, and a sync engine I built from scratch keeps everyone in step without a single server.</p>
           <ul class="p-points">
-            <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Real-time sync.</b> Next.js 16, TypeScript and BlockNote, with edits merged through Yjs and broadcast over Socket.io.</span></li>
-            <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Persistence.</b> Live state saved to Redis after 700&nbsp;ms of quiet (30-day TTL); members, share tokens and files in MongoDB.</span></li>
-            <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Access.</b> JWT checked on every room join, rotatable share links, email invites and member-only uploads up to 10&nbsp;MB.</span></li>
+            <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Serverless sync engine.</b> A custom Yjs provider syncs over plain HTTP instead of WebSockets, polling every 350&nbsp;ms while anyone types, with one Postgres transaction per round trip.</span></li>
+            <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>No lost edits.</b> An append-only update log in Postgres (Neon), a 3&nbsp;s settle window so no concurrent edit is skipped, and background compaction into snapshots. Tested against a real Postgres.</span></li>
+            <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Sharing.</b> Signed session cookies, rotatable share links, email invites that wait for sign-up, and files on Vercel Blob.</span></li>
           </ul>
-          <div class="chips"><span class="chip">Next.js 16</span><span class="chip">TypeScript</span><span class="chip">Yjs</span><span class="chip">Socket.io</span><span class="chip">Redis</span><span class="chip">MongoDB</span></div>
+          <div class="chips"><span class="chip">Next.js 16</span><span class="chip">TypeScript</span><span class="chip">Yjs</span><span class="chip">BlockNote</span><span class="chip">Postgres · Neon</span><span class="chip">Vercel Blob</span></div>
           <div class="p-links">
             <a class="btn solid" href="https://syncflow-sss.vercel.app" target="_blank" rel="noopener">Visit live site ↗</a>
             <a class="btn" href="https://github.com/LovjyotSingh/SyncFlow" target="_blank" rel="noopener">Source code</a>
@@ -421,7 +421,7 @@ footer a:hover{color:var(--ink)}
         <div class="p-visual">
           <figure class="shot">
             <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>syncflow-sss.vercel.app</span></div>
-            <img src="assets/syncflow.jpg" width="800" height="500" alt="SyncFlow sign-in page with the headline: the same sentence, on two screens, at once." loading="lazy">
+            <img src="assets/syncflow.jpg" width="800" height="510" alt="SyncFlow home page with the headline: write together, in sync." loading="lazy">
           </figure>
         </div>
         <details class="try">
@@ -445,7 +445,7 @@ footer a:hover{color:var(--ink)}
               </div>
               <div class="statusbar"><span>Updates sent <b id="ops">0</b></span><span><i class="sdot" id="sdot"></i><span id="stxt">Saved</span></span></div>
             </div>
-            <p class="ex-note">Type in either tab. The change appears in the other one and saves after 700 ms of quiet. A simplified model of the real sync loop.</p>
+            <p class="ex-note">Type in either tab. The change crosses over and is stored, like SyncFlow posting your edits and pulling everyone else's. A simplified model of the real sync loop.</p>
           </div>
         </details>
       </article>
@@ -637,9 +637,9 @@ footer a:hover{color:var(--ink)}
       ops.textContent = ++opn;
       pane.classList.add('flash'); setTimeout(() => pane.classList.remove('flash'), 220);
     }, ms);
-    sdot.classList.add('busy'); stxt.textContent = 'Waiting for 700 ms of quiet…';
+    sdot.classList.add('busy'); stxt.textContent = 'Syncing…';
     clearTimeout(saveT);
-    saveT = setTimeout(() => { sdot.classList.remove('busy'); stxt.textContent = 'Saved to Redis · 30-day TTL'; }, 700);
+    saveT = setTimeout(() => { sdot.classList.remove('busy'); stxt.textContent = 'Stored in Postgres'; }, 700);
   }
   ta.addEventListener('input', () => sync(ta, tb, $('#paneB'), $('#latB')));
   tb.addEventListener('input', () => sync(tb, ta, $('#paneA'), $('#latA')));
@@ -678,28 +678,28 @@ footer a:hover{color:var(--ink)}
   /* Role fit check */
   const SK = [
     { k: 'React', t: s => /\breact(\.?js)?\b(?!\s*native)/i.test(s), has: 1, p: 'Built the OfferForge AI client in React and Vite.' },
-    { k: 'Next.js', t: s => /\bnext\.?js\b/i.test(s), has: 1, p: 'SyncFlow is a Next.js 16 app.' },
+    { k: 'Next.js', t: s => /\bnext\.?js\b/i.test(s), has: 1, p: 'SyncFlow is a Next.js 16 app, API included.' },
     { k: 'TypeScript', t: s => /typescript/i.test(s), has: 1, p: 'SyncFlow is written in TypeScript.' },
     { k: 'JavaScript', t: s => /javascript|\bes6\b|\bjs\b/i.test(s), has: 1, p: 'Core language across all my projects.' },
     { k: 'HTML & CSS', t: s => /\bhtml5?\b|\bcss3?\b/i.test(s), has: 1, p: 'Hand-built interfaces for every project.' },
     { k: 'Tailwind CSS', t: s => /tailwind/i.test(s), has: 1, p: 'Used in ExpenseFlow and the IBM front-end track.' },
-    { k: 'Node.js', t: s => /\bnode(\.?js)?\b/i.test(s), has: 1, p: 'SyncFlow runs a long-lived Node server for Socket.io.' },
+    { k: 'Node.js', t: s => /\bnode(\.?js)?\b/i.test(s), has: 1, p: 'Node APIs on Express (OfferForge, BlogHub) and Next.js route handlers (SyncFlow).' },
     { k: 'Express', t: s => /\bexpress(\.?js)?\b/i.test(s), has: 1, p: 'The OfferForge API, BlogHub API and TaskSphere run on Express.' },
-    { k: 'Real-time / WebSockets', t: s => /socket\.?io|websocket|real[\s-]?time/i.test(s), has: 1, p: 'SyncFlow broadcasts every edit over Socket.io.' },
+    { k: 'Real-time / WebSockets', t: s => /socket\.?io|websocket|real[\s-]?time/i.test(s), has: 1, p: 'Built SyncFlow''s real-time sync: first on Socket.io, now a serverless Yjs engine over HTTP.' },
     { k: 'MongoDB', t: s => /mongo/i.test(s), has: 1, p: 'Auth, sessions, membership and files in MongoDB.' },
     { k: 'NoSQL', t: s => /nosql/i.test(s), has: 1, p: 'MongoDB and Redis in production projects.' },
     { k: 'SQL / MySQL', t: s => /\bmysql\b|\bsql\b/i.test(s), has: 1, p: 'SQL and MySQL are core skills, with DBMS coursework.' },
-    { k: 'Redis', t: s => /redis/i.test(s), has: 1, p: 'SyncFlow saves live documents to Redis; SwiftShelf uses Redis locks.' },
+    { k: 'Redis', t: s => /redis/i.test(s), has: 1, p: 'SwiftShelf uses Redis locks written as Lua scripts.' },
     { k: 'REST APIs', t: s => /\bREST(ful)?\b/.test(s) || /restful|rest\s*apis?/i.test(s), has: 1, p: 'Designed the BlogHub API and the Express API behind OfferForge.' },
-    { k: 'Auth / JWT', t: s => /\bjwt\b|authenticat|authoriz/i.test(s), has: 1, p: 'JWT checked on every SyncFlow room join, and JWT auth in OfferForge.' },
+    { k: 'Auth / JWT', t: s => /\bjwt\b|authenticat|authoriz/i.test(s), has: 1, p: 'JWT auth in OfferForge and signed session cookies in SyncFlow.' },
     { k: 'Role-based access', t: s => /\brbac\b|role[- ]based/i.test(s), has: 1, p: 'BlogHub API has user, author and admin roles.' },
     { k: 'Docker', t: s => /docker|container/i.test(s), has: 1, p: 'Docker is part of my core stack.' },
     { k: 'CI/CD', t: s => /ci\s*\/\s*cd|continuous (integration|delivery|deployment)/i.test(s), has: 1, p: 'CI/CD pipelines are part of my core stack.' },
     { k: 'Git', t: s => /\bgit\b|github|version control/i.test(s), has: 1, p: 'All my projects are public on GitHub.' },
     { k: 'Deployment', t: s => /vercel|deploy/i.test(s), has: 1, p: 'SyncFlow and OfferForge AI are deployed and live on Vercel.' },
-    { k: 'Microservices', t: s => /micro-?services?/i.test(s), has: 1, p: 'In my core skills. SyncFlow runs its web app and socket server separately.' },
+    { k: 'Microservices', t: s => /micro-?services?/i.test(s), has: 1, p: 'Microservices are part of my core skills.' },
     { k: 'Webhooks', t: s => /webhook/i.test(s), has: 1, p: 'Webhooks are part of my core skills.' },
-    { k: 'System design', t: s => /system design|\bhld\b|\blld\b|scalab|architect/i.test(s), has: 1, p: 'HLD/LLD, and I designed SyncFlow\'s sync and persistence layers.' },
+    { k: 'System design', t: s => /system design|\bhld\b|\blld\b|scalab|architect/i.test(s), has: 1, p: 'HLD/LLD, and I designed SyncFlow\'s serverless sync protocol and storage.' },
     { k: 'DSA', t: s => /data structures?|algorithm|\bdsa\b|problem[- ]solving/i.test(s), has: 1, p: '200+ problems solved, with solutions on GitHub.' },
     { k: 'OOP', t: s => /\boops?\b|object[- ]oriented/i.test(s), has: 1, p: 'Java and TypeScript.' },
     { k: 'Java', t: s => /\bjava\b(?!\s*script)/i.test(s), has: 1, p: 'Java is one of my core languages.' },
@@ -708,12 +708,15 @@ footer a:hover{color:var(--ink)}
     { k: 'Accessibility', t: s => /accessib|a11y|wcag|\baria\b/i.test(s), has: 1, p: 'Accessibility standards were part of the IBM front-end track.' },
     { k: 'State management', t: s => /state management|manage state/i.test(s), has: 1, p: 'State management patterns from the IBM front-end track.' },
     { k: 'Component architecture', t: s => /component|design system|reusable/i.test(s), has: 1, p: 'Component architecture from the IBM front-end track.' },
+    { k: 'PostgreSQL', t: s => /postgres/i.test(s), has: 1, p: 'SyncFlow stores its update log, snapshots and presence in Postgres on Neon.' },
+    { k: 'Testing', t: s => /\bjest\b|vitest|cypress|playwright|unit test|testing library|\btdd\b|automated test/i.test(s), has: 1, p: 'SyncFlow''s sync engine is tested with Vitest against an in-memory Postgres.' },
+    { k: 'Serverless', t: s => /serverless|lambda|edge function|vercel function/i.test(s), has: 1, p: 'SyncFlow runs entirely on Vercel Functions, with no long-running server.' },
     { k: 'CS fundamentals', t: s => /operating system|computer network|\bdbms\b|cs fundamentals/i.test(s), has: 1, p: 'DBMS, operating systems and computer networks.' },
     { k: 'Redux', t: s => /redux|zustand|mobx/i.test(s) }, { k: 'Vue', t: s => /\bvue/i.test(s) }, { k: 'Angular', t: s => /angular/i.test(s) },
     { k: 'Svelte', t: s => /svelte/i.test(s) }, { k: 'GraphQL', t: s => /graphql/i.test(s) }, { k: 'Python', t: s => /python|django|flask|fastapi/i.test(s) },
     { k: 'Go', t: s => /\bgolang\b/i.test(s) }, { k: 'AWS', t: s => /\baws\b|amazon web services/i.test(s) }, { k: 'GCP', t: s => /\bgcp\b|google cloud/i.test(s) },
-    { k: 'Azure', t: s => /azure/i.test(s) }, { k: 'Kubernetes', t: s => /kubernetes|\bk8s\b/i.test(s) }, { k: 'PostgreSQL', t: s => /postgres/i.test(s) },
-    { k: 'Testing (Jest, Cypress…)', t: s => /\bjest\b|cypress|playwright|unit test|testing library|\btdd\b/i.test(s) }, { k: 'React Native', t: s => /react\s*native/i.test(s) },
+    { k: 'Azure', t: s => /azure/i.test(s) }, { k: 'Kubernetes', t: s => /kubernetes|\bk8s\b/i.test(s) }, 
+     { k: 'React Native', t: s => /react\s*native/i.test(s) },
     { k: 'Spring', t: s => /spring\s*boot|\bspring framework/i.test(s) }, { k: 'Kafka', t: s => /kafka/i.test(s) }, { k: 'Figma', t: s => /figma/i.test(s) },
     { k: 'PHP', t: s => /\bphp\b|laravel/i.test(s) }, { k: 'C++', t: s => /c\+\+/i.test(s) }
   ];
