@@ -250,6 +250,9 @@ h1,h2,h3{margin:0;font-weight:600;text-wrap:balance}
 .ascore{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .ascore b{font:600 46px/1 var(--f-sans);letter-spacing:-.05em;font-variant-numeric:tabular-nums}
 .ascore small{font-size:15px;color:var(--dim);margin-left:-8px}
+.vchip{align-self:flex-start;font:500 11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;padding:6px 11px;border-radius:999px;border:1px solid var(--line2);color:var(--muted)}
+.vchip.strong{color:var(--ok);border-color:rgba(52,211,153,.4)}
+.vchip.good{color:var(--c1);border-color:rgba(255,138,61,.4)}
 .ascore .vchip{align-self:center}
 .vchip.weak{color:var(--c2);border-color:rgba(255,61,129,.4)}
 .fb{margin-top:14px;font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
@@ -263,42 +266,6 @@ h1,h2,h3{margin:0;font-weight:600;text-wrap:balance}
 .rec{display:inline-flex;font:500 13px var(--f-sans);padding:7px 13px;border-radius:999px;background:rgba(52,211,153,.1);color:var(--ok)}
 .rec.mid{background:rgba(255,138,61,.1);color:var(--c1)}
 .rec.no{background:rgba(255,61,129,.1);color:var(--c2)}
-
-/* ---------- fit check ---------- */
-.fit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:16px}
-@media (max-width:960px){.fit{grid-template-columns:1fr}}
-.panel{padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:16px;min-width:0}
-.panel h3{font-size:20px;letter-spacing:-.03em}
-.samples{display:flex;gap:6px;flex-wrap:wrap}
-.samples button{font:500 13px var(--f-sans);border:1px solid var(--line2);background:transparent;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer;transition:all .2s}
-.samples button:hover{color:var(--ink)}
-.samples button[aria-pressed="true"]{color:#000;background:var(--ink);border-color:var(--ink)}
-#jd{width:100%;flex:1;min-height:260px;resize:vertical;border:1px solid var(--line);border-radius:16px;background:var(--bg);color:var(--ink);font:13.5px/1.75 var(--f-mono);padding:16px;transition:border-color .2s}
-#jd:focus{outline:none;border-color:var(--c3)}
-.fit-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.privacy{font-size:13px;color:var(--dim)}
-.score{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
-.gauge{position:relative;width:132px;height:132px;flex:none}
-.gauge svg{width:100%;height:100%;transform:rotate(-90deg)}
-.gauge .trk{fill:none;stroke:var(--s3);stroke-width:7}
-.gauge .val{fill:none;stroke:url(#gg);stroke-width:7;stroke-linecap:round;stroke-dasharray:339.29;stroke-dashoffset:339.29;transition:stroke-dashoffset 1.2s var(--ease)}
-.gauge b{position:absolute;inset:0;display:grid;place-items:center;font:600 32px var(--f-sans);letter-spacing:-.05em;font-variant-numeric:tabular-nums}
-.score-text{flex:1;min-width:200px;display:flex;flex-direction:column;gap:10px}
-.score-text p{font-size:18px;letter-spacing:-.02em}
-.vchip{align-self:flex-start;font:500 11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;padding:6px 11px;border-radius:999px;border:1px solid var(--line2);color:var(--muted)}
-.vchip.strong{color:var(--ok);border-color:rgba(52,211,153,.4)}
-.vchip.good{color:var(--c1);border-color:rgba(255,138,61,.4)}
-.matches{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
-@media (max-width:560px){.matches{grid-template-columns:1fr}}
-.matches li{display:flex;gap:10px;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:var(--bg);font-size:14px;color:var(--muted);animation:pop .55s var(--ease) both}
-.matches li svg{flex:none;width:15px;height:15px;margin-top:3px;color:var(--ok)}
-.matches li b{display:block;color:var(--ink);font-weight:500}
-@keyframes pop{from{opacity:0;transform:translateY(8px)}}
-.miss{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.miss .chip{border-style:dashed}
-.perks{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
-.perks li{display:flex;gap:10px;align-items:center;font-size:15px}
-.perks li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ok);flex:none}
 
 /* ---------- contact ---------- */
 .contact{position:relative;overflow:hidden;text-align:center;padding-block:clamp(120px,15vw,200px)}
@@ -339,12 +306,12 @@ footer a:hover{color:var(--ink)}
 @media (pointer:coarse){
   .btn.sm{min-height:44px}
   .mark{width:44px;height:44px}
-  .seg button,.round,.samples button{min-height:42px;padding-inline:16px}
+  .seg button,.round{min-height:42px;padding-inline:16px}
   .b-dsa a,.link{padding-block:10px}
   footer a{display:inline-block;padding-block:10px}
   .try summary{min-height:46px}
   /* 16px stops iOS Safari from zooming the page when a field is focused */
-  .ed textarea,.ed .mirror,#jd{font-size:16px}
+  .ed textarea,.ed .mirror{font-size:16px}
 }
 @media (max-width:400px){.seg button{padding-inline:10px}.proj{padding:16px}.ex-body{padding:12px}}
 
@@ -364,12 +331,12 @@ footer a:hover{color:var(--ink)}
 <header class="nav" id="nav">
   <a class="mark" href="#top" aria-label="Lovjyot Singh, back to top">LS</a>
   <nav class="nav-links" aria-label="Sections">
-    <a href="#about">About</a><a href="#work">Work</a><a href="#fit">Role fit</a><a href="#contact">Contact</a>
+    <a href="#about">About</a><a href="#work">Work</a><a href="#contact">Contact</a>
   </nav>
   <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu"><span></span><span></span></button>
   <a class="btn solid sm" href="Lovjyot_Singh_Resume.pdf" target="_blank" rel="noopener">Resume</a>
   <nav class="mobile-menu" id="mobileMenu" aria-label="Sections" hidden>
-    <a href="#about">About</a><a href="#work">Work</a><a href="#fit">Role fit</a><a href="#contact">Contact</a>
+    <a href="#about">About</a><a href="#work">Work</a><a href="#contact">Contact</a>
   </nav>
 </header>
 
@@ -616,48 +583,6 @@ footer a:hover{color:var(--ink)}
   </div>
 </section>
 
-<!-- ================= FIT CHECK ================= -->
-<section class="sec" id="fit">
-  <div class="wrap">
-    <div class="head reveal">
-      <span class="label">For recruiters</span>
-      <h2>Check my fit for <span class="serif gt">your role.</span></h2>
-      <p>Paste a job description to see which requirements are on my resume, with proof for each one. It runs in your browser and nothing is sent anywhere.</p>
-    </div>
-    <div class="fit reveal">
-      <div class="card panel">
-        <h3>Job description</h3>
-        <div class="samples" id="samples" role="group" aria-label="Sample job descriptions"></div>
-        <label class="sr" for="jd">Job description</label>
-        <textarea id="jd" spellcheck="false"></textarea>
-        <div class="fit-foot">
-          <span class="privacy" id="jdNote">A sample is loaded. Paste yours to replace it.</span>
-          <button class="btn solid" id="runFit" type="button">Check fit</button>
-        </div>
-      </div>
-      <div class="card panel" aria-live="polite">
-        <div class="score">
-          <div class="gauge">
-            <svg viewBox="0 0 128 128" aria-hidden="true">
-              <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--c1)"/><stop offset=".5" style="stop-color:var(--c2)"/><stop offset="1" style="stop-color:var(--c3)"/></linearGradient></defs>
-              <circle class="trk" cx="64" cy="64" r="54"/><circle class="val" id="gval" cx="64" cy="64" r="54"/>
-            </svg>
-            <b id="gnum">0%</b>
-          </div>
-          <div class="score-text">
-            <span class="vchip" id="vchip">Match</span>
-            <p id="fitHead">Paste a job description to see the match.</p>
-          </div>
-        </div>
-        <span class="label">On my resume</span>
-        <ul class="matches" id="matches"></ul>
-        <div id="missWrap"><span class="label">Not on my resume yet</span><div class="miss" id="miss"></div></div>
-        <div id="perkWrap"><span class="label">Also relevant</span><ul class="perks" id="perks"></ul></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ================= CONTACT ================= -->
 <section class="contact" id="contact">
   <div class="halo" aria-hidden="true"><div class="corona"></div><div class="disc"></div><div class="rim"></div></div>
@@ -698,7 +623,7 @@ footer a:hover{color:var(--ink)}
   const secIO = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
   }), { rootMargin: '-45% 0px -50% 0px' });
-  ['top', 'about', 'work', 'fit', 'contact'].forEach(id => secIO.observe(document.getElementById(id)));
+  ['top', 'about', 'work', 'contact'].forEach(id => secIO.observe(document.getElementById(id)));
 
   /* phone menu */
   const menuBtn = $('#menuBtn'), menu = $('#mobileMenu');
@@ -1049,100 +974,6 @@ Next time: I'd write the concurrency tests before the protocol, not after.` },
     }, gap * 5);
   }
   renderOF();
-
-  /* Role fit check */
-  const SK = [
-    { k: 'React', t: s => /\breact(\.?js)?\b(?!\s*native)/i.test(s), has: 1, p: 'Built OfferForge AI and Gridline in React with Vite.' },
-    { k: 'Next.js', t: s => /\bnext\.?js\b/i.test(s), has: 1, p: 'SyncFlow is a Next.js 16 app, API included.' },
-    { k: 'TypeScript', t: s => /typescript/i.test(s), has: 1, p: 'SyncFlow and Gridline are written in TypeScript.' },
-    { k: 'JavaScript', t: s => /javascript|\bes6\b|\bjs\b/i.test(s), has: 1, p: 'Core language across all my projects.' },
-    { k: 'HTML & CSS', t: s => /\bhtml5?\b|\bcss3?\b/i.test(s), has: 1, p: 'Hand-built interfaces for every project.' },
-    { k: 'Tailwind CSS', t: s => /tailwind/i.test(s), has: 1, p: 'Used in OfferForge AI and the IBM front-end track.' },
-    { k: 'Node.js', t: s => /\bnode(\.?js)?\b/i.test(s), has: 1, p: 'An Express API on Node (OfferForge AI) and Next.js route handlers (SyncFlow).' },
-    { k: 'Express', t: s => /\bexpress(\.?js)?\b/i.test(s), has: 1, p: 'The OfferForge AI API runs on Express.' },
-    { k: 'Real-time / WebSockets', t: s => /socket\.?io|websocket|real[\s-]?time/i.test(s), has: 1, p: 'Built SyncFlow\'s real-time sync: first on Socket.io, now a serverless Yjs engine over HTTP.' },
-    { k: 'MongoDB', t: s => /mongo/i.test(s), has: 1, p: 'OfferForge AI keeps users, interviews and scores in MongoDB.' },
-    { k: 'NoSQL', t: s => /nosql/i.test(s), has: 1, p: 'MongoDB behind OfferForge AI, and Redis in SyncFlow\'s first version.' },
-    { k: 'SQL / MySQL', t: s => /\bmysql\b|\bsql\b/i.test(s), has: 1, p: 'SQL and MySQL are core skills, with DBMS coursework.' },
-    { k: 'Redis', t: s => /redis/i.test(s), has: 1, p: 'Used Redis in SyncFlow\'s first, Socket.io-based version.' },
-    { k: 'REST APIs', t: s => /\bREST(ful)?\b/.test(s) || /restful|rest\s*apis?/i.test(s), has: 1, p: 'Designed the Express REST API behind OfferForge AI.' },
-    { k: 'Auth / JWT', t: s => /\bjwt\b|authenticat|authoriz/i.test(s), has: 1, p: 'JWT auth in OfferForge and signed session cookies in SyncFlow.' },
-    { k: 'Role-based access', t: s => /\brbac\b|role[- ]based/i.test(s), has: 1, p: 'Built user, author and admin roles into a blogging REST API.' },
-    { k: 'Docker', t: s => /docker|container/i.test(s), has: 1, p: 'Docker is part of my core stack.' },
-    { k: 'CI/CD', t: s => /ci\s*\/\s*cd|continuous (integration|delivery|deployment)/i.test(s), has: 1, p: 'CI/CD pipelines are part of my core stack.' },
-    { k: 'Git', t: s => /\bgit\b|github|version control/i.test(s), has: 1, p: 'SyncFlow, OfferForge AI and Gridline are public on GitHub with their full history.' },
-    { k: 'Deployment', t: s => /vercel|deploy/i.test(s), has: 1, p: 'SyncFlow, OfferForge AI and Gridline are all live on Vercel.' },
-    { k: 'Microservices', t: s => /micro-?services?/i.test(s), has: 1, p: 'Microservices are part of my core skills.' },
-    { k: 'Webhooks', t: s => /webhook/i.test(s), has: 1, p: 'Webhooks are part of my core skills.' },
-    { k: 'System design', t: s => /system design|\bhld\b|\blld\b|scalab|architect/i.test(s), has: 1, p: 'HLD/LLD, and I designed SyncFlow\'s serverless sync protocol and storage.' },
-    { k: 'DSA', t: s => /data structures?|algorithm|\bdsa\b|problem[- ]solving/i.test(s), has: 1, p: '200+ problems solved, and Gridline recalculates with a topological sort.' },
-    { k: 'OOP', t: s => /\boops?\b|object[- ]oriented/i.test(s), has: 1, p: 'Java and TypeScript.' },
-    { k: 'Java', t: s => /\bjava\b(?!\s*script)/i.test(s), has: 1, p: 'Java is one of my core languages.' },
-    { k: 'AI / LLM integration', t: s => /\bAI\b|\bML\b/.test(s) || /\bllms?\b|gen\s?ai|openai|gemini|prompt|machine learning/i.test(s), has: 1, p: 'Built a Gemini and OpenRouter grading pipeline in OfferForge.' },
-    { k: 'Charts / data viz', t: s => /chart|data visuali[sz]ation|recharts|d3/i.test(s), has: 1, p: 'Built spending-trend charts with Recharts in a personal finance app.' },
-    { k: 'Accessibility', t: s => /accessib|a11y|wcag|\baria\b/i.test(s), has: 1, p: 'Accessibility standards were part of the IBM front-end track.' },
-    { k: 'State management', t: s => /state management|manage state/i.test(s), has: 1, p: 'State management patterns from the IBM front-end track.' },
-    { k: 'Component architecture', t: s => /component|design system|reusable/i.test(s), has: 1, p: 'Component architecture from the IBM front-end track.' },
-    { k: 'PostgreSQL', t: s => /postgres/i.test(s), has: 1, p: 'SyncFlow stores its update log, snapshots and presence in Postgres on Neon.' },
-    { k: 'Testing', t: s => /\bjest\b|vitest|cypress|playwright|unit test|testing library|\btdd\b|automated test/i.test(s), has: 1, p: 'Vitest suites for SyncFlow\'s sync engine (on a real Postgres) and Gridline\'s formula engine.' },
-    { k: 'Performance', t: s => /performan|optimi[sz]|virtuali[sz]|lazy[- ]load/i.test(s), has: 1, p: 'Gridline scrolls 10,000 rows by rendering only the ~100 cells on screen.' },
-    { k: 'Serverless', t: s => /serverless|lambda|edge function|vercel function/i.test(s), has: 1, p: 'SyncFlow runs entirely on Vercel Functions, with no long-running server.' },
-    { k: 'CS fundamentals', t: s => /operating system|computer network|\bdbms\b|cs fundamentals/i.test(s), has: 1, p: 'DBMS, operating systems and computer networks.' },
-    { k: 'Redux', t: s => /redux|zustand|mobx/i.test(s) }, { k: 'Vue', t: s => /\bvue/i.test(s) }, { k: 'Angular', t: s => /angular/i.test(s) },
-    { k: 'Svelte', t: s => /svelte/i.test(s) }, { k: 'GraphQL', t: s => /graphql/i.test(s) }, { k: 'Python', t: s => /python|django|flask|fastapi/i.test(s) },
-    { k: 'Go', t: s => /\bgolang\b/i.test(s) }, { k: 'AWS', t: s => /\baws\b|amazon web services/i.test(s) }, { k: 'GCP', t: s => /\bgcp\b|google cloud/i.test(s) },
-    { k: 'Azure', t: s => /azure/i.test(s) }, { k: 'Kubernetes', t: s => /kubernetes|\bk8s\b/i.test(s) }, 
-     { k: 'React Native', t: s => /react\s*native/i.test(s) },
-    { k: 'Spring', t: s => /spring\s*boot|\bspring framework/i.test(s) }, { k: 'Kafka', t: s => /kafka/i.test(s) }, { k: 'Figma', t: s => /figma/i.test(s) },
-    { k: 'PHP', t: s => /\bphp\b|laravel/i.test(s) }, { k: 'C++', t: s => /c\+\+/i.test(s) }
-  ];
-  const PERKS = [
-    { t: s => /immediate|notice period|join (asap|immediately)|start (asap|immediately)/i.test(s), m: 'Can join immediately, with no notice period.' },
-    { t: s => /fresher|new grad|graduate|entry[- ]level|junior|\b0\s*(-|–|to)\s*[123]\s*(years|yrs)|sde[- ]?(1|i)\b|campus|2026/i.test(s), m: 'B.Tech CSE graduate, class of 2026.' },
-    { t: s => /delhi|ncr|gurgaon|gurugram|noida|faridabad/i.test(s), m: 'Based in Faridabad, Delhi NCR.' }
-  ];
-  const SAMPLES = [
-    { n: 'Frontend Engineer', t: `Frontend Engineer (0–2 years) · Gurugram\n\nYou'll build fast, accessible interfaces in React and TypeScript with Next.js and Tailwind CSS. You'll integrate REST APIs, manage state cleanly, and write reusable components. We ship with Git and CI/CD.\n\nBonus: real-time features with WebSockets, and testing with Jest.\n\nImmediate joiners preferred.` },
-    { n: 'Full-stack (MERN)', t: `Full Stack Developer, MERN · Noida (hybrid)\n\nBuild features end to end with MongoDB, Express, React and Node.js. Design REST APIs, implement JWT authentication, and integrate LLM features into the product.\n\nNice to have: Redis, Docker and AWS.\nStrong DSA and system design fundamentals required.` },
-    { n: 'SDE-1', t: `SDE-1 (new grad)\n\nStrong problem solving with data structures and algorithms. OOP in Java or Python. SQL and DBMS fundamentals, operating systems and computer networks.\n\nExposure to microservices, Kafka and Kubernetes is a plus.\nNotice period: immediate.` }
-  ];
-  const jd = $('#jd'), samplesEl = $('#samples'), CIRC = 339.29;
-  let curPct = 0, sampleIdx = 0;
-  SAMPLES.forEach((s, i) => {
-    const b = document.createElement('button'); b.type = 'button'; b.textContent = s.n;
-    b.addEventListener('click', () => { sampleIdx = i; jd.value = s.t; markSamples(); $('#jdNote').textContent = 'A sample is loaded. Paste yours to replace it.'; renderFit(false); });
-    samplesEl.appendChild(b);
-  });
-  function markSamples(){ [...samplesEl.children].forEach((b, i) => b.setAttribute('aria-pressed', i === sampleIdx)); }
-  const CHECK = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-  function animNum(from, to){
-    const el = $('#gnum'), st = performance.now(), dur = reduce ? 0 : 1100;
-    (function f(now){ const k = dur ? Math.min(1, (now - st) / dur) : 1, e = 1 - Math.pow(1 - k, 4); el.textContent = Math.round(from + (to - from) * e) + '%'; if (k < 1) requestAnimationFrame(f); })(st);
-  }
-  function renderFit(announce){
-    const txt = jd.value;
-    const found = SK.filter(s => s.t(txt)), has = found.filter(s => s.has), miss = found.filter(s => !s.has);
-    const perks = PERKS.filter(p => p.t(txt)), total = has.length + miss.length;
-    const pct = total ? Math.round(has.length / total * 100) : 0;
-    $('#gval').style.strokeDashoffset = CIRC * (1 - pct / 100);
-    animNum(curPct, pct); curPct = pct;
-    const chip = $('#vchip');
-    chip.className = 'vchip ' + (pct >= 80 ? 'strong' : pct >= 60 ? 'good' : '');
-    chip.textContent = !total ? 'No skills found' : pct >= 80 ? 'Strong match' : pct >= 60 ? 'Good match' : 'Partial match';
-    $('#fitHead').textContent = total
-      ? `${has.length} of the ${total} skills this role asks for are on my resume.`
-      : 'No specific technologies found. Try pasting the requirements section of the job description.';
-    $('#matches').innerHTML = has.map((s, i) => `<li style="animation-delay:${reduce ? 0 : i * 40}ms">${CHECK}<span><b>${esc(s.k)}</b>${esc(s.p)}</span></li>`).join('');
-    $('#missWrap').hidden = !miss.length;
-    $('#miss').innerHTML = miss.map(s => `<span class="chip">${esc(s.k)}</span>`).join('');
-    $('#perkWrap').hidden = !perks.length;
-    $('#perks').innerHTML = perks.map(p => `<li>${esc(p.m)}</li>`).join('');
-    if (announce && total) toast(`${pct}% match. My email is at the bottom of the page.`);
-  }
-  let jdT;
-  jd.addEventListener('input', () => { sampleIdx = -1; markSamples(); $('#jdNote').textContent = 'Results update as you type.'; clearTimeout(jdT); jdT = setTimeout(() => renderFit(false), 350); });
-  $('#runFit').addEventListener('click', () => renderFit(true));
-  jd.value = SAMPLES[0].t; markSamples(); renderFit(false);
 
   /* copy email */
   $('#copyMail').addEventListener('click', () => {
