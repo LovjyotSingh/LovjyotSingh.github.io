@@ -178,7 +178,8 @@ h1,h2,h3{margin:0;font-weight:600;text-wrap:balance}
 .shot img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
 
 /* interactive examples */
-.try{grid-column:1/-1;border-top:1px solid var(--line);padding-top:20px}
+/* always the last row, so a flipped card's text still sits beside its screenshot */
+.try{grid-column:1/-1;order:3;border-top:1px solid var(--line);padding-top:20px}
 .try summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;font:500 15px var(--f-sans);color:var(--ink);padding:10px 16px;border-radius:999px;border:1px solid var(--line2);transition:background .25s}
 .try summary::-webkit-details-marker{display:none}
 .try summary:hover{background:rgba(255,255,255,.06)}
