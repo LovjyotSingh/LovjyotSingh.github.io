@@ -4,7 +4,7 @@ Personal portfolio of **Lovjyot Singh**, frontend and full-stack engineer.
 
 Live at **https://lovjyotsingh.github.io**
 
-- Featured work: [SyncFlow](https://github.com/LovjyotSingh/SyncFlow) and [OfferForge AI](https://github.com/LovjyotSingh/OfferForge-AI)
+- Featured work: [SyncFlow](https://github.com/LovjyotSingh/SyncFlow), [OfferForge AI](https://github.com/LovjyotSingh/OfferForge-AI) and [Gridline](https://github.com/LovjyotSingh/Gridline)
 - A role-fit checker for recruiters: paste a job description and see which requirements are on my resume
 - Plain HTML, CSS and JavaScript with no build step, served by GitHub Pages
 
