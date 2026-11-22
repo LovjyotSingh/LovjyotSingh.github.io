@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Lovjyot Singh</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Lovjyot Singh is a frontend and full-stack engineer who built SyncFlow, a real-time collaborative editor, OfferForge AI, an AI mock-interview platform, and Gridline, a spreadsheet engine. Immediate joiner, Delhi NCR.">
+<meta name="description" content="Lovjyot Singh is a frontend and full-stack engineer who built Surge, a Java microservices flash-sale ticketing platform, SyncFlow, a real-time collaborative editor, OfferForge AI, an AI mock-interview platform, and Gridline, a spreadsheet engine. Immediate joiner, Delhi NCR.">
 <meta name="theme-color" content="#000000">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Lovjyot Singh, frontend and full-stack engineer">
-<meta property="og:description" content="Builder of SyncFlow, OfferForge AI and Gridline. Open to full-time roles and available immediately.">
+<meta property="og:description" content="Builder of Surge, SyncFlow, OfferForge AI and Gridline. Open to full-time roles and available immediately.">
 <meta property="og:url" content="https://lovjyotsingh.github.io/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff8a3d'/%3E%3Cstop offset='.5' stop-color='%23ff3d81'/%3E%3Cstop offset='1' stop-color='%238b5cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%23000'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='url(%23g)' stroke-width='5'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -176,6 +176,21 @@ h1,h2,h3{margin:0;font-weight:600;text-wrap:balance}
 .shot-bar i{width:10px;height:10px;border-radius:50%;background:var(--s3)}
 .shot-bar span{margin-left:10px;font:400 12px var(--f-mono);color:var(--dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .shot img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top}
+
+/* Surge has no public URL (it runs in Docker), so its visual is the load-test result */
+.p-meta i.src{background:var(--pc);box-shadow:0 0 10px var(--pc)}
+.run{padding:clamp(18px,2.6vw,28px);display:flex;flex-direction:column;gap:18px}
+.run-big{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:10px}
+.run-big b{font:600 clamp(44px,5.4vw,64px)/1 var(--f-sans);letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.run-big span{color:var(--muted);font-size:15px}
+.seats{aspect-ratio:5/1;background:var(--grad);-webkit-mask:radial-gradient(circle closest-side,#000 66%,transparent 74%) 0 0/2% 10%;mask:radial-gradient(circle closest-side,#000 66%,transparent 74%) 0 0/2% 10%}
+.run-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line)}
+.run-stats div{display:flex;flex-direction:column;gap:4px;padding:10px 12px;background:var(--s1);min-width:0}
+.run-stats dt{font:500 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.run-stats dd{margin:0;font:600 19px/1.2 var(--f-sans);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.run-stats dd small{display:block;margin-top:2px;font:400 12.5px/1.4 var(--f-sans);letter-spacing:0;color:var(--muted)}
+@media (max-width:440px){.run-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.run-foot{font-size:13px;color:var(--dim)}
 
 /* interactive examples */
 /* always the last row, so a flipped card's text still sits beside its screenshot */
@@ -347,7 +362,7 @@ footer a:hover{color:var(--ink)}
     <span class="pill rise d1"><span class="pulse" aria-hidden="true"></span><b>Open to full-time roles</b>· Immediate joiner</span>
     <h1 class="name rise d2">Lovjyot Singh</h1>
     <p class="tagline rise d3">Frontend &amp; full-stack engineer who ships <span class="serif gt">real products.</span></p>
-    <p class="intro rise d4">CSE graduate from USICT, GGSIPU (2026). I've built and deployed a real-time collaborative editor, an AI mock-interview platform and a spreadsheet engine, with React, Next.js, TypeScript and Node.js.</p>
+    <p class="intro rise d4">CSE graduate from USICT, GGSIPU (2026). I've built a Java microservices ticketing platform that never oversells, plus a real-time collaborative editor, an AI mock-interview platform and a spreadsheet engine with React, Next.js, TypeScript and Node.js.</p>
     <div class="cta rise d5">
       <a class="btn solid" href="#work">View my work
         <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10m0 0L9 4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -374,7 +389,7 @@ footer a:hover{color:var(--ink)}
 </section>
 
 <div class="marquee" aria-hidden="true">
-  <div class="mq"><span>React</span><span>Next.js</span><span>TypeScript</span><span>Node.js</span><span>Express</span><span>Socket.io</span><span>Yjs</span><span>Redis</span><span>MongoDB</span><span>Postgres</span><span>Tailwind CSS</span><span>Docker</span><span>Vercel</span><span>React</span><span>Next.js</span><span>TypeScript</span><span>Node.js</span><span>Express</span><span>Socket.io</span><span>Yjs</span><span>Redis</span><span>MongoDB</span><span>Postgres</span><span>Tailwind CSS</span><span>Docker</span><span>Vercel</span></div>
+  <div class="mq"><span>Java</span><span>Spring Boot</span><span>Kafka</span><span>React</span><span>Next.js</span><span>TypeScript</span><span>Node.js</span><span>Express</span><span>Socket.io</span><span>Yjs</span><span>Redis</span><span>MongoDB</span><span>Postgres</span><span>Tailwind CSS</span><span>Docker</span><span>Vercel</span><span>Java</span><span>Spring Boot</span><span>Kafka</span><span>React</span><span>Next.js</span><span>TypeScript</span><span>Node.js</span><span>Express</span><span>Socket.io</span><span>Yjs</span><span>Redis</span><span>MongoDB</span><span>Postgres</span><span>Tailwind CSS</span><span>Docker</span><span>Vercel</span></div>
 </div>
 
 <!-- ================= ABOUT ================= -->
@@ -388,12 +403,12 @@ footer a:hover{color:var(--ink)}
       <article class="card b-intro">
         <span class="label">Who I am</span>
         <p class="big">I build full-stack web products <b>end to end</b>, from the interface down to the API and the database, and I care most about the part people <span class="serif">actually touch.</span></p>
-        <p class="small">All three of my main projects are live. SyncFlow keeps one document in sync for everyone editing it, OfferForge AI runs structured mock interviews graded against a rubric, and Gridline is a spreadsheet engine I wrote from scratch.</p>
+        <p class="small">Surge is a Java microservices ticketing platform that sold exactly 500 of 500 seats to 10,000 concurrent buyers. SyncFlow keeps one document in sync for everyone editing it, OfferForge AI runs structured mock interviews graded against a rubric, and Gridline is a spreadsheet engine I wrote from scratch. Those three are live.</p>
       </article>
       <article class="card b-status">
         <span class="avail"><span class="pulse" aria-hidden="true"></span>Available now</span>
         <h3>Immediate joiner</h3>
-        <p>Based in Faridabad, Delhi NCR. Looking for frontend and full-stack engineering roles.</p>
+        <p>Based in Faridabad, Delhi NCR. Looking for frontend, full-stack and Java backend engineering roles.</p>
         <a class="link" href="#contact">Get in touch →</a>
       </article>
       <article class="card b-dsa">
@@ -416,8 +431,8 @@ footer a:hover{color:var(--ink)}
         <span class="label">Toolkit</span>
         <div class="stack-rows">
           <div><h4>Languages</h4><ul><li>TypeScript</li><li>JavaScript</li><li>Java</li><li>SQL</li><li>HTML &amp; CSS</li></ul></div>
-          <div><h4>Frameworks</h4><ul><li>React.js</li><li>Next.js</li><li>Node.js</li><li>Express.js</li><li>Socket.io</li><li>Tailwind CSS</li></ul></div>
-          <div><h4>Data &amp; cloud</h4><ul><li>PostgreSQL</li><li>MongoDB</li><li>MySQL</li><li>Redis</li><li>Docker</li><li>Vercel</li><li>Render</li></ul></div>
+          <div><h4>Frameworks</h4><ul><li>React.js</li><li>Next.js</li><li>Spring Boot</li><li>Node.js</li><li>Express.js</li><li>Socket.io</li><li>Tailwind CSS</li></ul></div>
+          <div><h4>Data &amp; cloud</h4><ul><li>PostgreSQL</li><li>MongoDB</li><li>MySQL</li><li>Redis</li><li>Kafka &amp; RabbitMQ</li><li>Docker</li><li>Vercel</li><li>Render</li></ul></div>
           <div><h4>Tools &amp; DevOps</h4><ul><li>REST APIs</li><li>Microservices</li><li>JWT auth</li><li>Webhooks</li><li>CI/CD</li><li>Git &amp; Postman</li></ul></div>
           <div><h4>Fundamentals</h4><ul><li>DSA</li><li>System design (HLD/LLD)</li><li>DBMS</li><li>Operating systems</li><li>Computer networks</li></ul></div>
         </div>
@@ -432,11 +447,50 @@ footer a:hover{color:var(--ink)}
     <div class="head reveal">
       <span class="label">Selected work</span>
       <h2>Things I've <span class="serif gt">shipped.</span></h2>
-      <p>Three live products, each with a working example you can try right here.</p>
+      <p>A Java microservices platform load-tested with 10,000 buyers, and three live products you can try right here.</p>
     </div>
 
     <div class="projects">
-      <article class="card proj reveal" style="--pc:var(--c3);--pg:linear-gradient(120deg,var(--c4),var(--c3))">
+      <article class="card proj reveal" style="--pc:var(--c2);--pg:linear-gradient(120deg,var(--c1),var(--c2))">
+        <div class="p-text">
+          <span class="p-meta"><i class="src" aria-hidden="true"></i>Open source · Java microservices platform</span>
+          <h3>Surge</h3>
+          <p class="p-desc">Flash-sale ticket booking. When thousands of people try to book the same few hundred seats in one second, it has to sell every seat exactly once and stay up.</p>
+          <ul class="p-points">
+            <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Never oversells.</b> Lua scripts hold seats atomically in Redis through the rush, and a MySQL unique constraint rules out selling a seat twice.</span></li>
+            <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Spring Cloud services.</b> A gateway with JWT and token-bucket rate limits, Eureka, Config Server, Resilience4j breakers and bulkheads, Kafka via a transactional outbox, and RabbitMQ ticket jobs with a dead-letter queue.</span></li>
+            <li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Tested and hardened.</b> 1,133 tests, green CI with CodeQL, OSV, Trivy and Dependabot, TLS 1.2/1.3 at nginx, and a 29-finding security audit: 27 fixed, 2 documented as accepted risks.</span></li>
+          </ul>
+          <div class="chips"><span class="chip">Java 25</span><span class="chip">Spring Boot 4</span><span class="chip">Spring Cloud</span><span class="chip">Kafka</span><span class="chip">RabbitMQ</span><span class="chip">Redis</span><span class="chip">MySQL</span><span class="chip">Elasticsearch</span></div>
+          <div class="p-links">
+            <a class="btn solid" href="https://github.com/LovjyotSingh/surge" target="_blank" rel="noopener">Source code ↗</a>
+            <a class="btn" href="https://github.com/LovjyotSingh/surge/blob/main/docs/DESIGN.md" target="_blank" rel="noopener">Design doc</a>
+          </div>
+        </div>
+        <div class="p-visual">
+          <figure class="shot">
+            <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>loadtest → nginx → gateway → booking</span></div>
+            <div class="run">
+              <div>
+                <span class="label">Load test · 10,000 buyers, 500 seats</span>
+                <p class="run-big"><b>500/500</b><span>seats sold</span></p>
+              </div>
+              <div class="seats" aria-hidden="true"></div>
+              <dl class="run-stats">
+                <div><dt>Buyers</dt><dd>10,000 <small>one JWT each</small></dd></div>
+                <div><dt>Oversold</dt><dd>0</dd></div>
+                <div><dt>Mismatches</dt><dd>0 <small>seat by seat</small></dd></div>
+                <div><dt>Errors</dt><dd>1 <small>in 10,000</small></dd></div>
+                <div><dt>Requests</dt><dd>96,075</dd></div>
+                <div><dt>Time</dt><dd>70 s</dd></div>
+              </dl>
+              <p class="run-foot">Final run on 22 Nov 2026, on one Windows machine.</p>
+            </div>
+          </figure>
+        </div>
+      </article>
+
+      <article class="card proj flip reveal" style="--pc:var(--c3);--pg:linear-gradient(120deg,var(--c4),var(--c3))">
         <div class="p-text">
           <span class="p-meta"><i aria-hidden="true"></i>Live · Real-time collaborative workspace</span>
           <h3>SyncFlow</h3>
@@ -488,7 +542,7 @@ footer a:hover{color:var(--ink)}
         </details>
       </article>
 
-      <article class="card proj flip reveal" style="--pc:var(--c1);--pg:linear-gradient(120deg,var(--c1),var(--c2))">
+      <article class="card proj reveal" style="--pc:var(--c1);--pg:linear-gradient(120deg,var(--c1),var(--c2))">
         <div class="p-text">
           <span class="p-meta"><i aria-hidden="true"></i>Live · Full-stack AI mock-interview platform</span>
           <h3>OfferForge AI</h3>
@@ -548,7 +602,7 @@ footer a:hover{color:var(--ink)}
         </details>
       </article>
 
-      <article class="card proj reveal" style="--pc:var(--c2);--pg:linear-gradient(120deg,var(--c2),var(--c3))">
+      <article class="card proj flip reveal" style="--pc:var(--c2);--pg:linear-gradient(120deg,var(--c2),var(--c3))">
         <div class="p-text">
           <span class="p-meta"><i aria-hidden="true"></i>Live · Spreadsheet engine built from scratch</span>
           <h3>Gridline</h3>
@@ -589,7 +643,7 @@ footer a:hover{color:var(--ink)}
   <div class="wrap">
     <span class="label">Contact</span>
     <h2>Let's build something <span class="serif gt">great.</span></h2>
-    <p class="intro">I'm open to frontend and full-stack roles and can join immediately. Email is the fastest way to reach me.</p>
+    <p class="intro">I'm open to frontend, full-stack and backend roles and can join immediately. Email is the fastest way to reach me.</p>
     <div class="mail">
       <span class="addr" id="addr">lovjyotsinghofficial@gmail.com</span>
       <button class="btn solid" type="button" id="copyMail">Copy email</button>
